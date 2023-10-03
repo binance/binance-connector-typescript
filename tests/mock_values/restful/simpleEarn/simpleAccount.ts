@@ -1,0 +1,10 @@
+import { RestSimpleEarnTypes } from '../../../../src/types';
+
+export const mockResponse: RestSimpleEarnTypes.simpleAccountResponse = {
+    'totalAmountInBTC': '0.01067982',
+    'totalAmountInUSDT': '77.13289230',
+    'totalFlexibleAmountInBTC': '0.00000000',
+    'totalFlexibleAmountInUSDT': '0.00000000',
+    'totalLockedInBTC': '0.01067982',
+    'totalLockedInUSDT': '77.13289230'
+};
