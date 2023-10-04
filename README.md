@@ -100,5 +100,14 @@ npm install
 npm run test
 ```
 
+## Limitation
+
+Futures and European Options APIs are not supported:
+
+  - `/fapi/*`
+  - `/dapi/*`
+  - `/eapi/*`
+  -  Associated Websocket Market and User Data Streams
+
 ## License
 MIT

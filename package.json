@@ -1,6 +1,6 @@
 {
   "name": "@binance/connector-typescript",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "This is a lightweight library that works as a connector to the Binance public API.",
   "main": "./src/index.ts",
   "types": "./src/types.ts",
