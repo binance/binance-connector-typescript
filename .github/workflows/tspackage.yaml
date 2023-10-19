@@ -23,11 +23,11 @@ jobs:
             - name: Install dependencies
               run: npm install
 
-            - name: Create Bundler files
-              run: npm run build
-
             - name: Lint
               run: npm run lint
 
             - name: Test
               run: npm run test
+
+            - name: Create Bundler files
+              run: npm run build
