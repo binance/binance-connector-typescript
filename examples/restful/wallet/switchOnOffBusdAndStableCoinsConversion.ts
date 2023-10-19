@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { Spot } from '../../../src/index';
-import { BusdStableCoinsConversion } from '../../../src/types';
+import { BusdStableCoinsConversion, Spot } from '../../../src/index';
 
 dotenv.config();
 

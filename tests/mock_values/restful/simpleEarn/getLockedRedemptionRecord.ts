@@ -1,4 +1,4 @@
-import { RestSimpleEarnTypes, SimpleEarnLockedRedemption } from '../../../../src/types';
+import { RestSimpleEarnTypes, SimpleEarnLockedRedemption } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.getLockedRedemptionRecordResponse = {
     'rows': [

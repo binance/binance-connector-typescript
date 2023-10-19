@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockCancelOpenOrders }  from '../../mock_values/websocket/trades/cancelOpenOrders';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Cancel Open Orders', () => {
     let responseMessage: WebSocket.Data = '';

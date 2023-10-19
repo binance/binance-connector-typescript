@@ -1,4 +1,4 @@
-import { RestWalletTypes, UnivStatus, UnivTransferType } from '../../../../src/types';
+import { RestWalletTypes, UnivStatus, UnivTransferType } from '../../../../src/index';
 
 export const mockResponse: RestWalletTypes.getUserUniversalTransferHistoryResponse = {
     'total': 1,

@@ -1,4 +1,4 @@
-import { MarginLevelStatus, RestMarginTypes } from '../../../../src/types';
+import { MarginLevelStatus, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getIsolatedMarginAccountInfoResponse = {
     'assets': [{

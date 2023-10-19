@@ -1,4 +1,4 @@
-import { RestSimpleEarnTypes } from '../../../../src/types';
+import { RestSimpleEarnTypes } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.getLockedPersonalLeftQuotaResponse = {
     'leftPersonalQuota': '1000'

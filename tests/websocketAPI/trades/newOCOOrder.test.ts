@@ -2,8 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockNewOCOOrder }  from '../../mock_values/websocket/trades/newOCOOrder';
-import { WebsocketAPI } from '../../../src/websocketAPI';
-import { NewOrderRespType, Side, StopLimitTimeInForce } from '../../../src/types';
+import { NewOrderRespType, Side, StopLimitTimeInForce, WebsocketAPI } from '../../../src/index';
 
 describe('New OCO Order', () => {
     let responseMessage: WebSocket.Data = '';

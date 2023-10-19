@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { Side, RestTradeTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { Side, RestTradeTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

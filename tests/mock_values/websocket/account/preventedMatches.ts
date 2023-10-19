@@ -1,4 +1,4 @@
-import { SelfTradePreventionMode, WsAccountTypes } from '../../../../src/types';
+import { SelfTradePreventionMode, WsAccountTypes } from '../../../../src/index';
 
 export const mockPreventedMatches: WsAccountTypes.preventedMatchesResponse[] = [
     {

@@ -1,7 +1,7 @@
 import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Ping User Data Stream', () => {
     let responseMessage: WebSocket.Data = '';

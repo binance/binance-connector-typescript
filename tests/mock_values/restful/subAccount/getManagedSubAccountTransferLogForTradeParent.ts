@@ -1,4 +1,4 @@
-import { FromAccountType, RestSubAccountTypes, SubAccountStatus, ToAccountType } from '../../../../src/types';
+import { FromAccountType, RestSubAccountTypes, SubAccountStatus, ToAccountType } from '../../../../src/index';
 
 export const mockResponse: RestSubAccountTypes.getManagedSubAccountTransferLogResponse = {
     managerSubTransferHistoryVos: [

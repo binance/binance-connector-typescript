@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import { Spot, UnivTransferType } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/wallet/userUniversalTransfer';
-import { UnivTransferType } from '../../../src/types';
 
 jest.mock('../../../src/index');
 

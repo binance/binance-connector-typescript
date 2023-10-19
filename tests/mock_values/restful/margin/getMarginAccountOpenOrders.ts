@@ -1,4 +1,4 @@
-import { OrderStatus, OrderType, SelfTradePreventionMode, RestMarginTypes, Side, TimeInForce } from '../../../../src/types';
+import { OrderStatus, OrderType, SelfTradePreventionMode, RestMarginTypes, Side, TimeInForce } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getMarginAccountOpenOrdersResponse[] = [
     {

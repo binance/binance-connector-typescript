@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { CancelReplaceMode, OrderType, RestTradeTypes, Side, TimeInForce } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { CancelReplaceMode, OrderType, RestTradeTypes, Side, Spot, TimeInForce } from '../../../src/index';
 
 dotenv.config();
 

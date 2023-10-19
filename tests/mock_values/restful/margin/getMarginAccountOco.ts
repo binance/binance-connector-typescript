@@ -1,4 +1,4 @@
-import { OCOOrderStatus, OCOStatusType, RestMarginTypes } from '../../../../src/types';
+import { OCOOrderStatus, OCOStatusType, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getMarginAccountOcoResponse = {
     'orderListId': 27,

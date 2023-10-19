@@ -1,4 +1,4 @@
-import { RestSimpleEarnTypes, SimpleEarnStatus } from '../../../../src/types';
+import { RestSimpleEarnTypes, SimpleEarnStatus } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.getSimpleEarnFlexibleProductListResponse = {
     'rows': [

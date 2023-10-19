@@ -2,8 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockCancelReplaceOrder }  from '../../mock_values/websocket/trades/cancelReplaceOrder';
-import { WebsocketAPI } from '../../../src/websocketAPI';
-import { CancelReplaceMode, OrderType, Side, TimeInForce } from '../../../src/types';
+import { CancelReplaceMode, OrderType, Side, TimeInForce, WebsocketAPI } from '../../../src/index';
 
 describe('Cancel Replace Order', () => {
     let responseMessage: WebSocket.Data = '';

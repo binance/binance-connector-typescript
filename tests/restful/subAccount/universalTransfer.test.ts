@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/subAccount/universalTransfer';
-import { FromAccountType, ToAccountType } from '../../../src/types';
+import { FromAccountType, Spot, ToAccountType } from '../../../src/index';
 
 jest.mock('../../../src/index');
 

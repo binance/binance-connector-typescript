@@ -2,8 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockNewOrder }  from '../../mock_values/websocket/trades/newOrder';
-import { WebsocketAPI } from '../../../src/websocketAPI';
-import { NewOrderRespType, OrderType, Side } from '../../../src/types';
+import { NewOrderRespType, OrderType, Side, WebsocketAPI } from '../../../src/index';
 
 describe('New Order', () => {
     let responseMessage: WebSocket.Data = '';

@@ -1,4 +1,4 @@
-import { MarginStatus, RestMarginTypes } from '../../../../src/types';
+import { MarginStatus, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getLoanRecordResponse = {
     'rows': [{

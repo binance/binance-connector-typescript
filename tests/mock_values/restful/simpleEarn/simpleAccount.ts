@@ -1,4 +1,4 @@
-import { RestSimpleEarnTypes } from '../../../../src/types';
+import { RestSimpleEarnTypes } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.simpleAccountResponse = {
     'totalAmountInBTC': '0.01067982',

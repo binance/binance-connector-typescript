@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { Interval } from '../../../src/types';
-import { WebsocketAPI } from '../../../src/index';
+import { Interval, WebsocketAPI } from '../../../src/index';
 
 dotenv.config();
 

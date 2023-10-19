@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { WebsocketAPI } from '../../../src/index';
-import { WsMarketTypes } from '../../../src/types';
+import { WebsocketAPI, WsMarketTypes } from '../../../src/index';
 
 dotenv.config();
 

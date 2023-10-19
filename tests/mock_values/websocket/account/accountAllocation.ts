@@ -1,4 +1,4 @@
-import { WsAccountTypes } from '../../../../src/types';
+import { WsAccountTypes } from '../../../../src/index';
 
 export const mockAccountAllocation: WsAccountTypes.accountAllocationResponse[] = [
     {

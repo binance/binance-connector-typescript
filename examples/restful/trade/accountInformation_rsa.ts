@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import * as fs from 'fs';
-import { RestTradeTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { RestTradeTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

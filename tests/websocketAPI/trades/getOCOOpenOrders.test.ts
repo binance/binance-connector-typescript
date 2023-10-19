@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockGetOCOOpenOrders }  from '../../mock_values/websocket/trades/getOCOOpenOrders';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Get OCO Open Orders', () => {
     let responseMessage: WebSocket.Data = '';

@@ -7,7 +7,7 @@ import {
     SelfTradePreventionMode,
     Side,
     TimeInForce
-} from '../../../../src/types';
+} from '../../../../src/index';
 
 export const mockResponse: RestTradeTypes.cancelAnExistingOrderAndSendANewOrderResponse = {
     'cancelResult': CancelResult.SUCCESS,

@@ -1,4 +1,4 @@
-import { OrderStatus, OrderType, SelfTradePreventionMode, Side, TimeInForce, WsTradeTypes } from '../../../../src/types';
+import { OrderStatus, OrderType, SelfTradePreventionMode, Side, TimeInForce, WsTradeTypes } from '../../../../src/index';
 
 export const mockCancelOrder: WsTradeTypes.cancelOrder = {
     'symbol': 'BTCUSDT',

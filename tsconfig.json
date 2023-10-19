@@ -3,9 +3,7 @@
         "target": "es2021",
         "module": "commonjs",
         "moduleResolution": "node",
-        "rootDir": "./",
-        "baseUrl": "./",
-        "outDir": "./.build",
+        "outDir": "dist",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
@@ -20,14 +18,8 @@
         ],
         "resolveJsonModule": true,
     },
-    "files": [
-        "./src/index.ts",
-        "./src/types.ts"
-    ],
     "include": [
-        "src/**/*.ts",
-        "tests/**/*",
-        "../test/changes/trade_first.ts"
+        "dist",
     ],
     "exclude": [
         "node_modules",

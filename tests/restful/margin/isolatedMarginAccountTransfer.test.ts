@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import { Spot, TransFrom, TransTo } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/margin/isolatedMarginAccountTransfer';
-import { TransFrom, TransTo } from '../../../src/types';
 
 jest.mock('../../../src/index');
 

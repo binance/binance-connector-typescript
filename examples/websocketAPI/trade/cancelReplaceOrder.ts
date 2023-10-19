@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { CancelReplaceMode, OrderType, Side, TimeInForce, WsTradeTypes } from '../../../src/types';
-import { WebsocketAPI } from '../../../src/index';
+import { CancelReplaceMode, OrderType, Side, TimeInForce, WebsocketAPI, WsTradeTypes } from '../../../src/index';
 
 dotenv.config();
 

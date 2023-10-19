@@ -1,4 +1,4 @@
-import { RestTradeTypes } from '../../../../src/types';
+import { RestTradeTypes } from '../../../../src/index';
 
 export const mockResponse: RestTradeTypes.getCurrentOrderCountUsageResponse[] = [
     {

@@ -1,4 +1,4 @@
-import { SimpleEarnSourceAccount, SimpleEarnStatus, SimpleEarnType, RestSimpleEarnTypes } from '../../../../src/types';
+import { SimpleEarnSourceAccount, SimpleEarnStatus, SimpleEarnType, RestSimpleEarnTypes } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.getLockedSubscriptionRecordResponse = {
     'rows': [

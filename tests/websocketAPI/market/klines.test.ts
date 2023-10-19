@@ -2,8 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockKlines }  from '../../mock_values/websocket/market/klines';
-import { WebsocketAPI } from '../../../src/websocketAPI';
-import { Interval } from '../../../src/types';
+import { WebsocketAPI, Interval } from '../../../src/index';
 
 describe('Klines', () => {
     let responseMessage: WebSocket.Data = '';

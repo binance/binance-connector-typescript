@@ -1,8 +1,7 @@
 import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
-import { WebsocketAPI } from '../../../src/websocketAPI';
-import { NewOrderRespType, OrderType, Side, TimeInForce } from '../../../src/types';
+import { NewOrderRespType, OrderType, Side, TimeInForce, WebsocketAPI } from '../../../src/index';
 
 describe('Test New Order', () => {
     let responseMessage: WebSocket.Data = '';

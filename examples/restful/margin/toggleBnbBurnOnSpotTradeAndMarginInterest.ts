@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { InterestBNBBurn, RestMarginTypes, SpotBNBBurn } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { InterestBNBBurn, RestMarginTypes, Spot, SpotBNBBurn } from '../../../src/index';
 
 dotenv.config();
 

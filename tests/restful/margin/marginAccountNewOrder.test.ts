@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import { Side, OrderType, Spot } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/margin/marginAccountNewOrder';
-import { Side, OrderType } from '../../../src/types';
 
 jest.mock('../../../src/index');
 

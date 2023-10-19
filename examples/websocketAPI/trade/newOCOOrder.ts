@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { NewOrderRespType, Side, StopLimitTimeInForce, WsTradeTypes } from '../../../src/types';
-import { WebsocketAPI } from '../../../src/index';
+import { NewOrderRespType, Side, StopLimitTimeInForce, WebsocketAPI, WsTradeTypes } from '../../../src/index';
 
 dotenv.config();
 

@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { RestSimpleEarnTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { RestSimpleEarnTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

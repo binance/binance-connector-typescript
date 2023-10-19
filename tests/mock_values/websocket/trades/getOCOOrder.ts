@@ -1,4 +1,4 @@
-import { OCOOrderStatus, OCOStatusType, RestTradeTypes } from '../../../../src/types';
+import { OCOOrderStatus, OCOStatusType, RestTradeTypes } from '../../../../src/index';
 
 export const mockGetOCOOrder: RestTradeTypes.getOcoResponse = {
     'orderListId': 1274512,

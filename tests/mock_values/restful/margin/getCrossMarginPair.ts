@@ -1,4 +1,4 @@
-import { RestMarginTypes } from '../../../../src/types';
+import { RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getCrossMarginPairResponse = {
     'id': 323355778339572400,
