@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3 - 2023-10-20
+
+Upgrade dependencies
+
 ## 0.3.2 - 2023-10-20
 
 Fix issue from previous release
