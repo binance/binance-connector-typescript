@@ -1,4 +1,4 @@
-import { RestMarginTypes, Side, TimeInForce } from '../../../../src/types';
+import { RestMarginTypes, Side, TimeInForce } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getForceLiquidationRecordResponse = {
     'rows': [ {

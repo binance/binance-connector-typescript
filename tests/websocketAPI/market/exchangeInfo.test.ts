@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockExchangeInformation }  from '../../mock_values/websocket/market/exchangeInfo';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Exchange Info', () => {
     let server: http.Server;

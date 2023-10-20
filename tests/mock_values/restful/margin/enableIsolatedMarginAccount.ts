@@ -1,4 +1,4 @@
-import { RestMarginTypes } from '../../../../src/types';
+import { RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.enableIsolatedMarginAccountResponse = {
     'success': true,

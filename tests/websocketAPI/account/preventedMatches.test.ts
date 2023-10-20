@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockPreventedMatches } from '../../mock_values/websocket/account/preventedMatches';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Account', () => {
     let server: http.Server;

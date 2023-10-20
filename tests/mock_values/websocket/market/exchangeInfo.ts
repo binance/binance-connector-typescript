@@ -1,4 +1,4 @@
-import { RestMarketTypes } from '../../../../src/types';
+import { RestMarketTypes } from '../../../../src/index';
 
 export const mockExchangeInformation: RestMarketTypes.exchangeInformationResponse = {
     'timezone': 'UTC',

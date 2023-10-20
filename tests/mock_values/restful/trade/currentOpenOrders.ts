@@ -1,4 +1,4 @@
-import { OrderStatus, OrderType, RestTradeTypes, SelfTradePreventionMode, Side, TimeInForce } from '../../../../src/types';
+import { OrderStatus, OrderType, RestTradeTypes, SelfTradePreventionMode, Side, TimeInForce } from '../../../../src/index';
 
 export const mockResponse: RestTradeTypes.currentOpenOrdersResponse[] = [
     {

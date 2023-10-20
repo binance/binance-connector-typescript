@@ -1,4 +1,4 @@
-import { RestMarketTypes } from '../../../../src/types';
+import { RestMarketTypes } from '../../../../src/index';
 
 export const mockAvgPrice: RestMarketTypes.currentAveragePriceResponse = {
     'mins': 5,

@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { IsFreeze, RestSubAccountTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { IsFreeze, RestSubAccountTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

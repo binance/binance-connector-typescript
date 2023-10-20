@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { RestMarginTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { RestMarginTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

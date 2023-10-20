@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockAccountAllocation }  from '../../mock_values/websocket/account/accountAllocation';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Account Allocation', () => {
     let server: http.Server;

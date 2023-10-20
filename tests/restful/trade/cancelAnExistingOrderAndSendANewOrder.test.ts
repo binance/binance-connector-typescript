@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import {  } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/trade/cancelAnExistingOrderAndSendANewOrder';
-import { Side, OrderType, CancelReplaceMode } from '../../../src/types';
+import { CancelReplaceMode, OrderType, Side, Spot } from '../../../src/index';
 
 jest.mock('../../../src/index');
 

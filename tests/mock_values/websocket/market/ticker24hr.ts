@@ -1,4 +1,4 @@
-import { WsMarketTypes } from '../../../../src/types';
+import { WsMarketTypes } from '../../../../src/index';
 
 export const mockTicker24hr: WsMarketTypes.Ticket24hr = {
     'symbol': 'BNBBTC',

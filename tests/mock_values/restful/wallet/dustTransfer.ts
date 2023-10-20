@@ -1,4 +1,4 @@
-import { RestWalletTypes } from '../../../../src/types';
+import { RestWalletTypes } from '../../../../src/index';
 
 export const mockResponse: RestWalletTypes.dustTransferResponse = {
     'totalServiceCharge': '0.02102542',

@@ -1,5 +1,4 @@
-import { Interval } from '../../src/types';
-import { WebsocketStream } from '../../src/index';
+import { Interval, WebsocketStream } from '../../src/index';
 
 const callbacks = {
     open: () => console.debug('Connected with Websocket server'),

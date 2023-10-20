@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockStartUserDataStream }  from '../../mock_values/websocket/userData/startUserDataStream';
-import { WebsocketAPI } from '../../../src/websocketAPI';
+import { WebsocketAPI } from '../../../src/index';
 
 describe('Start User Data Stream', () => {
     let responseMessage: WebSocket.Data = '';

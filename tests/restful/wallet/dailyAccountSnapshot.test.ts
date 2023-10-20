@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import { AccountSnapshotType, Spot } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/wallet/dailyAccountSnapshot';
-import { AccountSnapshotType } from '../../../src/types';
 
 jest.mock('../../../src/index');
 

@@ -1,4 +1,4 @@
-import { AccountType, RestWalletTypes } from '../../../../src/types';
+import { AccountType, RestWalletTypes } from '../../../../src/index';
 
 export const mockResponse: RestWalletTypes.getConvertTransferResponse = {
     'total': 1,

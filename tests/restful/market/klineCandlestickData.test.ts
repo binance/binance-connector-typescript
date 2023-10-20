@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
-import { Spot } from '../../../src/index';
+import { Interval, Spot } from '../../../src/index';
 import { mockResponse } from '../../mock_values/restful/market/klineCandlestickData';
-import { Interval } from '../../../src/types';
 
 jest.mock('../../../src/index');
 

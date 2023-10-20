@@ -1,4 +1,4 @@
-import { GetCrossMargingTransferHistoryType, MarginStatus, RestMarginTypes } from '../../../../src/types';
+import { GetCrossMargingTransferHistoryType, MarginStatus, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getCrossMarginTransferHistoryResponse = {
     'rows': [

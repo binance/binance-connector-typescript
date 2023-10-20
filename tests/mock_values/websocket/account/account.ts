@@ -1,4 +1,4 @@
-import { AccountSnapshotType, Permissions, RestTradeTypes } from '../../../../src/types';
+import { AccountSnapshotType, Permissions, RestTradeTypes } from '../../../../src/index';
 
 export const mockAccountInfo: RestTradeTypes.accountInformationResponse = {
     'makerCommission': 15,

@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { Spot } from '../../../src/index';
-import { listenkeyResponse } from '../../../src/modules/restful/stream/types';
+import { listenkeyResponse, Spot } from '../../../src/index';
 
 dotenv.config();
 

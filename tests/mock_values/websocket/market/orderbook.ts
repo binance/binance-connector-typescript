@@ -1,4 +1,4 @@
-import { RestMarketTypes } from '../../../../src/types';
+import { RestMarketTypes } from '../../../../src/index';
 
 export const mockOrderbook: RestMarketTypes.orderBookResponse = {
     'lastUpdateId': 2731179239,

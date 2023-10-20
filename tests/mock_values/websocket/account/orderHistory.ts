@@ -1,4 +1,4 @@
-import { OrderStatus, OrderType, SelfTradePreventionMode, Side, TimeInForce, WsAccountTypes } from '../../../../src/types';
+import { OrderStatus, OrderType, SelfTradePreventionMode, Side, TimeInForce, WsAccountTypes } from '../../../../src/index';
 
 export const mockOrderHistory: WsAccountTypes.orderHistoryResponse[] = [
     {

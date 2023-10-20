@@ -1,4 +1,4 @@
-import { RestSimpleEarnTypes, SimpleEarnDestAccount } from '../../../../src/types';
+import { RestSimpleEarnTypes, SimpleEarnDestAccount } from '../../../../src/index';
 
 export const mockResponse: RestSimpleEarnTypes.getFlexibleRedemptionRecordResponse = {
     'rows': [

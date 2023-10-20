@@ -7,7 +7,7 @@ import {
     OrderType,
     Side,
     SelfTradePreventionMode
-} from '../../../../src/types';
+} from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.marginAccountCancelOcoResponse = {
     'orderListId': 0,

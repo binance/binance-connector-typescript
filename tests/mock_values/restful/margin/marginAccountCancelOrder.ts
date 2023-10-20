@@ -1,4 +1,4 @@
-import { OrderStatus, OrderType, RestMarginTypes, Side, TimeInForce } from '../../../../src/types';
+import { OrderStatus, OrderType, RestMarginTypes, Side, TimeInForce } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.marginAccountCancelOrderResponse = {
     'symbol': 'LTCBTC',

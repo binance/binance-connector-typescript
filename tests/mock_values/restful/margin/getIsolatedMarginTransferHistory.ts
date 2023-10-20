@@ -1,4 +1,4 @@
-import { MarginStatus, RestMarginTypes, TransFrom, TransTo } from '../../../../src/types';
+import { MarginStatus, RestMarginTypes, TransFrom, TransTo } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getIsolatedMarginTransferHistoryResponse = {
     'rows': [{

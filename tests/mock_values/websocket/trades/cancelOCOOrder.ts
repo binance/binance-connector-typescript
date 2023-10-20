@@ -7,7 +7,7 @@ import {
     Side,
     TimeInForce,
     WsTradeTypes
-} from '../../../../src/types';
+} from '../../../../src/index';
 
 export const mockCancelOCOOrder: WsTradeTypes.cancelOCOOrder = {
     'orderListId': 1274512,

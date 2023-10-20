@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { AccountSnapshotType, RestSubAccountTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { AccountSnapshotType, RestSubAccountTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

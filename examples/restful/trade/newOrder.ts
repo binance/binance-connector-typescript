@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { OrderType, RestTradeTypes, Side, TimeInForce } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { OrderType, RestTradeTypes, Side, Spot, TimeInForce } from '../../../src/index';
 
 dotenv.config();
 

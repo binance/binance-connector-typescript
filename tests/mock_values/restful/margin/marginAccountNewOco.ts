@@ -7,7 +7,7 @@ import {
     Side,
     SelfTradePreventionMode,
     TimeInForce
-} from '../../../../src/types';
+} from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.marginAccountNewOcoResponse = {
     'orderListId': 0,

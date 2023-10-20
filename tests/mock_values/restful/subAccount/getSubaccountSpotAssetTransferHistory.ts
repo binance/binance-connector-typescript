@@ -1,4 +1,4 @@
-import { RestSubAccountTypes, SubAccountStatus } from '../../../../src/types';
+import { RestSubAccountTypes, SubAccountStatus } from '../../../../src/index';
 
 export const mockResponse: RestSubAccountTypes.getSubAccountSpotAssetTransferHistoryResponse[] = [
     {

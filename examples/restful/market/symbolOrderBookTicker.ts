@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { RestMarketTypes } from '../../../src/types';
-import { Spot } from '../../../src/index';
+import { RestMarketTypes, Spot } from '../../../src/index';
 
 dotenv.config();
 

@@ -1,4 +1,4 @@
-import { MarginInterestHistory, RestMarginTypes } from '../../../../src/types';
+import { MarginInterestHistory, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getInterestHistoryResponse = {
     'rows': [{

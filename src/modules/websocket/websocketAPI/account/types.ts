@@ -1,5 +1,5 @@
 import { SelfTradePreventionMode } from '../../../enum';
-import { RestTradeTypes } from '../../../../types';
+import { RestTradeTypes } from '../../../../index';
 
 export interface accountOptions {
     recvWindow?: number;
