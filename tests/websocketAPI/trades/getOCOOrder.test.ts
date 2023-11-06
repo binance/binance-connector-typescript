@@ -9,7 +9,7 @@ describe('Get OCO Order', () => {
     let server: http.Server;
     const callbacks = {
         open: (client: WebsocketAPI) => client.getOCOOrder('08985fedd9ea2cf6b28996'),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

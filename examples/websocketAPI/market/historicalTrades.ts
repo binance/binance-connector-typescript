@@ -8,10 +8,10 @@ const options: WsMarketTypes.historicalTradesOptions = {
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.historicalTrades('BNBUSDT', options);
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);

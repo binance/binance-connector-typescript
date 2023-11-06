@@ -16,7 +16,7 @@ describe('Exchange Info', () => {
         resultTemplate.data = mockExchangeInformation;
         const callbacks = {
             open: (client: WebsocketAPI) => client.exchangeInfo({ symbols: ['BTCUSDT', 'BNBUSDT'] }),
-            close: () => console.log('Disconnected with Websocket server'),
+            close: () => console.log('Disconnected from WebSocket server'),
             message: (data: string) => responseMessage = data.toString()
         };
         const test = new WebsocketAPI('', '', { callbacks, wsURL: 'ws://localhost:3000'});

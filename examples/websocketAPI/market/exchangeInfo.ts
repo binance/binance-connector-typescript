@@ -8,11 +8,11 @@ const options: WsMarketTypes.exchangeInfoOptions = {
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         // get single symbol exchange info, when connection is established
         client.exchangeInfo(options);
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);
@@ -29,10 +29,10 @@ setTimeout(() => websocketAPIClient.disconnect(), 20000);
 
 const callbackSymbols = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.exchangeInfo({ symbols: ['BTCUSDT', 'BNBUSDT'] });
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);

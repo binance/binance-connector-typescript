@@ -65,7 +65,7 @@ const API_SECRET = '';
 
 const callbacks = {
     open: (client: WebsocketAPI) => client.exchangeInfo(),
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => console.info(JSON.parse(data))
 }
 const websocketAPIClient = new WebsocketAPI(API_KEY, API_SECRET, { callbacks });
@@ -81,8 +81,8 @@ To work with the websocket API, you will need to import the client and generate 
 import { WebsocketStream } from '@binance/connector-typescript';
 
 const callbacks = {
-  open: () => console.debug('Connected with Websocket server'),
-  close: () => console.debug('Disconnected with Websocket server'),
+  open: () => console.debug('Connected to WebSocket server'),
+  close: () => console.debug('Disconnected from WebSocket server'),
   message: (data: string) => console.info(data)
 }
 
