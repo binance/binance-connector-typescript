@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.4 - 2023-11-20
+
+- Upgrade dependencies
+- Fix sentences grammar
+
 ## 0.3.3 - 2023-10-20
 
 Upgrade dependencies
