@@ -10,10 +10,10 @@ const options: WsAccountTypes.preventedMatchesOptions = {
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.preventedMatches('BNBUSDT', options);
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);

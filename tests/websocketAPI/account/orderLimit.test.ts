@@ -16,7 +16,7 @@ describe('Order Rate Limit', () => {
         resultTemplate.data = mockOrderLimit;
         const callbacks = {
             open: (client: WebsocketAPI) => client.orderLimit(),
-            close: () => console.log('Disconnected with Websocket server'),
+            close: () => console.log('Disconnected from WebSocket server'),
             message: (data: string) => responseMessage = data.toString()
         };
         const test = new WebsocketAPI('', '', { callbacks, wsURL: 'ws://localhost:3000'});

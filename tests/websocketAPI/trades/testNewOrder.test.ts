@@ -14,7 +14,7 @@ describe('Test New Order', () => {
             newClientOrderId: 'my_order_id_2',
             newOrderRespType: NewOrderRespType.FULL
         }),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

@@ -11,7 +11,7 @@ describe('Cancel Order', () => {
         open: (client: WebsocketAPI) => client.cancelOrder('BNBUSDT', 3283713, {
             newClientOrderId: 'cancel_order_id_3283713'
         }),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

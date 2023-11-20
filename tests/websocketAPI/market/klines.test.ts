@@ -9,7 +9,7 @@ describe('Klines', () => {
     let server: http.Server;
     const callbacks = {
         open: (client: WebsocketAPI) => client.klines('BTCUSDT', Interval['1m']),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

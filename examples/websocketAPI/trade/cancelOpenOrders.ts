@@ -8,10 +8,10 @@ const apiSecret = process.env.BINANCE_API_SECRET || '';
 const wsURL = 'wss://testnet.binance.vision/ws-api/v3'; // we setup wsURL to testnet. The default value set to production site: wss://ws-api.binance.com/ws-api/v3
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.cancelOpenOrders('BNBUSDT');
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);

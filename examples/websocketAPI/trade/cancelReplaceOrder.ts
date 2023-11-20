@@ -13,10 +13,10 @@ const options: WsTradeTypes.cancelReplaceOrderOptions = {
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.cancelReplaceOrder('BNBUSDT', CancelReplaceMode.ALLOW_FAILURE, 3285225, Side.BUY, OrderType.LIMIT, options);
     },
-    close: () => console.debug('Disconnected with Websocket server'),
+    close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info(parseData);
