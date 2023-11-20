@@ -15,7 +15,7 @@ describe('New OCO Order', () => {
             stopLimitTimeInForce: StopLimitTimeInForce.GTC,
             newOrderRespType: NewOrderRespType.FULL
         }),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

@@ -16,7 +16,7 @@ describe('Aggregate Trades', () => {
         resultTemplate.data = mockAggTrades;
         const callbacks = {
             open: (client: WebsocketAPI) => client.aggTrades('BNBUSDT', { limit: 10 }),
-            close: () => console.log('Disconnected with Websocket server'),
+            close: () => console.log('Disconnected from WebSocket server'),
             message: (data: string) => responseMessage = data.toString()
         };
         const test = new WebsocketAPI('', '', { callbacks, wsURL: 'ws://localhost:3000'});

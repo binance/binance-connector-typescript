@@ -7,10 +7,10 @@ const apiKey = process.env.BINANCE_API_KEY || '';
 const apiSecret = process.env.BINANCE_API_SECRET || '';
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.debug('Connected with Websocket server');
+        console.debug('Connected to WebSocket server');
         client.accountAllocation('BNBUSDT');
     },
-    close: () => console.log('Disconnected with Websocket server'),
+    close: () => console.log('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info('Data: ', parseData);

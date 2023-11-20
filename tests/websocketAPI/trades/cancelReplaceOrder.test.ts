@@ -13,7 +13,7 @@ describe('Cancel Replace Order', () => {
             price: 300,
             quantity: 0.1
         }),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 

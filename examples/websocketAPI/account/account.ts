@@ -10,11 +10,11 @@ const options: WsAccountTypes.accountOptions = {
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
-        console.log('Connected with Websocket server');
+        console.log('Connected to WebSocket server');
         // get account info after connection established
         client.account(options);
     },
-    close: () => console.log('Disconnected with Websocket server'),
+    close: () => console.log('Disconnected from WebSocket server'),
     message: (data: string) => {
         const parseData = JSON.parse(data);
         console.info('Data: ', parseData);

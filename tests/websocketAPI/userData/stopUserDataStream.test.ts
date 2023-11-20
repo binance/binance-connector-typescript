@@ -8,7 +8,7 @@ describe('Stop User Data Stream', () => {
     let server: http.Server;
     const callbacks = {
         open: (client: WebsocketAPI) => client.stopUserDataStream('xs0mRXdAKlIPDRFrlPcw0qI41Eh3ixNntmymGyhrhgqo7L6FuLaWArTD7RLP'),
-        close: () => console.log('Disconnected with Websocket server'),
+        close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()
     };
 
