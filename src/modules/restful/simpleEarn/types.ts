@@ -167,7 +167,7 @@ export interface getLockedProductPositionResponse {
 
 interface getLockedProductPositionRows {
     positionId: string;
-    projectId: string;
+    productId: string;
     asset: string;
     amount: string;
     purchaseTime: string;
