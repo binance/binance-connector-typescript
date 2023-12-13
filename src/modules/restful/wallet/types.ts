@@ -341,7 +341,7 @@ export interface getUserUniversalTransferHistoryResponse {
     rows: getUserUniversalTransferHistoryRows[];
 }
 
-interface getUserUniversalTransferHistoryRows {
+export interface getUserUniversalTransferHistoryRows {
     asset: string;
     amount: string;
     type: UnivTransferType;
