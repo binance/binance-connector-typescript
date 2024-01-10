@@ -1,5 +1,6 @@
 # Binance connector in Typescript
 
+[![npm version](https://badge.fury.io/js/@binance%2Fconnector-typescript.svg)](https://badge.fury.io/js/@binance%2Fconnector-typescript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This library is an easy, simple and clean connector to the [Binance public API](https://github.com/binance/binance-spot-api-docs). It is divided into three distinct endpoints:

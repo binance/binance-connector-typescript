@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.3.4 - 2023-11-20
+## 0.3.5 - 2024-01-10
+- Add new Enums
+- Update Websocket types
+
+## 0.3.4 - 2023-11-17
 
 - Upgrade dependencies
 - Fix sentences grammar

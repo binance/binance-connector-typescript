@@ -38,7 +38,7 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             console.error('Not connected');
             return;
         }
-        const id = options.id || randomString();
+        const id = options.id && /^[0-9a-f]{32}$/.test(options.id) ? options.id : randomString();
         delete options.id;
         const payload = {
             id,

@@ -1,15 +1,16 @@
 import { SelfTradePreventionMode } from '../../../enum';
 import { RestTradeTypes } from '../../../../index';
+import { sendMessageOptions } from '../../../../setters/types';
 
-export interface accountOptions {
+export interface accountOptions extends sendMessageOptions {
     recvWindow?: number;
 }
 
-export interface orderLimitOptions {
+export interface orderLimitOptions extends sendMessageOptions {
     recvWindow: number;
 }
 
-export interface orderHistoryOptions {
+export interface orderHistoryOptions extends sendMessageOptions {
     orderId?: number;
     startTime?: number;
     endTime?: number;
@@ -17,7 +18,7 @@ export interface orderHistoryOptions {
     recvWindow?: number;
 }
 
-export interface ocoOrderHistoryOptions {
+export interface ocoOrderHistoryOptions extends sendMessageOptions {
     fromId?: number;
     startTime?: number;
     endTime?: number;
@@ -25,7 +26,7 @@ export interface ocoOrderHistoryOptions {
     recvWindow?: number;
 }
 
-export interface myTradesOptions {
+export interface myTradesOptions extends sendMessageOptions {
     orderId?: number;
     startTime?: number;
     endTime?: number;
@@ -34,7 +35,7 @@ export interface myTradesOptions {
     recvWindow?: number;
 }
 
-export interface preventedMatchesOptions {
+export interface preventedMatchesOptions extends sendMessageOptions {
     preventedMatchId?: number;
     orderId?: number;
     fromPreventedMatchId?: number;
@@ -42,7 +43,7 @@ export interface preventedMatchesOptions {
     recvWindow?: number;
 }
 
-export interface accountAllocationOptions {
+export interface accountAllocationOptions extends sendMessageOptions {
     startTime?: number;
     endTime?: number;
     fromAllocationId?: number;
@@ -51,7 +52,7 @@ export interface accountAllocationOptions {
     recvWindow?: number;
 }
 
-export interface accountAllocationResponse {
+export interface accountAllocationResponse extends sendMessageOptions {
     symbol: string,
     allocationId: number,
     allocationType: string,
@@ -68,12 +69,12 @@ export interface accountAllocationResponse {
     isAllocator: boolean
 }
 
-export interface orderHistoryResponse extends RestTradeTypes.getOrderResponse {
+export interface orderHistoryResponse extends RestTradeTypes.getOrderResponse, sendMessageOptions {
     preventedMatchId: number,
     preventedQuantity: string
 }
 
-export interface preventedMatchesResponse {
+export interface preventedMatchesResponse extends sendMessageOptions {
     symbol: string,
     preventedMatchId: number,
     takerOrderId: number,

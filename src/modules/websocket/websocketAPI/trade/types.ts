@@ -1,3 +1,4 @@
+import { sendMessageOptions } from '../../../../setters/types';
 import { CancelRestrictions, NewOrderRespType, SelfTradePreventionMode, StopLimitTimeInForce, TimeInForce } from '../../../enum';
 import {
     cancelOcoResponse,
@@ -9,7 +10,7 @@ import {
     newOcoOrderReports
 } from '../../../restful/trade/types';
 
-export interface newOrderOptions {
+export interface newOrderOptions extends sendMessageOptions {
     timeInForce?: TimeInForce | '';
     price?: number;
     quantity?: number;
@@ -25,7 +26,7 @@ export interface newOrderOptions {
     recvWindow?: number;
 }
 
-export interface testNewOrderOptions {
+export interface testNewOrderOptions extends sendMessageOptions{
     timeInForce?: TimeInForce | '';
     price?: number;
     quantity?: number;
@@ -41,19 +42,19 @@ export interface testNewOrderOptions {
     recvWindow?: number;
 }
 
-export interface getOrderOptions {
+export interface getOrderOptions extends sendMessageOptions {
     origClientOrderId?: string;
     recvWindow?: number;
 }
 
-export interface cancelOrderOptions {
+export interface cancelOrderOptions extends sendMessageOptions {
     origClientOrderId?: string;
     newClientOrderId?: string;
     cancelRestrictions?: CancelRestrictions;
     recvWindow?: number;
 }
 
-export interface cancelReplaceOrderOptions {
+export interface cancelReplaceOrderOptions extends sendMessageOptions {
     cancelOrigClientOrderId?: string;
     cancelNewClientOrderId?: string;
     timeInForce?: TimeInForce | '';
@@ -72,16 +73,16 @@ export interface cancelReplaceOrderOptions {
     recvWindow?: number;
 }
 
-export interface openOrdersOptions {
+export interface openOrdersOptions extends sendMessageOptions {
     symbol?: string;
     recvWindow?: number;
 }
 
-export interface cancelOpenOrdersOptions {
+export interface cancelOpenOrdersOptions extends sendMessageOptions {
     recvWindow?: number;
 }
 
-export interface newOCOOrderOptions {
+export interface newOCOOrderOptions extends sendMessageOptions {
     listClientOrderId?: string;
     limitClientOrderId?: string;
     limitIcebergQty?: number;
@@ -100,22 +101,22 @@ export interface newOCOOrderOptions {
     recvWindow?: number;
 }
 
-export interface getOCOOrderOptions {
+export interface getOCOOrderOptions extends sendMessageOptions {
     orderListId?: number;
     recvWindow?: number;
 }
 
-export interface cancelOCOOrderOptions {
+export interface cancelOCOOrderOptions extends sendMessageOptions {
     listClientOrderId?: string;
     newClientOrderId?: string;
     recvWindow?: number;
 }
 
-export interface getOCOOpenOrdersOptions {
+export interface getOCOOpenOrdersOptions extends sendMessageOptions {
     recvWindow?: number;
 }
 
-export interface newOrderSOROptions {
+export interface newOrderSOROptions extends sendMessageOptions {
     timeInForce?: TimeInForce | '';
     price?: number;
     newClientOrderId?: string;
@@ -127,16 +128,16 @@ export interface newOrderSOROptions {
     recvWindow?: number;
 }
 
-export interface cancelOCOOrder extends Omit<cancelOcoResponse, 'orderReports'> {
+export interface cancelOCOOrder extends Omit<cancelOcoResponse, 'orderReports'>, sendMessageOptions {
     orderReports: cancelOcoOrder[];
 }
 
-interface cancelOcoOrder extends Omit<cancelOcoOrderReports, 'origClientOrderId' | 'stopPrice'> {
+interface cancelOcoOrder extends Omit<cancelOcoOrderReports, 'origClientOrderId' | 'stopPrice'>, sendMessageOptions {
     transactTime?: number;
     stopPrice?: string;
 }
 
-export interface cancelOpenOrder extends cancelOrderResponse {
+export interface cancelOpenOrder extends cancelOrderResponse, sendMessageOptions {
     transactTime: number;
     stopPrice: string;
     icebergQty: string;
@@ -144,32 +145,32 @@ export interface cancelOpenOrder extends cancelOrderResponse {
     strategyType: number;
 }
 
-export interface cancelOpenOCOOrder extends Omit<cancelOcoResponse, 'orderReports'> {
+export interface cancelOpenOCOOrder extends Omit<cancelOcoResponse, 'orderReports'>, sendMessageOptions {
     orderReports: orderReport[];
 }
 
-interface orderReport extends Omit<cancelOcoOrderReports, 'stopPrice'> {
+interface orderReport extends Omit<cancelOcoOrderReports, 'stopPrice'>, sendMessageOptions {
     transactTime?: number;
     stopPrice?: string;
 }
 
-export interface cancelOrder extends cancelOrderResponse {
+export interface cancelOrder extends cancelOrderResponse, sendMessageOptions {
     transactTime: number;
 }
 
-export interface CancelReplaceOrder extends Omit<cancelAnExistingOrderAndSendANewOrderResponse, 'cancelResponse'> {
+export interface CancelReplaceOrder extends Omit<cancelAnExistingOrderAndSendANewOrderResponse, 'cancelResponse'>, sendMessageOptions {
     cancelResponse: cancelResponse;
 }
 
-interface cancelResponse extends cancelAnExistingOrderAndSendANewOrderCancelresponse {
+interface cancelResponse extends cancelAnExistingOrderAndSendANewOrderCancelresponse, sendMessageOptions {
     transactTime: number;
 }
 
-export interface newOCOOrder extends Omit<newOcoResponse, 'orderReports'> {
+export interface newOCOOrder extends Omit<newOcoResponse, 'orderReports'>, sendMessageOptions {
     orderReports: orderReports[];
 }
 
-interface orderReports extends Omit<newOcoOrderReports, 'stopPrice'> {
+interface orderReports extends Omit<newOcoOrderReports, 'stopPrice'>, sendMessageOptions {
     workingTime: number;
     stopPrice?: string;
 }
