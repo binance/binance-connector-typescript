@@ -1,42 +1,32 @@
 import { Constructor } from '../../../setters/types';
 import { validateRequiredParameters } from '../../../helpers/utils';
 import {
-    crossMarginAccountTransferOptions,
-    crossMarginAccountTransferResponse,
-    getCrossMarginTransferHistoryOptions,
-    getCrossMarginTransferHistoryResponse,
-    marginAccountBorrowOptions,
-    marginAccountBorrowResponse,
-    getLoanRecordOptions,
-    getLoanRecordResponse,
-    marginAccountRepayOptions,
-    marginAccountRepayResponse,
-    getRepayRecordOptions,
-    getRepayRecordResponse,
-    getMarginAssetResponse,
-    getCrossMarginPairResponse,
-    getAllMarginAssetsResponse,
-    getAllCrossMarginPairsResponse,
-    getMarginPriceIndexResponse,
     adjustCrossMarginMaxLeverageResponse,
-    getMarginAccountOrderOptions,
-    getMarginAccountOrderResponse,
-    marginAccountNewOrderOptions,
-    marginAccountNewOrderResponse,
-    marginAccountCancelOrderOptions,
-    marginAccountCancelOrderResponse,
-    getInterestHistoryOptions,
-    getInterestHistoryResponse,
-    getForceLiquidationRecordOptions,
-    getForceLiquidationRecordResponse,
+    getAllCrossMarginPairsOptions,
+    getAllCrossMarginPairsResponse,
+    getAllMarginAssetsOptions,
+    getAllMarginAssetsResponse,
     getCrossMarginAccountDetailsOptions,
     getCrossMarginAccountDetailsResponse,
-    getMarginAccountOpenOrdersOptions,
-    getMarginAccountOpenOrdersResponse,
-    marginAccountCancelAllOpenOrdersOnASymbolOptions,
-    marginAccountCancelAllOpenOrdersOnASymbolResponse,
+    getCrossMarginTransferHistoryOptions,
+    getCrossMarginTransferHistoryResponse,
+    getForceLiquidationRecordOptions,
+    getForceLiquidationRecordResponse,
+    getInterestHistoryOptions,
+    getInterestHistoryResponse,
+    getMarginPriceIndexResponse,
     getMarginAccountAllOrdersOptions,
     getMarginAccountAllOrdersResponse,
+    getMarginAccountOpenOrdersOptions,
+    getMarginAccountOpenOrdersResponse,
+    getMarginAccountOrderOptions,
+    getMarginAccountOrderResponse,
+    marginAccountCancelAllOpenOrdersOnASymbolOptions,
+    marginAccountCancelAllOpenOrdersOnASymbolResponse,
+    marginAccountCancelOrderOptions,
+    marginAccountCancelOrderResponse,
+    marginAccountNewOrderOptions,
+    marginAccountNewOrderResponse,
     marginAccountNewOcoOptions,
     marginAccountNewOcoResponse,
     getMarginAccountOcoOptions,
@@ -55,10 +45,6 @@ import {
     getMaxTransferoutAmountResponse,
     getSummaryOfMarginAccountOptions,
     getSummaryOfMarginAccountResponse,
-    getIsolatedMarginTransferHistoryOptions,
-    getIsolatedMarginTransferHistoryResponse,
-    isolatedMarginAccountTransferOptions,
-    isolatedMarginAccountTransferResponse,
     getIsolatedMarginAccountInfoOptions,
     getIsolatedMarginAccountInfoResponse,
     disableIsolatedMarginAccountOptions,
@@ -67,8 +53,6 @@ import {
     enableIsolatedMarginAccountResponse,
     getEnabledIsolatedMarginAccountLimitOptions,
     getEnabledIsolatedMarginAccountLimitResponse,
-    getIsolatedMarginSymbolOptions,
-    getIsolatedMarginSymbolResponse,
     getAllIsolatedMarginSymbolOptions,
     getAllIsolatedMarginSymbolResponse,
     toggleBnbBurnOnSpotTradeAndMarginInterestOptions,
@@ -85,12 +69,6 @@ import {
     getIsolatedMarginTierDataResponse,
     getCurrentMarginOrderCountUsageOptions,
     getCurrentMarginOrderCountUsageResponse,
-    marginDustlogOptions,
-    marginDustlogResponse,
-    getAssetsThatCanBeConvertedIntoBNBOptions,
-    getAssetsThatCanBeConvertedIntoBNBResponse,
-    dustTransferOptions,
-    dustTransferResponse,
     crossMarginCollateralRatioResponse,
     getSmallLiabilityExchangeCoinListOptions,
     getSmallLiabilityExchangeCoinListResponse,
@@ -100,131 +78,47 @@ import {
     getSmallLiabilityExchangeHistoryResponse,
     getFutureHoulyInterestRateResponse,
     getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginOptions,
-    getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse
+    getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse,
+    getMarginAvailableInventoryOptions,
+    getMarginAvailableInventoryResponse,
+    marginManualLiquidationOptions,
+    marginManualLiquidationResponse,
+    getLeverageBracketResponse,
+    marginAccountBorrowRepayOptions,
+    marginAccountBorrowRepayResponse,
+    getBorrowRepayRecordsOptions,
+    getBorrowRepayRecordsResponse
 } from './types';
 import { MarginMethods } from './methods';
-import { Side, OrderType, TransFrom, TransTo, IsIsolatedMargin } from '../../enum';
+import { Side, OrderType, IsIsolatedMargin, MarginBorrowRepayType } from '../../enum';
 
 export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginMethods> & T {
     return class extends base {
         /**
-        * Cross Margin Account Transfer (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#cross-margin-account-transfer-margin}
-        *
-        * @param {string} asset
-        * @param {number} amount
-        * @param {number} type - * `1` - transfer from main account to margin account, * `2` - transfer from margin account to main account
-        * @param {object} [options]
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async crossMarginAccountTransfer(asset: string, amount: number, type: number, options?: crossMarginAccountTransferOptions): Promise<crossMarginAccountTransferResponse> {
-            validateRequiredParameters({ asset, amount, type });
-            const url = this.prepareSignedPath('/sapi/v1/margin/transfer',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase(),
-                        amount: amount,
-                        type: type
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Margin Account Borrow (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-borrow-margin}
-        *
-        * @param {string} asset
-        * @param {number} amount
-        * @param {object} [options]
-        * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
-        * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async marginAccountBorrow(asset: string, amount: number, options?: marginAccountBorrowOptions): Promise<marginAccountBorrowResponse> {
-            validateRequiredParameters({ asset, amount });
-            const url = this.prepareSignedPath('/sapi/v1/margin/loan',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase(),
-                        amount: amount
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Margin Account Repay (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-repay-margin}
-        *
-        * @param {string} asset
-        * @param {number} amount
-        * @param {object} [options]
-        * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
-        * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async marginAccountRepay(asset: string, amount: number, options?: marginAccountRepayOptions): Promise<marginAccountRepayResponse> {
-            validateRequiredParameters({ asset, amount });
-            const url = this.prepareSignedPath('/sapi/v1/margin/repay',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase(),
-                        amount: amount
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Query Margin Asset (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-asset-market_data}
-        *
-        * @param {string} asset
-        */
-        async getMarginAsset(asset: string): Promise<getMarginAssetResponse> {
-            validateRequiredParameters({ asset });
-            const url = this.preparePath('/sapi/v1/margin/asset',
-                {
-                    asset: asset.toUpperCase()
-                });
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
-        * Query Cross Margin Pair (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-cross-margin-pair-market_data}
-        *
-        * @param {string} symbol - Trading symbol, e.g. BNBUSDT
-        */
-        async getCrossMarginPair(symbol: string): Promise<getCrossMarginPairResponse> {
-            validateRequiredParameters({ symbol });
-            const url = this.preparePath('/sapi/v1/margin/pair',
-                {
-                    symbol: symbol.toUpperCase()
-                });
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
         * Get All Margin Assets (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-margin-assets-market_data}
+        * 
+        * @param {object} [options]
+        * @param {string} [options.asset]
         */
-        async getAllMarginAssets(): Promise<getAllMarginAssetsResponse[]> {
-            return await this.makeRequest('GET', '/sapi/v1/margin/allAssets');
+        async getAllMarginAssets(options?: getAllMarginAssetsOptions): Promise<getAllMarginAssetsResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/margin/allAssets',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
         }
 
 
         /**
         * Get All Cross Margin Pairs (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-cross-margin-pairs-market_data}
+        * 
+        * @param {object} [options]
+        * @param {string} [options.symbol]
         */
-        async getAllCrossMarginPairs(): Promise<getAllCrossMarginPairsResponse[]> {
-            return await this.makeRequest('GET', '/sapi/v1/margin/allPairs');
+        async getAllCrossMarginPairs(options?: getAllCrossMarginPairsOptions): Promise<getAllCrossMarginPairsResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/margin/allPairs',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
         }
 
 
@@ -330,7 +224,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         /**
          * Adjust cross margin max leverage (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#adjust-cross-margin-max-leverage-user_data}
          * 
-         * @param {number} maxLeverage - Can only adjust 3 or 5，Example: maxLeverage=3
+         * @param {number} maxLeverage - Can only adjust 3 , 5 or 10，Example: maxLeverage=10 for Cross Margin Pro ，maxLeverage = 5 or 3 for Cross Margin Classic
          */
         async adjustCrossMarginMaxLeverage(maxLeverage: number): Promise<adjustCrossMarginMaxLeverageResponse> {
             validateRequiredParameters({ maxLeverage });
@@ -353,67 +247,13 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         * @param {number} [options.endTime] - UTC timestamp in ms
         * @param {number} [options.current] - Current querying page. Start from 1. Default:1
         * @param {number} [options.size] - Default:10 Max:100
+        * @param {string} [options.isolatedSymbol] - Symbol in Isolated Margin
         * @param {string} [options.archived] - Default: false. Set to true for archived data from 6 months ago
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async getCrossMarginTransferHistory(options?: getCrossMarginTransferHistoryOptions): Promise<getCrossMarginTransferHistoryResponse> {
             const url = this.prepareSignedPath('/sapi/v1/margin/transfer',
                 options ? options : {}
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-        /**
-        * Query Loan Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-loan-record-user_data}
-        *
-        * @param {string} asset
-        * @param {object} [options]
-        * @param {string} [options.isolatedSymbol] - Isolated symbol
-        * @param {number} [options.txId] - the tranId in  `POST /sapi/v1/margin/loan`
-        * @param {number} [options.startTime] - UTC timestamp in ms
-        * @param {number} [options.endTime] - UTC timestamp in ms
-        * @param {number} [options.current] - Current querying page. Start from 1. Default:1
-        * @param {number} [options.size] - Default:10 Max:100
-        * @param {string} [options.archived] - Default: false. Set to true for archived data from 6 months ago
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async getLoanRecord(asset: string, options?: getLoanRecordOptions): Promise<getLoanRecordResponse> {
-            validateRequiredParameters({ asset });
-            const url = this.prepareSignedPath('/sapi/v1/margin/loan',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase()
-                    }
-                )
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
-        * Query Repay Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-repay-record-user_data}
-        *
-        * @param {string} asset
-        * @param {object} [options]
-        * @param {string} [options.isolatedSymbol] - Isolated symbol
-        * @param {number} [options.txId] - the tranId in  `POST /sapi/v1/margin/repay`
-        * @param {number} [options.startTime] - UTC timestamp in ms
-        * @param {number} [options.endTime] - UTC timestamp in ms
-        * @param {number} [options.current] - Current querying page. Start from 1. Default:1
-        * @param {number} [options.size] - Default:10 Max:100
-        * @param {string} [options.archived] - Default: false. Set to true for archived data from 6 months ago
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async getRepayRecord(asset: string, options?: getRepayRecordOptions): Promise<getRepayRecordResponse> {
-            validateRequiredParameters({ asset });
-            const url = this.prepareSignedPath('/sapi/v1/margin/repay',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase()
-                    }
-                )
             );
             return await this.makeRequest('GET', url);
         }
@@ -747,64 +587,6 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Isolated Margin Account Transfer (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#isolated-margin-account-transfer-margin}
-        *
-        * @param {string} asset
-        * @param {string} symbol - Trading symbol, e.g. BNBUSDT
-        * @param {TransFrom} transFrom
-        * @param {TransTo} transTo
-        * @param {number} amount
-        * @param {object} [options]
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async isolatedMarginAccountTransfer(asset: string, symbol: string, transFrom: TransFrom, transTo: TransTo, amount: number, options?: isolatedMarginAccountTransferOptions): Promise<isolatedMarginAccountTransferResponse> {
-            validateRequiredParameters({ asset, symbol, transFrom, transTo, amount });
-            const url = this.prepareSignedPath('/sapi/v1/margin/isolated/transfer',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset.toUpperCase(),
-                        symbol: symbol.toUpperCase(),
-                        transFrom: transFrom,
-                        transTo: transTo,
-                        amount: amount
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Get Isolated Margin Transfer History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-isolated-margin-transfer-history-user_data}
-        *
-        * @param {string} symbol - Trading symbol, e.g. BNBUSDT
-        * @param {object} [options]
-        * @param {string} [options.asset]
-        * @param {TransFrom} [options.transFrom]
-        * @param {TransTo} [options.transTo]
-        * @param {number} [options.startTime] - UTC timestamp in ms
-        * @param {number} [options.endTime] - UTC timestamp in ms
-        * @param {number} [options.current] - Current querying page. Start from 1. Default:1
-        * @param {number} [options.size] - Default:10 Max:100
-        * @param {string} [options.archived] - Default: false. Set to true for archived data from 6 months ago
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async getIsolatedMarginTransferHistory(symbol: string, options?: getIsolatedMarginTransferHistoryOptions): Promise<getIsolatedMarginTransferHistoryResponse> {
-            validateRequiredParameters({ symbol });
-            const url = this.prepareSignedPath('/sapi/v1/margin/isolated/transfer',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        symbol: symbol.toUpperCase()
-                    }
-                )
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
         * Query Isolated Margin Account Info (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-isolated-margin-account-info-user_data}
         *
         * @param {object} [options]
@@ -876,30 +658,10 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Isolated Margin Symbol (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-isolated-margin-symbol-user_data}
-        *
-        * @param {string} symbol - Trading symbol, e.g. BNBUSDT
-        * @param {object} [options]
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async getIsolatedMarginSymbol(symbol: string, options?: getIsolatedMarginSymbolOptions): Promise<getIsolatedMarginSymbolResponse> {
-            validateRequiredParameters({ symbol });
-            const url = this.prepareSignedPath('/sapi/v1/margin/isolated/pair',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        symbol: symbol.toUpperCase()
-                    }
-                )
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
         * Get All Isolated Margin Symbol (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-isolated-margin-symbol-user_data}
         *
         * @param {object} [options]
+        * @param {string} [options.symbol]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async getAllIsolatedMarginSymbol(options?: getAllIsolatedMarginSymbolOptions): Promise<getAllIsolatedMarginSymbolResponse[]> {
@@ -1036,58 +798,6 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Dustlog (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-dustlog-user_data}
-        *
-        * @param {object} [options]
-        * @param {number} [options.startTime] - UTC timestamp in ms
-        * @param {number} [options.endTime] - UTC timestamp in ms
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async marginDustlog(options?: marginDustlogOptions): Promise<marginDustlogResponse> {
-
-            const url = this.prepareSignedPath('/sapi/v1/margin/dribblet',
-                options ? options : {}
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
-        * Get Assets That Can Be Converted Into BNB (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-assets-that-can-be-converted-into-bnb-user_data-2}
-        *
-        * @param {object} [options]
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async getAssetsThatCanBeConvertedIntoBNB(options?: getAssetsThatCanBeConvertedIntoBNBOptions): Promise<getAssetsThatCanBeConvertedIntoBNBResponse> {
-            const url = this.prepareSignedPath('/sapi/v1/margin/dust',
-                options ? options : {}
-            );
-            return await this.makeRequest('GET', url);
-        }
-
-
-        /**
-        * Dust Transfer (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#dust-transfer-trade}
-        *
-        * @param {string[]} asset - The asset being converted. For example: asset=BTC,USDT
-        * @param {object} [options]
-        * @param {number} [options.recvWindow] - The value cannot be greater than 60000
-        */
-        async dustTransfer(asset: string[], options?: dustTransferOptions): Promise<dustTransferResponse> {
-            validateRequiredParameters({ asset });
-            const url = this.prepareSignedPath('/sapi/v1/margin/dust ',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        asset: asset,
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
         * Cross margin collateral ratio (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#cross-margin-collateral-ratio-market_data}
         *
         */
@@ -1182,6 +892,111 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         async getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMargin(options?: getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginOptions): Promise<getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse[]> {
             const url = this.prepareSignedPath('/sapi/v1/margin/delist-schedule',
                 options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+        /**
+         * Get the available margin inventory (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-available-inventory-user_data}
+         * 
+         * @param {string} type - MARGIN, ISOLATED
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getMarginAvailableInventory(type: string, options?: getMarginAvailableInventoryOptions): Promise<getMarginAvailableInventoryResponse> {
+            validateRequiredParameters({ type });
+            const url = this.prepareSignedPath('/sapi/v1/margin/available-inventory',
+                Object.assign(
+                    options ? options : {},
+                    { 
+                        type: type 
+                    }
+                ) 
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Margin manual liquidation (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-manual-liquidation-margin}
+         * 
+         * @param {string} type - MARGIN, ISOLATED
+         * @param {object} [options]
+         * @param {string} [options.symbol] - When type selects ISOLATED, symbol must be filled in
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async marginManualLiquidation(type: string, options?: marginManualLiquidationOptions): Promise<marginManualLiquidationResponse[]> {
+            validateRequiredParameters({ type });
+            const url = this.prepareSignedPath('/sapi/v1/margin/manual-liquidation',
+                Object.assign(
+                    options ? options : {},
+                    { 
+                        type: type 
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+        /**
+         * Get the liability assets leverage bracket in Cross Margin Pro Mode (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-liability-coin-leverage-bracket-in-cross-margin-pro-mode-market_data}
+         */
+        async getLeverageBracket(): Promise<getLeverageBracketResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/margin/leverageBracket');
+            return await this.makeRequest('GET', url);
+        }
+
+        /**
+         * Margin account borrow/repay(MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-borrow-repay-margin}
+         * 
+         * @param {string} asset
+         * @param {string} isIsolated - TRUE for Isolated Margin, FALSE for Cross Margin, Default FALSE
+         * @param {string} symbol - Only for Isolated margin
+         * @param {string} amount
+         * @param {MarginBorrowRepayType} type - BORROW or REPAY
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async marginAccountBorrowRepay(asset: string, isIsolated: string, symbol: string, amount: string, type: MarginBorrowRepayType, options?: marginAccountBorrowRepayOptions): Promise<marginAccountBorrowRepayResponse> {
+            validateRequiredParameters({ asset, isIsolated, symbol, amount, type });
+            const url = this.prepareSignedPath('/sapi/v1/margin/borrow-repay',
+                Object.assign(
+                    options ? options : {},
+                    { 
+                        asset: asset,
+                        isIsolated: isIsolated,
+                        symbol: symbol,
+                        amount: amount,
+                        type: type
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+        /**
+         * Query borrow/repay records in Margin account(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-borrow-repay-records-in-margin-account-user_data}
+         * 
+         * @param {MarginBorrowRepayType} type - BORROW or REPAY
+         * @param {object} [options]
+         * @param {string} [options.asset]
+         * @param {string} [options.isolatedSymbol] - Symbol in Isolated Margin
+         * @param {number} [options.txId]
+         * @param {number} [options.startTime]	
+         * @param {number} [options.endTime]
+         * @param {number} [options.current] - Current querying page. Start from 1. Default:1
+         * @param {number} [options.size] - Default:10 Max:100
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getBorrowRepayRecords(type: MarginBorrowRepayType, options?: getBorrowRepayRecordsOptions): Promise<getBorrowRepayRecordsResponse> {
+            validateRequiredParameters({ type });
+            const url = this.prepareSignedPath('/sapi/v1/margin/borrow-repay',
+                Object.assign(
+                    options ? options : {},
+                    { 
+                        type: type
+                    }
+                )
             );
             return await this.makeRequest('GET', url);
         }

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query User Universal Transfer History', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query User Universal Transfer History', async () => {
+    it('should return User Universal Transfer History', async () => {
         const spy = jest.spyOn(client, 'getUserUniversalTransferHistory').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getUserUniversalTransferHistory(UnivTransferType.MAIN_MARGIN);
         expect(res).toBeDefined();

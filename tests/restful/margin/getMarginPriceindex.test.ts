@@ -9,7 +9,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Margin PriceIndex', () => {
     const client = new Spot(apiKey, '', { baseURL: baseURL });
-    it('should return Query Margin PriceIndex', async () => {
+    it('should return Margin PriceIndex', async () => {
         const spy = jest.spyOn(client, 'getMarginPriceIndex').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getMarginPriceIndex('BNBUSDT');
         expect(res).toBeDefined();

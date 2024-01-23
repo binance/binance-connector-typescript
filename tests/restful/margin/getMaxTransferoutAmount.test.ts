@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Max Transfer-Out Amount', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Max Transfer-Out Amount', async () => {
+    it('should return Max Transfer-Out Amount', async () => {
         const spy = jest.spyOn(client, 'getMaxTransferoutAmount').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getMaxTransferoutAmount('BTC');
         expect(res).toBeDefined();

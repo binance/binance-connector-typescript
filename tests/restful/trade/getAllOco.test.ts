@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query all OCO', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query all OCO', async () => {
+    it('should return all OCO', async () => {
         const spy = jest.spyOn(client, 'getAllOco').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAllOco();
         expect(res).toBeDefined();

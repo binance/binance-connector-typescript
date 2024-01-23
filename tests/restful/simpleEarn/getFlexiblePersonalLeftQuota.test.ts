@@ -13,7 +13,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 describe('Get Flexible Personal Left Quota', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
 
-    it('should return get flexible personal left quota', async () => {
+    it('should return flexible personal left quota', async () => {
         const spy = jest.spyOn(client, 'getFlexiblePersonalLeftQuota').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getFlexiblePersonalLeftQuota('1');
         expect(res).toBeDefined();

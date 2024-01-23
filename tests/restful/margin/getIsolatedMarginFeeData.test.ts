@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Isolated Margin Fee Data', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Isolated Margin Fee Data', async () => {
+    it('should return Isolated Margin Fee Data', async () => {
         const spy = jest.spyOn(client, 'getIsolatedMarginFeeData').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getIsolatedMarginFeeData();
         expect(res).toBeDefined();

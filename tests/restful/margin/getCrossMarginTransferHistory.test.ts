@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get Cross Margin Transfer History', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get Cross Margin Transfer History', async () => {
+    it('should return Cross Margin Transfer History', async () => {
         const spy = jest.spyOn(client, 'getCrossMarginTransferHistory').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getCrossMarginTransferHistory();
         expect(res).toBeDefined();

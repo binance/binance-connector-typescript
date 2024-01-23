@@ -7,6 +7,7 @@ export const mockResponse: RestMarginTypes.getAllMarginAssetsResponse[] = [
         'isBorrowable': true,
         'isMortgageable': true,
         'userMinBorrow': '0.00000000',
-        'userMinRepay': '0.00000000'
+        'userMinRepay': '0.00000000',
+        'delistTime': 1704973040
     }
 ];

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Current Order Count Usage', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Current Order Count Usage', async () => {
+    it('should return Current Order Count Usage', async () => {
         const spy = jest.spyOn(client, 'getCurrentOrderCountUsage').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getCurrentOrderCountUsage();
         expect(res).toBeDefined();

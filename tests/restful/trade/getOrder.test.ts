@@ -10,9 +10,9 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Order', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Order', async () => {
+    it('should return Order', async () => {
         const spy = jest.spyOn(client, 'getOrder').mockReturnValue(Promise.resolve(mockResponse));
-        const res = await client.getOrder('BNBUSDT',);
+        const res = await client.getOrder('BNBUSDT');
         expect(res).toBeDefined();
         expect(res).toBe(mockResponse);
         spy.mockRestore();

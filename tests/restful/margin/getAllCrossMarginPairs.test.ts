@@ -9,7 +9,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get All Cross Margin Pairs', () => {
     const client = new Spot(apiKey, '', { baseURL: baseURL });
-    it('should return Get All Cross Margin Pairs', async () => {
+    it('should return all Cross Margin Pairs', async () => {
         const spy = jest.spyOn(client, 'getAllCrossMarginPairs').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAllCrossMarginPairs();
         expect(res).toBeDefined();

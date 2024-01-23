@@ -2,29 +2,31 @@ import { Constructor } from '../../../setters/types';
 import { validateRequiredParameters } from '../../../helpers/utils';
 import {
     checkServerTimeResponse,
+    compressedAggregateTradesListOptions,
+    compressedAggregateTradesListResponse,
+    currentAveragePriceResponse,
     exchangeInformationOptions,
     exchangeInformationResponse,
+    klineCandlestickDataOptions,
+    klineCandlestickDataResponse,
+    oldTradeLookupOptions,
+    oldTradeLookupResponse,
     orderBookOptions,
     orderBookResponse,
     recentTradesListOptions,
     recentTradesListResponse,
-    oldTradeLookupOptions,
-    oldTradeLookupResponse,
-    compressedAggregateTradesListOptions,
-    compressedAggregateTradesListResponse,
-    klineCandlestickDataOptions,
-    klineCandlestickDataResponse,
-    uiklinesOptions,
-    uiklinesResponse,
-    currentAveragePriceResponse,
-    ticker24hrOptions,
-    ticker24hrResponse,
-    symbolPriceTickerOptions,
-    symbolPriceTickerResponse,
+    rollingWindowPriceChangeStatisticsOptions,
+    rollingWindowPriceChangeStatisticsResponse,
     symbolOrderBookTickerOptions,
     symbolOrderBookTickerResponse,
-    rollingWindowPriceChangeStatisticsOptions,
-    rollingWindowPriceChangeStatisticsResponse
+    symbolPriceTickerOptions,
+    symbolPriceTickerResponse,
+    ticker24hrOptions,
+    ticker24hrResponse,
+    tradingDayTickerOptions,
+    tradingDayTickerResponse,
+    uiklinesOptions,
+    uiklinesResponse
 } from './types';
 import { MarketMethods } from './methods';
 import { Interval } from '../../enum';
@@ -159,6 +161,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         * @param {object} [options]
         * @param {number} [options.startTime] - UTC timestamp in ms
         * @param {number} [options.endTime] - UTC timestamp in ms
+        * @param {number} [options.timeZone] - Default: 0 (UTC)
         * @param {number} [options.limit] - Default 500; max 1000.
         */
         async klineCandlestickData(symbol: string, interval: Interval, options?: klineCandlestickDataOptions): Promise<klineCandlestickDataResponse[]> {
@@ -184,6 +187,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         * @param {object} [options]
         * @param {number} [options.startTime] - UTC timestamp in ms
         * @param {number} [options.endTime] - UTC timestamp in ms
+        * @param {number} [options.timeZone] - Default: 0 (UTC)
         * @param {number} [options.limit] - Default 500; max 1000.
         */
         async uiklines(symbol: string, interval: Interval, options?: uiklinesOptions): Promise<uiklinesResponse[]> {
@@ -274,6 +278,29 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         async rollingWindowPriceChangeStatistics(options?: rollingWindowPriceChangeStatisticsOptions): Promise<rollingWindowPriceChangeStatisticsResponse | rollingWindowPriceChangeStatisticsResponse[]> {
             const url = this.preparePath('/api/v3/ticker',
                 options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Trading Day Ticker {@link https://binance-docs.github.io/apidocs/spot/en/#trading-day-ticker}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {object} [options]
+         * @param {string} [options.symbols] - The maximum number of symbols allowed in a request is 100.
+         * @param {string} [options.timeZone] - Default: 0 (UTC)
+         * @param {string} [options.type] - Supported values: FULL or MINI., If none provided, the default is FULL
+         */
+        async tradingDayTicker(symbol: string, options?: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]> {
+            validateRequiredParameters({ symbol });
+            const url = this.preparePath('/api/v3/ticker/tradingDay',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase()
+                    }
+                )
             );
             return await this.makeRequest('GET', url);
         }

@@ -11,7 +11,8 @@ import {
     SelfTradePreventionMode,
     Side,
     StopLimitTimeInForce,
-    TimeInForce
+    TimeInForce,
+    WorkingFloor
 } from '../../enum';
 
 export interface testNewOrderOptions {
@@ -26,7 +27,27 @@ export interface testNewOrderOptions {
     trailingDelta?: number;
     icebergQty?: number;
     newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: SelfTradePreventionMode;
     recvWindow?: number;
+    computeCommissionRates?: boolean;
+}
+
+export interface testNewOrderResponse {
+    standardCommissionForOrder: commissionParams;
+    taxCommissionForOrder: commissionParams;
+    discount: discount;
+}
+
+export interface commissionParams {
+    maker: string;
+    taker: string;
+}
+
+export interface discount {
+    enabledForAccount: boolean;
+    enabledForSymbol: boolean;
+    discountAsset: string;
+    discount: string;
 }
 
 export interface getOrderOptions {
@@ -70,6 +91,7 @@ export interface newOrderOptions {
     trailingDelta?: number;
     icebergQty?: number;
     newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: SelfTradePreventionMode;
     recvWindow?: number;
 }
 
@@ -114,6 +136,7 @@ export interface cancelOrderResponse {
     orderId: number;
     orderListId: number;
     clientOrderId: string;
+    transactTime: number;
     price: string;
     origQty: string;
     executedQty: string;
@@ -156,6 +179,7 @@ export interface cancelAnExistingOrderAndSendANewOrderCancelresponse {
     orderId: number;
     orderListId: number;
     clientOrderId: string;
+    transactTime: number;
     price: string;
     origQty: string;
     executedQty: string;
@@ -205,6 +229,7 @@ export interface cancelAllOpenOrdersOnASymbolResponse {
     orderId: number;
     orderListId: number;
     clientOrderId: string;
+    transactTime: number;
     price: string;
     origQty: string;
     executedQty: string;
@@ -356,6 +381,7 @@ export interface cancelOcoOrderReports {
     orderId: number;
     orderListId: number;
     clientOrderId: string;
+    transactTime: number;
     price: string;
     origQty: string;
     executedQty: string;
@@ -483,4 +509,103 @@ export interface getCurrentOrderCountUsageResponse {
     intervalNum: number;
     limit: number;
     count: number;
+}
+
+export interface testNewOrderSOROptions {
+    timeInForce?: TimeInForce;
+    price?: number;
+    newClientOrderId?: string;
+    strategyId?: number;
+    strategyType?: number;
+    icebergQty?: number;
+    newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: SelfTradePreventionMode;
+    recvWindow?: number;
+    computeCommissionRates?: boolean;
+}
+
+export interface newOrderSOROptions {
+    timeInForce?: TimeInForce;
+    price?: number;
+    newClientOrderId?: string;
+    strategyId?: number;
+    strategyType?: number;
+    icebergQty?: number;
+    newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: SelfTradePreventionMode;
+    recvWindow?: number;
+}
+
+export interface newOrderSORResponse {
+    symbol: string;
+    orderId: number;
+    orderListId: number;
+    clientOrderId: string;
+    transactTime: number;
+    price: string;
+    origQty: string;
+    executedQty: string;
+    cummulativeQuoteQty: string;
+    status: OrderStatus;
+    timeInForce: TimeInForce;
+    type: OrderType;
+    side: Side;
+    workingTime: number;
+    fills: fill[] | [];
+    workingFloor: WorkingFloor;
+    selfTradePreventionMode: SelfTradePreventionMode;
+    usedSor: boolean;
+}
+
+export interface getPreventedMatchesOptions {
+    preventedMatchId?: number;
+    orderId?: number;
+    fromPreventedMatchId?: number;
+    limit?: number;
+    recvWindow?: number;
+}
+
+export interface getPreventedMatchesResponse {
+    symbol: string;
+    preventedMatchId: number;
+    takerOrderId: number;
+    makerOrderId: number;
+    tradeGroupId: number;
+    selfTradePreventionMode: SelfTradePreventionMode;
+    price: string;
+    makerPreventedQuantity: string;
+    transactTime: number;
+}
+
+export interface getAllocationsOptions {
+    startTime?: number;
+    endTime?: number;
+    fromAllocationId?: number;
+    limit?: number;
+    orderId?: number;
+    recvWindow?: number;
+}
+
+export interface getAllocationsResponse {
+    symbol: string;
+    allocationId: number;
+    allocationType: string;
+    orderId: number;
+    orderListId: number;
+    price: string;
+    qty: string;
+    quoteQty: string;
+    commission: string;
+    commissionAsset: string;
+    time: number;
+    isBuyer: boolean;
+    isMaker: boolean;
+    isAllocator: boolean;
+}
+
+export interface getCommissionRatesResponse {
+    symbol: string;
+    standardCommission: accountInformationCommissionrates;
+    taxCommission: accountInformationCommissionrates;
+    discount: discount;
 }

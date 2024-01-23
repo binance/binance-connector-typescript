@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get All Isolated Margin Symbol', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get All Isolated Margin Symbol', async () => {
+    it('should return All Isolated Margin Symbol', async () => {
         const spy = jest.spyOn(client, 'getAllIsolatedMarginSymbol').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAllIsolatedMarginSymbol();
         expect(res).toBeDefined();

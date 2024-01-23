@@ -10,62 +10,19 @@ import {
     SideEffectType,
     TimeInForce,
     StopLimitTimeInForce,
-    TransFrom,
-    TransTo,
     SpotBNBBurn,
     InterestBNBBurn,
     GetCrossMargingTransferHistoryType,
     SelfTradePreventionMode,
     MarginStatus,
     MarginInterestHistory,
-    MarginLevelStatus
+    MarginLevelStatus,
+    CrossMarginAccountType,
+    CrossMarginTrans
 } from '../../enum';
 
-export interface crossMarginAccountTransferOptions {
-    recvWindow?: number;
-}
-
-export interface crossMarginAccountTransferResponse {
-    tranId: number;
-}
-
-export interface marginAccountBorrowOptions {
-    isIsolated?: IsIsolatedMargin;
-    symbol?: string;
-    recvWindow?: number;
-}
-
-export interface marginAccountBorrowResponse {
-    tranId: number;
-}
-
-export interface marginAccountRepayOptions {
-    isIsolated?: IsIsolatedMargin;
-    symbol?: string;
-    recvWindow?: number;
-}
-
-export interface marginAccountRepayResponse {
-    tranId: number;
-}
-
-export interface getMarginAssetResponse {
-    assetFullName: string;
-    assetName: string;
-    isBorrowable: boolean;
-    isMortgageable: boolean;
-    userMinBorrow: string;
-    userMinRepay: string;
-}
-
-export interface getCrossMarginPairResponse {
-    id: number;
-    symbol: string;
-    base: string;
-    quote: string;
-    isMarginTrade: boolean;
-    isBuyAllowed: boolean;
-    isSellAllowed: boolean;
+export interface getAllMarginAssetsOptions {
+    asset?: string;
 }
 
 export interface getAllMarginAssetsResponse {
@@ -75,16 +32,22 @@ export interface getAllMarginAssetsResponse {
     isMortgageable: boolean;
     userMinBorrow: string;
     userMinRepay: string;
+    delistTime: number;
+}
+
+export interface getAllCrossMarginPairsOptions {
+    symbol?: string;
 }
 
 export interface getAllCrossMarginPairsResponse {
     base: string;
-    id: number;
+    id: bigint;
     isBuyAllowed: boolean;
     isMarginTrade: boolean;
     isSellAllowed: boolean;
     quote: string;
     symbol: string;
+    delistTime?: number;
 }
 
 export interface getMarginPriceIndexResponse {
@@ -192,6 +155,7 @@ export interface getCrossMarginTransferHistoryOptions {
     endTime?: number;
     current?: number;
     size?: number;
+    isolatedSymbol?: string;
     archived?: MarginArchive;
     recvWindow?: number;
 }
@@ -208,59 +172,12 @@ interface getCrossMarginTransferHistoryRows {
     timestamp: number;
     txId: number;
     type: GetCrossMargingTransferHistoryType;
+    transFrom?: CrossMarginTrans;
+    transTo?: CrossMarginTrans;
+    fromSymbol?: string;
+    toSymbol?: string;
 }
 
-export interface getLoanRecordOptions {
-    isolatedSymbol?: string;
-    txId?: number;
-    startTime?: number;
-    endTime?: number;
-    current?: number;
-    size?: number;
-    archived?: MarginArchive;
-    recvWindow?: number;
-}
-
-export interface getLoanRecordResponse {
-    rows: getLoanRecordRows[];
-    total: number;
-}
-
-interface getLoanRecordRows {
-    isolatedSymbol: string;
-    txId: number;
-    asset: string;
-    principal: string;
-    timestamp: number;
-    status: MarginStatus;
-}
-
-export interface getRepayRecordOptions {
-    isolatedSymbol?: string;
-    txId?: number;
-    startTime?: number;
-    endTime?: number;
-    current?: number;
-    size?: number;
-    archived?: MarginArchive;
-    recvWindow?: number;
-}
-
-export interface getRepayRecordResponse {
-    rows: getRepayRecordRows[];
-    total: number;
-}
-
-interface getRepayRecordRows {
-    isolatedSymbol: string;
-    amount: string;
-    asset: string;
-    interest: string;
-    principal: string;
-    status: MarginStatus;
-    timestamp: number;
-    txId: number;
-}
 
 export interface getInterestHistoryOptions {
     asset?: string;
@@ -329,6 +246,7 @@ export interface getCrossMarginAccountDetailsResponse {
     totalNetAssetOfBtc: string;
     tradeEnabled: boolean;
     transferEnabled: boolean;
+    accountType: CrossMarginAccountType;
     userAssets: getCrossMarginAccountDetailsUserassets[];
 }
 
@@ -659,41 +577,6 @@ export interface getSummaryOfMarginAccountResponse {
     forceLiquidationBar: string;
 }
 
-export interface isolatedMarginAccountTransferOptions {
-    recvWindow?: number;
-}
-
-export interface isolatedMarginAccountTransferResponse {
-    tranId: number;
-}
-
-export interface getIsolatedMarginTransferHistoryOptions {
-    asset?: string;
-    transFrom?: TransFrom;
-    transTo?: TransTo;
-    startTime?: number;
-    endTime?: number;
-    current?: number;
-    size?: number;
-    archived?: MarginArchive;
-    recvWindow?: number;
-}
-
-export interface getIsolatedMarginTransferHistoryResponse {
-    rows: getIsolatedMarginTransferHistoryRows[];
-    total: number;
-}
-
-interface getIsolatedMarginTransferHistoryRows {
-    amount: string;
-    asset: string;
-    status: MarginStatus;
-    timestamp: number;
-    txId: number;
-    transFrom: TransFrom;
-    transTo: TransTo;
-}
-
 export interface getIsolatedMarginAccountInfoOptions {
     symbols?: string;
     recvWindow?: number;
@@ -774,20 +657,8 @@ export interface getEnabledIsolatedMarginAccountLimitResponse {
     maxAccount: number;
 }
 
-export interface getIsolatedMarginSymbolOptions {
-    recvWindow?: number;
-}
-
-export interface getIsolatedMarginSymbolResponse {
-    symbol: string;
-    base: string;
-    quote: string;
-    isMarginTrade: boolean;
-    isBuyAllowed: boolean;
-    isSellAllowed: boolean;
-}
-
 export interface getAllIsolatedMarginSymbolOptions {
+    symbol?: string;
     recvWindow?: number;
 }
 
@@ -899,74 +770,6 @@ export interface getCurrentMarginOrderCountUsageResponse {
     count: number;
 }
 
-export interface marginDustlogOptions {
-    startTime?: number;
-    endTime?: number;
-    recvWindow?: number;
-}
-
-export interface marginDustlogResponse {
-    total: number;
-    userAssetDribblets: marginDustlogUserassetdribblets[];
-}
-
-interface marginDustlogUserassetdribblets {
-    operateTime: number;
-    totalTransferedAmount: string;
-    totalServiceChargeAmount: string;
-    transId: number;
-    userAssetDribbletDetails: marginDustlogUserassetdribbletdetails[];
-}
-
-interface marginDustlogUserassetdribbletdetails {
-    transId: number;
-    serviceChargeAmount: string;
-    amount: string;
-    operateTime: number;
-    transferedAmount: string;
-    fromAsset: string;
-}
-
-export interface getAssetsThatCanBeConvertedIntoBNBOptions {
-    recvWindow?: number;
-}
-
-export interface getAssetsThatCanBeConvertedIntoBNBResponse {
-    details: getAssetsThatCanBeConvertedIntoBNBDetails[];
-    totalTransferBtc: string;
-    totalTransferBNB: string;
-    dribbletPercentage: string;
-}
-
-interface getAssetsThatCanBeConvertedIntoBNBDetails {
-    asset: string;
-    assetFullName: string;
-    amountFree: string;
-    toBTC: string;
-    toBNB: string;
-    toBNBOffExchange: string;
-    exchange: string;
-}
-
-export interface dustTransferOptions {
-    recvWindow?: number;
-}
-
-export interface dustTransferResponse {
-    totalServiceCharge: string;
-    totalTransfered: string;
-    transferResult: dustTransferResult[];
-}
-
-interface dustTransferResult {
-    amount: string;
-    fromAsset: string;
-    operateTime: number;
-    serviceChargeAmount: string;
-    tranId: number;
-    transferedAmount: string;
-}
-
 export interface crossMarginCollateralRatioResponse {
     collaterals: crossMarginCollateralRatioCollaterals[];
     assetNames: string[];
@@ -1036,4 +839,75 @@ export interface getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMargin
     delistTime: number;
     crossMarginAssets: string[];
     isolatedMarginSymbols: string[];
+}
+
+export interface getMarginAvailableInventoryOptions {
+    recvWindow?: number;
+}
+
+export interface getMarginAvailableInventoryResponse {
+    assets: { [key: string]: string };
+    updateTime: number;
+}
+
+export interface marginManualLiquidationOptions {
+    symbol?: string;
+    recvWindow?: number;
+}
+
+export interface marginManualLiquidationResponse {
+    asset: string;
+    interest: string;
+    principal: string;
+    liabilityAsset: string;
+    liabilityQty: number;
+}
+
+export interface getLeverageBracketResponse {
+    assetNames: string[];
+    rank: number;
+    brackets: leverageBracket[];
+}
+
+export interface leverageBracket {
+    leverage: number;
+    maxDebt: number;
+    maintenanceMarginRate: number;
+    initialMarginRate: number;
+    fastNum: number;
+}
+
+export interface marginAccountBorrowRepayOptions {
+    recvWindow?: number;
+}
+
+export interface marginAccountBorrowRepayResponse {
+    tranId: number;
+}
+
+export interface getBorrowRepayRecordsOptions {
+    asset?: string;
+    isolatedSymbol?: string;
+    txId?: number;
+    startTime?: number;
+    endTime?: number;
+    current?: number;
+    size?: number;
+    recvWindow?: number;
+}
+
+export interface getBorrowRepayRecordsResponse {
+    rows: BorrowRepayRecordsRow[];
+    total: number;
+}
+
+export interface BorrowRepayRecordsRow {
+    isolatedSymbol: string;
+    amount: string;
+    asset: string;
+    interest: string;
+    principal: string;
+    status: MarginStatus;
+    timestamp: number;
+    txId: number;
 }

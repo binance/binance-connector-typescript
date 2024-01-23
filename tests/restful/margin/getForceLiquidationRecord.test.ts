@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get Force Liquidation Record', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get Force Liquidation Record', async () => {
+    it('should return Force Liquidation Record', async () => {
         const spy = jest.spyOn(client, 'getForceLiquidationRecord').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getForceLiquidationRecord();
         expect(res).toBeDefined();

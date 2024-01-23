@@ -12,7 +12,7 @@ describe('New Order', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
     it('should return New Order', async () => {
         const spy = jest.spyOn(client, 'newOrder').mockReturnValue(Promise.resolve(mockResponse));
-        const res = await client.newOrder('BNBUSDT', Side.SELL, OrderType.LIMIT,);
+        const res = await client.newOrder('BNBUSDT', Side.SELL, OrderType.LIMIT);
         expect(res).toBeDefined();
         expect(res).toBe(mockResponse);
         spy.mockRestore();

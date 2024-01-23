@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Sub-account Spot Assets Summary', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Sub-account Spot Assets Summary', async () => {
+    it('should return Sub-account Spot Assets Summary', async () => {
         const spy = jest.spyOn(client, 'getSubAccountSpotAssetsSummary').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getSubAccountSpotAssetsSummary();
         expect(res).toBeDefined();

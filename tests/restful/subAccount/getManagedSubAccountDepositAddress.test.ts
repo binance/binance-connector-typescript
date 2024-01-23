@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Managed Sub-account Deposit Address', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Managed Sub-account Deposit Address', async () => {
+    it('should return Managed Sub-account Deposit Address', async () => {
         const spy = jest.spyOn(client, 'getManagedSubAccountDepositAddress').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getManagedSubAccountDepositAddress('alice@test.com', 'BTC');
         expect(res).toBeDefined();

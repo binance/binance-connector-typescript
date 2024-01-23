@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Isolated Margin Tier Data', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Isolated Margin Tier Data', async () => {
+    it('should return Isolated Margin Tier Data', async () => {
         const spy = jest.spyOn(client, 'getIsolatedMarginTierData').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getIsolatedMarginTierData('BNBUSDT');
         expect(res).toBeDefined();

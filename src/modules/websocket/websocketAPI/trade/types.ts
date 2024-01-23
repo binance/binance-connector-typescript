@@ -132,7 +132,7 @@ export interface cancelOCOOrder extends Omit<cancelOcoResponse, 'orderReports'>,
     orderReports: cancelOcoOrder[];
 }
 
-interface cancelOcoOrder extends Omit<cancelOcoOrderReports, 'origClientOrderId' | 'stopPrice'>, sendMessageOptions {
+interface cancelOcoOrder extends Omit<cancelOcoOrderReports, 'origClientOrderId' | 'stopPrice' | 'transactTime'>, sendMessageOptions {
     transactTime?: number;
     stopPrice?: string;
 }
@@ -149,7 +149,7 @@ export interface cancelOpenOCOOrder extends Omit<cancelOcoResponse, 'orderReport
     orderReports: orderReport[];
 }
 
-interface orderReport extends Omit<cancelOcoOrderReports, 'stopPrice'>, sendMessageOptions {
+interface orderReport extends Omit<cancelOcoOrderReports, 'stopPrice' | 'transactTime'>, sendMessageOptions {
     transactTime?: number;
     stopPrice?: string;
 }

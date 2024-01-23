@@ -1,27 +1,16 @@
 import {
     OrderType,
     IsIsolatedMargin,
+    MarginBorrowRepayType,
     Side,
-    TransFrom,
-    TransTo
 } from '../../enum';
 
 import {
-    crossMarginAccountTransferOptions,
-    crossMarginAccountTransferResponse,
     getCrossMarginTransferHistoryOptions,
     getCrossMarginTransferHistoryResponse,
-    marginAccountBorrowOptions,
-    marginAccountBorrowResponse,
-    getLoanRecordOptions,
-    getLoanRecordResponse,
-    marginAccountRepayOptions,
-    marginAccountRepayResponse,
-    getRepayRecordOptions,
-    getRepayRecordResponse,
-    getMarginAssetResponse,
-    getCrossMarginPairResponse,
+    getAllMarginAssetsOptions,
     getAllMarginAssetsResponse,
+    getAllCrossMarginPairsOptions,
     getAllCrossMarginPairsResponse,
     getMarginPriceIndexResponse,
     adjustCrossMarginMaxLeverageResponse,
@@ -61,10 +50,6 @@ import {
     getMaxTransferoutAmountResponse,
     getSummaryOfMarginAccountOptions,
     getSummaryOfMarginAccountResponse,
-    getIsolatedMarginTransferHistoryOptions,
-    getIsolatedMarginTransferHistoryResponse,
-    isolatedMarginAccountTransferOptions,
-    isolatedMarginAccountTransferResponse,
     getIsolatedMarginAccountInfoOptions,
     getIsolatedMarginAccountInfoResponse,
     disableIsolatedMarginAccountOptions,
@@ -73,8 +58,6 @@ import {
     enableIsolatedMarginAccountResponse,
     getEnabledIsolatedMarginAccountLimitOptions,
     getEnabledIsolatedMarginAccountLimitResponse,
-    getIsolatedMarginSymbolOptions,
-    getIsolatedMarginSymbolResponse,
     getAllIsolatedMarginSymbolOptions,
     getAllIsolatedMarginSymbolResponse,
     toggleBnbBurnOnSpotTradeAndMarginInterestOptions,
@@ -91,12 +74,6 @@ import {
     getIsolatedMarginTierDataResponse,
     getCurrentMarginOrderCountUsageOptions,
     getCurrentMarginOrderCountUsageResponse,
-    marginDustlogOptions,
-    marginDustlogResponse,
-    getAssetsThatCanBeConvertedIntoBNBOptions,
-    getAssetsThatCanBeConvertedIntoBNBResponse,
-    dustTransferOptions,
-    dustTransferResponse,
     crossMarginCollateralRatioResponse,
     getSmallLiabilityExchangeCoinListOptions,
     getSmallLiabilityExchangeCoinListResponse,
@@ -106,25 +83,27 @@ import {
     getSmallLiabilityExchangeHistoryResponse,
     getFutureHoulyInterestRateResponse,
     getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginOptions,
-    getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse
+    getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse,
+    getMarginAvailableInventoryOptions,
+    getMarginAvailableInventoryResponse,
+    marginManualLiquidationOptions,
+    marginManualLiquidationResponse,
+    getLeverageBracketResponse,
+    marginAccountBorrowRepayOptions,
+    marginAccountBorrowRepayResponse,
+    getBorrowRepayRecordsOptions,
+    getBorrowRepayRecordsResponse
 } from './types';
 
 export interface MarginMethods {
-    crossMarginAccountTransfer(asset: string, amount: number, type: number, options?: crossMarginAccountTransferOptions): Promise<crossMarginAccountTransferResponse>;
-    marginAccountBorrow(asset: string, amount: number, options?: marginAccountBorrowOptions): Promise<marginAccountBorrowResponse>;
-    marginAccountRepay(asset: string, amount: number, options?: marginAccountRepayOptions): Promise<marginAccountRepayResponse>;
-    getMarginAsset(asset: string): Promise<getMarginAssetResponse>;
-    getCrossMarginPair(symbol: string): Promise<getCrossMarginPairResponse>;
-    getAllMarginAssets(): Promise<getAllMarginAssetsResponse[]>;
-    getAllCrossMarginPairs(): Promise<getAllCrossMarginPairsResponse[]>;
+    getAllMarginAssets(options?: getAllMarginAssetsOptions): Promise<getAllMarginAssetsResponse[]>
+    getAllCrossMarginPairs(options?: getAllCrossMarginPairsOptions): Promise<getAllCrossMarginPairsResponse[]>;
     getMarginPriceIndex(symbol: string): Promise<getMarginPriceIndexResponse>;
     marginAccountNewOrder(symbol: string, side: Side, type: OrderType, options?: marginAccountNewOrderOptions): Promise<marginAccountNewOrderResponse>;
     marginAccountCancelOrder(symbol: string, options?: marginAccountCancelOrderOptions): Promise<marginAccountCancelOrderResponse>;
     marginAccountCancelAllOpenOrdersOnASymbol(symbol: string, options?: marginAccountCancelAllOpenOrdersOnASymbolOptions): Promise<marginAccountCancelAllOpenOrdersOnASymbolResponse[]>;
     adjustCrossMarginMaxLeverage(maxLeverage: number): Promise<adjustCrossMarginMaxLeverageResponse>;
     getCrossMarginTransferHistory(options?: getCrossMarginTransferHistoryOptions): Promise<getCrossMarginTransferHistoryResponse>;
-    getLoanRecord(asset: string, options?: getLoanRecordOptions): Promise<getLoanRecordResponse>;
-    getRepayRecord(asset: string, options?: getRepayRecordOptions): Promise<getRepayRecordResponse>;
     getInterestHistory(options?: getInterestHistoryOptions): Promise<getInterestHistoryResponse>;
     getForceLiquidationRecord(options?: getForceLiquidationRecordOptions): Promise<getForceLiquidationRecordResponse>;
     getCrossMarginAccountDetails(options?: getCrossMarginAccountDetailsOptions): Promise<getCrossMarginAccountDetailsResponse>;
@@ -140,13 +119,10 @@ export interface MarginMethods {
     getMaxBorrow(asset: string, options?: getMaxBorrowOptions): Promise<getMaxBorrowResponse>;
     getMaxTransferoutAmount(asset: string, options?: getMaxTransferoutAmountOptions): Promise<getMaxTransferoutAmountResponse>;
     getSummaryOfMarginAccount(options?: getSummaryOfMarginAccountOptions): Promise<getSummaryOfMarginAccountResponse>;
-    isolatedMarginAccountTransfer(asset: string, symbol: string, transFrom: TransFrom, transTo: TransTo, amount: number, options?: isolatedMarginAccountTransferOptions): Promise<isolatedMarginAccountTransferResponse>;
-    getIsolatedMarginTransferHistory(symbol: string, options?: getIsolatedMarginTransferHistoryOptions): Promise<getIsolatedMarginTransferHistoryResponse>;
     getIsolatedMarginAccountInfo(options?: getIsolatedMarginAccountInfoOptions): Promise<getIsolatedMarginAccountInfoResponse>;
     disableIsolatedMarginAccount(symbol: string, options?: disableIsolatedMarginAccountOptions): Promise<disableIsolatedMarginAccountResponse>;
     enableIsolatedMarginAccount(symbol: string, options?: enableIsolatedMarginAccountOptions): Promise<enableIsolatedMarginAccountResponse>;
     getEnabledIsolatedMarginAccountLimit(options?: getEnabledIsolatedMarginAccountLimitOptions): Promise<getEnabledIsolatedMarginAccountLimitResponse>;
-    getIsolatedMarginSymbol(symbol: string, options?: getIsolatedMarginSymbolOptions): Promise<getIsolatedMarginSymbolResponse>;
     getAllIsolatedMarginSymbol(options?: getAllIsolatedMarginSymbolOptions): Promise<getAllIsolatedMarginSymbolResponse[]>;
     toggleBnbBurnOnSpotTradeAndMarginInterest(options?: toggleBnbBurnOnSpotTradeAndMarginInterestOptions): Promise<toggleBnbBurnOnSpotTradeAndMarginInterestResponse>;
     getBnbBurnStatus(options?: getBnbBurnStatusOptions): Promise<getBnbBurnStatusResponse>;
@@ -155,13 +131,15 @@ export interface MarginMethods {
     getIsolatedMarginFeeData(options?: getIsolatedMarginFeeDataOptions): Promise<getIsolatedMarginFeeDataResponse[]>;
     getIsolatedMarginTierData(symbol: string, options?: getIsolatedMarginTierDataOptions): Promise<getIsolatedMarginTierDataResponse[]>;
     getCurrentMarginOrderCountUsage(options?: getCurrentMarginOrderCountUsageOptions): Promise<getCurrentMarginOrderCountUsageResponse[]>;
-    marginDustlog(options?: marginDustlogOptions): Promise<marginDustlogResponse>;
-    getAssetsThatCanBeConvertedIntoBNB(options?: getAssetsThatCanBeConvertedIntoBNBOptions): Promise<getAssetsThatCanBeConvertedIntoBNBResponse[]>;
-    dustTransfer(asset: string[], options?: dustTransferOptions): Promise<dustTransferResponse>;
     crossMarginCollateralRatio(): Promise<crossMarginCollateralRatioResponse>;
     getSmallLiabilityExchangeCoinList(options?: getSmallLiabilityExchangeCoinListOptions): Promise<getSmallLiabilityExchangeCoinListResponse[]>;
     smallLiabilityExchange(assetNames: string[], options?: smallLiabilityExchangeOptions): Promise<smallLiabilityExchangeResponse>;
     getSmallLiabilityExchangeHistory(current: number, size: number, options?: getSmallLiabilityExchangeHistoryOptions): Promise<getSmallLiabilityExchangeHistoryResponse>;
     getFutureHoulyInterestRate(assets: string, isIsolated: IsIsolatedMargin): Promise<getFutureHoulyInterestRateResponse>;
     getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMargin(options?: getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginOptions): Promise<getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse[]>;
+    getMarginAvailableInventory(type: string, options?: getMarginAvailableInventoryOptions): Promise<getMarginAvailableInventoryResponse>;
+    marginManualLiquidation(type: string, options?: marginManualLiquidationOptions): Promise<marginManualLiquidationResponse[]>;
+    getLeverageBracket(): Promise<getLeverageBracketResponse[]>;
+    marginAccountBorrowRepay(asset: string, isIsolated: string, symbol: string, amount: string, type: MarginBorrowRepayType, options?: marginAccountBorrowRepayOptions): Promise<marginAccountBorrowRepayResponse>;
+    getBorrowRepayRecords(type: MarginBorrowRepayType, options?: getBorrowRepayRecordsOptions): Promise<getBorrowRepayRecordsResponse>;
 }

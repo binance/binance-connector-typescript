@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Isolated Margin Account Info', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Isolated Margin Account Info', async () => {
+    it('should return Isolated Margin Account Info', async () => {
         const spy = jest.spyOn(client, 'getIsolatedMarginAccountInfo').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getIsolatedMarginAccountInfo();
         expect(res).toBeDefined();

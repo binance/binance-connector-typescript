@@ -242,6 +242,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
         * DustLog (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#dustlog-user_data}
         *
         * @param {object} [options]
+        * @param {DustAccountType} [options.accountType] - SPOT or MARGIN, default SPOT
         * @param {number} [options.startTime] - UTC timestamp in ms
         * @param {number} [options.endTime] - UTC timestamp in ms
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -258,6 +259,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
         * Get Assets That Can Be Converted Into BNB (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-assets-that-can-be-converted-into-bnb-user_data}
         *
         * @param {object} [options]
+        * @param {DustAccountType} [options.accountType] - SPOT or MARGIN, default SPOT
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async getAssetsThatCanBeConvertedIntoBnb(options?: getAssetsThatCanBeConvertedIntoBnbOptions): Promise<getAssetsThatCanBeConvertedIntoBnbResponse> {
@@ -273,6 +275,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
         *
         * @param {string[]} asset - The asset being converted. For example: asset=BTC,USDT
         * @param {object} [options]
+        * @param {DustAccountType} [options.accountType] - SPOT or MARGIN, default SPOT
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async dustTransfer(asset: string[], options?: dustTransferOptions): Promise<dustTransferResponse> {

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query auto-converting stable coins', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query auto-converting stable coins', async () => {
+    it('should return auto-converting stable coins', async () => {
         const spy = jest.spyOn(client, 'getAutoconvertingStableCoins').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAutoconvertingStableCoins();
         expect(res).toBeDefined();
