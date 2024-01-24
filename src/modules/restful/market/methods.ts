@@ -14,16 +14,18 @@ import {
     orderBookResponse,
     recentTradesListOptions,
     recentTradesListResponse,
-    uiklinesOptions,
-    uiklinesResponse,
-    ticker24hrOptions,
-    ticker24hrResponse,
-    symbolPriceTickerOptions,
-    symbolPriceTickerResponse,
+    rollingWindowPriceChangeStatisticsOptions,
+    rollingWindowPriceChangeStatisticsResponse,
     symbolOrderBookTickerOptions,
     symbolOrderBookTickerResponse,
-    rollingWindowPriceChangeStatisticsOptions,
-    rollingWindowPriceChangeStatisticsResponse
+    symbolPriceTickerOptions,
+    symbolPriceTickerResponse,
+    ticker24hrOptions,
+    ticker24hrResponse,
+    tradingDayTickerOptions,
+    tradingDayTickerResponse,
+    uiklinesOptions,
+    uiklinesResponse
 } from './types';
 
 export interface MarketMethods {
@@ -41,4 +43,5 @@ export interface MarketMethods {
     symbolPriceTicker(options?: symbolPriceTickerOptions): Promise<symbolPriceTickerResponse | symbolPriceTickerResponse[]>;
     symbolOrderBookTicker(options?: symbolOrderBookTickerOptions): Promise<symbolOrderBookTickerResponse | symbolOrderBookTickerResponse[]>;
     rollingWindowPriceChangeStatistics(options?: rollingWindowPriceChangeStatisticsOptions): Promise<rollingWindowPriceChangeStatisticsResponse | rollingWindowPriceChangeStatisticsResponse[]>;
+    tradingDayTicker(symbol: string, options?: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]>;
 }

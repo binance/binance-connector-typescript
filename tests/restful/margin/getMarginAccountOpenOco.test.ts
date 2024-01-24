@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Margin Account Open OCO', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Margin Account Open OCO', async () => {
+    it('should return Margin Account Open OCO', async () => {
         const spy = jest.spyOn(client, 'getMarginAccountOpenOco').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getMarginAccountOpenOco();
         expect(res).toBeDefined();

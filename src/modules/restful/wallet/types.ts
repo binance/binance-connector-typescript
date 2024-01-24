@@ -1,4 +1,4 @@
-import { AccountType, UnivTransferType, NeedBtcValuation, QueryConvertTransfer, UnivStatus } from '../../enum';
+import { AccountType, DustAccountType, UnivTransferType, NeedBtcValuation, QueryConvertTransfer, UnivStatus } from '../../enum';
 
 export interface systemStatusResponse {
     status: number;
@@ -207,6 +207,7 @@ interface accountApiTradingStatusTriggercondition {
 }
 
 export interface dustlogOptions {
+    accountType?: DustAccountType;
     startTime?: number;
     endTime?: number;
     recvWindow?: number;
@@ -235,6 +236,7 @@ interface dustlogUserassetdribbletdetails {
 }
 
 export interface getAssetsThatCanBeConvertedIntoBnbOptions {
+    accountType?: DustAccountType;
     recvWindow?: number;
 }
 
@@ -257,16 +259,17 @@ interface getAssetsThatCanBeConvertedIntoBnbDetails {
 
 
 export interface dustTransferOptions {
+    accountType?: DustAccountType;
     recvWindow?: number;
 }
 
 export interface dustTransferResponse {
     totalServiceCharge: string;
     totalTransfered: string;
-    transferResult: dustTransferTransferresult[];
+    transferResult: dustTransferTransferResult[];
 }
 
-interface dustTransferTransferresult {
+interface dustTransferTransferResult {
     amount: string;
     fromAsset: string;
     operateTime: number;

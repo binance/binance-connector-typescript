@@ -6,6 +6,7 @@ export const mockResponse: RestTradeTypes.cancelOrderResponse = {
     'orderId': 28,
     'orderListId': -1,
     'clientOrderId': '6gCrw2kRUAF9CvJDGP16IP',
+    'transactTime': 1684804350068,
     'price': '1.00000000',
     'origQty': '10.00000000',
     'executedQty': '10.00000000',

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get Cloud-Mining payment and refund history', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get Cloud-Mining payment and refund history', async () => {
+    it('should return Cloud-Mining payment and refund history', async () => {
         const currentTimestamp = Date.now();
         const spy = jest.spyOn(client, 'getCloudminingPaymentAndRefundHistory').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getCloudminingPaymentAndRefundHistory(currentTimestamp - 100000, currentTimestamp);

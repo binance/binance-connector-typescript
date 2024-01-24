@@ -18,6 +18,7 @@ export const mockResponse: RestTradeTypes.cancelAnExistingOrderAndSendANewOrderR
         'orderId': 9,
         'orderListId': -1,
         'clientOrderId': 'osxN3JXAtJvKvCqGeMWMVR',
+        'transactTime': 1684804350068,
         'price': '0.01000000',
         'origQty': '0.000100',
         'executedQty': '0.00000000',

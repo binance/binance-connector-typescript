@@ -1,4 +1,4 @@
-import { RestMarginTypes } from '../../../../src/index';
+import { CrossMarginAccountType, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getCrossMarginAccountDetailsResponse = {
     'borrowEnabled': true,
@@ -8,6 +8,7 @@ export const mockResponse: RestMarginTypes.getCrossMarginAccountDetailsResponse 
     'totalNetAssetOfBtc': '6.24095242',
     'tradeEnabled': true,
     'transferEnabled': true,
+    'accountType': CrossMarginAccountType.Margin_1,
     'userAssets': [{
         'asset': 'BTC',
         'borrowed': '0.00000000',

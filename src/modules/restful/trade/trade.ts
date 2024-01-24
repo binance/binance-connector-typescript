@@ -1,37 +1,46 @@
 import { Constructor } from '../../../setters/types';
 import { validateRequiredParameters } from '../../../helpers/utils';
 import {
-    testNewOrderOptions,
-    getOrderOptions,
-    getOrderResponse,
-    newOrderOptions,
-    newOrderResponse,
-    cancelOrderOptions,
-    cancelOrderResponse,
-    cancelAnExistingOrderAndSendANewOrderOptions,
-    cancelAnExistingOrderAndSendANewOrderResponse,
-    currentOpenOrdersOptions,
-    currentOpenOrdersResponse,
-    cancelAllOpenOrdersOnASymbolOptions,
-    cancelAllOpenOrdersOnASymbolResponse,
-    allOrdersOptions,
-    allOrdersResponse,
-    newOcoOptions,
-    newOcoResponse,
-    getOcoOptions,
-    getOcoResponse,
-    cancelOcoOptions,
-    cancelOcoResponse,
-    getAllOcoOptions,
-    getAllOcoResponse,
-    getOpenOcoOptions,
-    getOpenOcoResponse,
     accountInformationOptions,
     accountInformationResponse,
     accountTradeListOptions,
     accountTradeListResponse,
+    allOrdersOptions,
+    allOrdersResponse,
+    cancelAllOpenOrdersOnASymbolOptions,
+    cancelAllOpenOrdersOnASymbolResponse,
+    cancelAnExistingOrderAndSendANewOrderOptions,
+    cancelAnExistingOrderAndSendANewOrderResponse,
+    cancelOcoOptions,
+    cancelOcoResponse,
+    cancelOrderOptions,
+    cancelOrderResponse,
+    currentOpenOrdersOptions,
+    currentOpenOrdersResponse,
+    getAllocationsOptions,
+    getAllocationsResponse,
+    getAllOcoOptions,
+    getAllOcoResponse,
+    getCommissionRatesResponse,
     getCurrentOrderCountUsageOptions,
-    getCurrentOrderCountUsageResponse
+    getCurrentOrderCountUsageResponse,
+    getOcoOptions,
+    getOcoResponse,
+    getOpenOcoOptions,
+    getOpenOcoResponse,
+    getOrderOptions,
+    getOrderResponse,
+    getPreventedMatchesOptions,
+    getPreventedMatchesResponse,
+    newOcoOptions,
+    newOcoResponse,
+    newOrderOptions,
+    newOrderResponse,
+    newOrderSOROptions,
+    newOrderSORResponse,
+    testNewOrderOptions,
+    testNewOrderResponse,
+    testNewOrderSOROptions
 } from './types';
 import { TradeMethods } from './methods';
 import { Side, OrderType, CancelReplaceMode } from '../../enum';
@@ -56,9 +65,11 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         * @param {number} [options.trailingDelta] - Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
         * @param {number} [options.icebergQty] - Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.
         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK.
+        * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+        * @param {boolean} [options.computeCommissionRates]
         */
-        async testNewOrder(symbol: string, side: Side, type: OrderType, options?: testNewOrderOptions): Promise<Record<string, never>> {
+        async testNewOrder(symbol: string, side: Side, type: OrderType, options?: testNewOrderOptions): Promise<Record<string, never> | testNewOrderResponse> {
             validateRequiredParameters({ symbol, side, type });
             const url = this.prepareSignedPath('/api/v3/order/test',
                 Object.assign(
@@ -115,6 +126,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         * @param {number} [options.trailingDelta] - Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
         * @param {number} [options.icebergQty] - Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.
         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK.
+        * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async newOrder(symbol: string, side: Side, type: OrderType, options?: newOrderOptions): Promise<newOrderResponse> {
@@ -426,6 +438,140 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
             const url = this.prepareSignedPath('/api/v3/rateLimit/order',
                 options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+        /**
+         * Test New Order Using SOR (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-order-using-sor-trade}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {Side} side
+         * @param {OrderType} type - Order type
+         * @param {number} [quantity] - Order quantity
+         * @param {object} [options]
+         * @param {TimeInForce} [options.timeInForce] - Order time in force
+         * @param {number} [options.price] - Order price
+         * @param {string} [options.newClientOrderId] - Used to uniquely identify this cancel. Automatically generated by default
+         * @param {number} [options.strategyId]
+         * @param {number} [options.strategyType] - The value cannot be less than 1000000.
+         * @param {number} [options.icebergQty] - Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.
+         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK.
+         * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         * @param {boolean} [options.computeCommissionRates]
+         */
+        async testNewOrderSOR(symbol: string, side: Side, type: OrderType, quantity: number, options?: testNewOrderSOROptions): Promise<Record<string, never> | testNewOrderResponse> {
+            validateRequiredParameters({ symbol, side, type, quantity });
+            const url = this.prepareSignedPath('/api/v3/sor/order/test',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase(),
+                        side: side,
+                        type: type,
+                        quantity: quantity
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+
+        /**
+         * New Order Using SOR (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-order-using-sor-trade}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {Side} side
+         * @param {OrderType} type - Order type
+         * @param {number} [quantity] - Order quantity
+         * @param {object} [options]
+         * @param {TimeInForce} [options.timeInForce] - Order time in force
+         * @param {number} [options.price] - Order price
+         * @param {string} [options.newClientOrderId] - Used to uniquely identify this cancel. Automatically generated by default
+         * @param {number} [options.strategyId]
+         * @param {number} [options.strategyType] - The value cannot be less than 1000000.
+         * @param {number} [options.icebergQty] - Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.
+         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK.
+         * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async newOrderSOR(symbol: string, side: Side, type: OrderType, quantity: number, options?: newOrderSOROptions): Promise<newOrderSORResponse> {
+            validateRequiredParameters({ symbol, side, type, quantity });
+            const url = this.prepareSignedPath('/api/v3/sor/order',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase(),
+                        side: side,
+                        type: type,
+                        quantity: quantity
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+        /**
+         * Query Prevented Matches (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-prevented-matches-user_data}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {object} [options]
+         * @param {number} [options.preventedMatchId]
+         * @param {number} [options.orderId]
+         * @param {number} [options.fromPreventedMatchId]
+         * @param {number} [options.limit] - Default: 500; Max: 1000
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getPreventedMatches(symbol: string, options?: getPreventedMatchesOptions): Promise<getPreventedMatchesResponse[]> {
+            validateRequiredParameters({ symbol });
+            const url = this.prepareSignedPath('/api/v3/myPreventedMatches',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase()
+                    }
+                )
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+        /**
+         * Query Allocations (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-allocations-user_data}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {object} [options]
+         * @param {number} [options.startTime]
+         * @param {number} [options.endTime]
+         * @param {number} [options.fromAllocationId]
+         * @param {number} [options.limit] - Default: 500; Max: 1000
+         * @param {number} [options.orderId]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getAllocations(symbol: string, options?: getAllocationsOptions): Promise<getAllocationsResponse[]> {
+            validateRequiredParameters({ symbol });
+            const url = this.prepareSignedPath('/api/v3/myAllocations',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase()
+                    }
+                )
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+        /**
+         * Query Commission Rates (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-commission-rates-user_data}
+         * 
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         */
+        async getCommissionRates(symbol: string): Promise<getCommissionRatesResponse> {
+            validateRequiredParameters({ symbol });
+            const url = this.prepareSignedPath('/api/v3/account/commission',
+                {
+                    symbol: symbol.toUpperCase()
+                }
             );
             return await this.makeRequest('GET', url);
         }

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Managed Sub-account Transfer log for TradeSub', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Managed Sub-account Transfer log for TradeSub', async () => {
+    it('should return Managed Sub-account Transfer log for TradeSub', async () => {
         const currentTime = Date.now();
         const spy = jest.spyOn(client, 'getManagedSubAccountTransferLogForTradeSub').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getManagedSubAccountTransferLogForTradeSub((currentTime - 1000000), currentTime, 1, 10);

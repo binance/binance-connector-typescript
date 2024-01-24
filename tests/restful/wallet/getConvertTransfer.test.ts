@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Convert Transfer', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Convert Transfer', async () => {
+    it('should return Convert Transfer', async () => {
         const currentTimestamp = Date.now();
         const spy = jest.spyOn(client, 'getConvertTransfer').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getConvertTransfer(currentTimestamp - 100000, currentTimestamp);

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get Interest History', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get Interest History', async () => {
+    it('should return Interest History', async () => {
         const spy = jest.spyOn(client, 'getInterestHistory').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getInterestHistory();
         expect(res).toBeDefined();

@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get IP Restriction for a Sub-account API Key', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get IP Restriction for a Sub-account API Key', async () => {
+    it('should return IP Restriction for a Sub-account API Key', async () => {
         const spy = jest.spyOn(client, 'getIpRestrictionForASubAccountApiKey').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getIpRestrictionForASubAccountApiKey('alice@test.com', 'subAccountApiKey');
         expect(res).toBeDefined();

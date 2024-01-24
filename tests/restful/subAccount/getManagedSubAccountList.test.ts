@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Managed Sub-account List', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Managed Sub-account List', async () => {
+    it('should return Managed Sub-account List', async () => {
         const spy = jest.spyOn(client, 'getManagedSubAccountList').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getManagedSubAccountList('alice@test.com');
         expect(res).toBeDefined();

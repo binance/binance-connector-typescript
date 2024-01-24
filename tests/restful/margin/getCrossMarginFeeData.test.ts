@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Cross Margin Fee Data', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Cross Margin Fee Data', async () => {
+    it('should return Cross Margin Fee Data', async () => {
         const spy = jest.spyOn(client, 'getCrossMarginFeeData').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getCrossMarginFeeData();
         expect(res).toBeDefined();

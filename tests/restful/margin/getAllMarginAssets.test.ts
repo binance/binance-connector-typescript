@@ -9,7 +9,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get All Margin Assets', () => {
     const client = new Spot(apiKey, '', { baseURL: baseURL });
-    it('should return Get All Margin Assets', async () => {
+    it('should return All Margin Assets', async () => {
         const spy = jest.spyOn(client, 'getAllMarginAssets').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAllMarginAssets();
         expect(res).toBeDefined();

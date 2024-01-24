@@ -40,6 +40,26 @@ export enum CrossMarginAccountTransferType {
     TransferFromMarginAccountToMainAccount = 2,
 }
 
+export enum CrossMarginAccountType {
+    Margin_1 = 'Margin_1',
+    Margin_2 = 'Margin_2',
+}
+
+export enum CrossMarginTrans {
+    SPOT = 'SPOT',
+    FUTURES = 'FUTURES',
+    FIAT = 'FIAT',
+    DELIVERY = 'DELIVERY',
+    MINING = 'MINING',
+    ISOLATED_MARGIN = 'ISOLATED_MARGIN',
+    FUNDING = 'FUNDING',
+    MOTHER_SPOT = 'MOTHER_SPOT',
+    OPTION = 'OPTION',
+    SUB_SPOT = 'SUB_SPOT',
+    SUB_MARGIN = 'SUB_MARGIN',
+    CROSS_MARGIN = 'CROSS_MARGIN',
+}
+
 export enum DepositHistory {
     Pending = 0,
     CreditedButCannotWithdraw = 6,
@@ -90,6 +110,11 @@ export enum FuturesTransferType {
     TransferFromSubaccountUSDT = 2,
     TransferFromSubaccountSpotAccountToItsCOIN = 3,
     TransferFromSubaccountCOIN = 4,
+}
+
+export enum DustAccountType {
+    SPOT = 'SPOT',
+    MARGIN = 'MARGIN',
 }
 
 export enum GetCrossMargingTransferHistoryType {
@@ -171,6 +196,11 @@ export enum LiquidityAddType {
 export enum LiquidityRemoveType {
     SINGLE = 'SINGLE',
     COMBINATION = 'COMBINATION',
+}
+
+export enum MarginBorrowRepayType {
+    BORROW = 'BORROW',
+    REPAY = 'REPAY',
 }
 
 export enum MargintransferType {
@@ -369,6 +399,7 @@ export enum SideEffectType {
     NO_SIDE_EFFECT = 'NO_SIDE_EFFECT',
     MARGIN_BUY = 'MARGIN_BUY',
     AUTO_REPAY = 'AUTO_REPAY',
+    AUTO_BORROW_REPAY = 'AUTO_BORROW_REPAY',
 }
 
 export enum SimpleEarnDestAccount {
@@ -541,4 +572,9 @@ export enum WithdrawHistory {
     Processing = 4,
     Failure = 5,
     Completed = 6,
+}
+
+export enum WorkingFloor {
+    EXCHANGE = 'EXCHANGE',
+    SOR = 'SOR',
 }

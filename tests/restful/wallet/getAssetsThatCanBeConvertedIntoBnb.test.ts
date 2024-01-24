@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Get Assets That Can Be Converted Into BNB', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Get Assets That Can Be Converted Into BNB', async () => {
+    it('should return Assets That Can Be Converted Into BNB', async () => {
         const spy = jest.spyOn(client, 'getAssetsThatCanBeConvertedIntoBnb').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getAssetsThatCanBeConvertedIntoBnb();
         expect(res).toBeDefined();

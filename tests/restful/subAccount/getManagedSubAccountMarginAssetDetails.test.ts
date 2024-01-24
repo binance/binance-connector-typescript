@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Managed Sub-account Margin Asset Details', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Managed Sub-account Margin Asset Details', async () => {
+    it('should return Managed Sub-account Margin Asset Details', async () => {
         const spy = jest.spyOn(client, 'getManagedSubAccountMarginAssetDetails').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getManagedSubAccountMarginAssetDetails('alice@test.com');
         expect(res).toBeDefined();

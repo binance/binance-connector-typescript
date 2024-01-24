@@ -19,6 +19,7 @@ export const mockResponse: RestTradeTypes.cancelOcoResponse = {
         'orderId': 0,
         'orderListId': 0,
         'clientOrderId': '',
+        'transactTime': 0,
         'price': '',
         'origQty': '',
         'executedQty': '',

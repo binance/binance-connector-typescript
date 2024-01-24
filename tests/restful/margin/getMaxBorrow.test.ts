@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Max Borrow', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Max Borrow', async () => {
+    it('should return Max Borrow', async () => {
         const spy = jest.spyOn(client, 'getMaxBorrow').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getMaxBorrow('BTC');
         expect(res).toBeDefined();

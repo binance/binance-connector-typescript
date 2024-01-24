@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Current Margin Order Count Usage', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Current Margin Order Count Usage', async () => {
+    it('should return Current Margin Order Count Usage', async () => {
         const spy = jest.spyOn(client, 'getCurrentMarginOrderCountUsage').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getCurrentMarginOrderCountUsage();
         expect(res).toBeDefined();

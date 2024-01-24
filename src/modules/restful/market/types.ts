@@ -110,6 +110,7 @@ export interface compressedAggregateTradesListResponse {
 export interface klineCandlestickDataOptions {
     startTime?: number;
     endTime?: number;
+    timeZone?: string;
     limit?: number;
 }
 
@@ -118,6 +119,7 @@ export type klineCandlestickDataResponse = (string | number)[]
 export interface uiklinesOptions {
     startTime?: number;
     endTime?: number;
+    timeZone?: string;
     limit?: number;
 }
 
@@ -126,6 +128,7 @@ export type uiklinesResponse = (number | string)[]
 export interface currentAveragePriceResponse {
     mins: number;
     price: string;
+    closeTime: number;
 }
 
 export interface ticker24hrOptions {
@@ -305,4 +308,28 @@ interface trailingDelta {
     maxTrailingAboveDelta: number;
     minTrailingBelowDelta: number;
     maxTrailingBelowDelta: number;
+}
+
+export interface tradingDayTickerOptions {
+    symbols?: string;
+    timeZone?: string;
+    type?: 'FULL' | 'MINI';
+}
+
+export interface tradingDayTickerResponse {
+    symbol: string;
+    priceChange: string;
+    priceChangePercent: string;
+    weightedAvgPrice: string;
+    openPrice: string;
+    highPrice: string;
+    lowPrice: string;
+    lastPrice: string;
+    volume: string;
+    quoteVolume: string;
+    openTime: number;
+    closeTime: number;
+    firstId: number;
+    lastId: number;
+    count: number;
 }

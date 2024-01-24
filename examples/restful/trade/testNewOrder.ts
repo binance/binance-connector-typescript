@@ -15,6 +15,6 @@ const options: RestTradeTypes.testNewOrderOptions = {
     recvWindow: 5000,
 };
 
-client.testNewOrder('BNBUSDT', Side.SELL, OrderType.LIMIT, options).then((res: Record<string, never>) => {
+client.testNewOrder('BNBUSDT', Side.SELL, OrderType.LIMIT, options).then((res: Record<string, never> | RestTradeTypes.testNewOrderResponse) => {
     console.log(res);
 }).catch(err => { console.log(err); });

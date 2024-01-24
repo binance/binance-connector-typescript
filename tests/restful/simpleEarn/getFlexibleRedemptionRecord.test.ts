@@ -13,7 +13,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 describe('Get Flexible Redemption Record', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
 
-    it('should return get flexible redemption record', async () => {
+    it('should return flexible redemption record', async () => {
         const spy = jest.spyOn(client, 'getFlexibleRedemptionRecord').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getFlexibleRedemptionRecord();
         expect(res).toBeDefined();

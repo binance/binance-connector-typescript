@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Sub-account Futures Asset Transfer History', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Sub-account Futures Asset Transfer History', async () => {
+    it('should return Sub-account Futures Asset Transfer History', async () => {
         const spy = jest.spyOn(client, 'getSubAccountFuturesAssetTransferHistory').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getSubAccountFuturesAssetTransferHistory('alice@test.com', 1);
         expect(res).toBeDefined();

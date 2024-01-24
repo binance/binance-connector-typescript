@@ -10,7 +10,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 
 describe('Query Margin Account All Orders', () => {
     const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
-    it('should return Query Margin Account All Orders', async () => {
+    it('should return Margin Account All Orders', async () => {
         const spy = jest.spyOn(client, 'getMarginAccountAllOrders').mockReturnValue(Promise.resolve(mockResponse));
         const res = await client.getMarginAccountAllOrders('BNBUSDT');
         expect(res).toBeDefined();
