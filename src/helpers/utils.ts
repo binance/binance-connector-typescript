@@ -3,13 +3,13 @@ import { appName, appVersion } from './constants';
 import * as crypto from 'crypto';
 
 interface HttpRequestConfig {
-    baseURL: string;
-    apiKey: string;
-    method: string;
-    url: string;
-    timeout?: number;
-    proxy?: AxiosProxyConfig | false;
-    httpsAgent?: boolean;
+  baseURL: string;
+  apiKey: string;
+  method: string;
+  url: string;
+  timeout?: number;
+  proxy?: AxiosProxyConfig | false;
+  httpsAgent?: boolean;
 }
 
 export async function httpRequest(config: HttpRequestConfig) {
@@ -23,13 +23,13 @@ export async function httpRequest(config: HttpRequestConfig) {
             method,
             url,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/jso;n',
                 'X-MBX-APIKEY': apiKey,
-                'User-Agent': `${appName}/${appVersion}`
-            }
+                'User-Agent': `${appName}/${appVersion}`,
+            },
         };
-        const { data } = await axios.request(options);
-        return data;
+        const response = await axios.request(options);
+        return response;
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
             throw error.response.data.msg;
@@ -42,15 +42,15 @@ export async function httpRequest(config: HttpRequestConfig) {
 export function removeEmptyValue(obj: object): object {
     if (!(obj instanceof Object)) return {};
     return Object.fromEntries(
-        Object.entries(obj).filter(([, value]) => value !== null && value !== undefined && value !== '')
+        Object.entries(obj).filter(
+            ([, value]) => value !== null && value !== undefined && value !== ''
+        )
     );
 }
 
 export function buildQueryString(params: object): string {
     if (!params) return '';
-    return Object.entries(params)
-        .map(stringifyKeyValuePair)
-        .join('&');
+    return Object.entries(params).map(stringifyKeyValuePair).join('&');
 }
 
 function stringifyKeyValuePair([key, value]: [string, string]) {
@@ -59,29 +59,37 @@ function stringifyKeyValuePair([key, value]: [string, string]) {
 }
 
 interface paramObject {
-    [key: string]: string | number | boolean | object
+  [key: string]: string | number | boolean | object;
 }
 
 export function validateRequiredParameters(paramObject: paramObject) {
-    if (!paramObject || isEmptyValue(paramObject)) { throw new Error('Missing Parameters'); }
+    if (!paramObject || isEmptyValue(paramObject)) {
+        throw new Error('Missing Parameters');
+    }
     const emptyParams: string[] = [];
     Object.keys(paramObject).forEach((param: string) => {
         if (isEmptyValue(paramObject[param])) {
             emptyParams.push(param);
         }
     });
-    if (emptyParams.length) { throw new Error('Missing Parameters'); }
+    if (emptyParams.length) {
+        throw new Error('Missing Parameters');
+    }
 }
 
-export function isEmptyValue(input: string | boolean | number | object): boolean {
+export function isEmptyValue(
+    input: string | boolean | number | object
+): boolean {
     /**
-     * Scope of empty value: falsy value (except for false and 0),
-     * string with white space characters only, empty object, empty array
-     */
-    return (!input && input !== false && input !== 0) ||
-        ((typeof input === 'string') && /^\s+$/.test(input)) ||
-        (input instanceof Object && !Object.keys(input).length) ||
-        (Array.isArray(input) && !input.length);
+   * Scope of empty value: falsy value (except for false and 0),
+   * string with white space characters only, empty object, empty array
+   */
+    return (
+        (!input && input !== false && input !== 0) ||
+    (typeof input === 'string' && /^\s+$/.test(input)) ||
+    (input instanceof Object && !Object.keys(input).length) ||
+    (Array.isArray(input) && !input.length)
+    );
 }
 
 export function randomString() {
@@ -89,12 +97,14 @@ export function randomString() {
 }
 
 export interface ObjectType {
-    [key: string]: string | number | boolean | object;
+  [key: string]: string | number | boolean | object;
 }
 
 export function sortObject(obj: ObjectType) {
-    return Object.keys(obj).sort().reduce((res: ObjectType, key: string) => {
-        res[key] = obj[key] as string | number | boolean | object;
-        return res;
-    }, {});
+    return Object.keys(obj)
+        .sort()
+        .reduce((res: ObjectType, key: string) => {
+            res[key] = obj[key] as string | number | boolean | object;
+            return res;
+        }, {});
 }
