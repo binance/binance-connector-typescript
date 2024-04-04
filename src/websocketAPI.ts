@@ -18,7 +18,7 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
 
     sendMessageWithAPIKey(method: string, options: Omit<sendMessageOptions, 'timestamp' | 'signature'> = {}) {
         if (!this.isConnected()) {
-            console.error('Not connected');
+            this.logger.error('Not connected');
             return;
         }
         const id = options.id || randomString();
@@ -29,13 +29,13 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             method,
             params: removeEmptyValue(options)
         };
-        console.debug('Send message to Binance Websocket API Server:', payload);
+        this.logger.debug('Send message to Binance Websocket API Server:', payload);
         this.send(JSON.stringify(payload));
     }
 
     sendMessage(method: string, options: Omit<sendMessageOptions, 'apiKey' | 'timestamp' | 'signature'> = {}) {
         if (!this.isConnected()) {
-            console.error('Not connected');
+            this.logger.error('Not connected');
             return;
         }
         const id = options.id && /^[0-9a-f]{32}$/.test(options.id) ? options.id : randomString();
@@ -45,13 +45,13 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             method,
             params: removeEmptyValue(options)
         };
-        console.debug('Send message to Binance Websocket API Server:', payload);
+        this.logger.debug('Send message to Binance Websocket API Server:', payload);
         this.send(JSON.stringify(payload));
     }
 
     sendSignatureMessage(method: string, options: sendMessageOptions = {}) {
         if (!this.isConnected()) {
-            console.error('Not connected');
+            this.logger.error('Not connected');
             return;
         }
         const id = options.id || randomString();
@@ -70,7 +70,7 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             method,
             params: options
         };
-        console.debug('Send message to Binance Websocket API Server:', payload);
+        this.logger.debug('Send message to Binance Websocket API Server:', payload);
         this.send(JSON.stringify(payload));
     }
 }
