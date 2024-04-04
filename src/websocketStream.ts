@@ -1,10 +1,10 @@
 import { WebsocketStreamFeaturesBase } from './setters/mixinBase';
-import { WebsocketAPIOptions } from './setters/types';
+import { WebsocketStreamAPIOptions } from './setters/types';
 
 export class WebsocketStream extends WebsocketStreamFeaturesBase {
     combinedStreams: boolean;
 
-    constructor(options?: WebsocketAPIOptions) {
+    constructor(options?: WebsocketStreamAPIOptions) {
         super(options);
         this.wsURL = options && options.wsURL ? options.wsURL : 'wss://stream.binance.com:9443';
         this.combinedStreams = options && options.combinedStreams ? options.combinedStreams : false;
@@ -20,6 +20,7 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
 
     subscribe(stream: string | string[]) {
         if (!this.isConnected()) {
+            if (Array.isArray(stream)) stream = stream.toString().replace(',', '/');
             const url = this._prepareURL(stream);
             this.initConnect(url);
         } else {
@@ -32,14 +33,14 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
                 id: Date.now()
             };
 
-            console.info('SUBSCRIBE', payload);
+            this.logger.info('SUBSCRIBE', payload);
             this.send(JSON.stringify(payload));
         }
     }
 
     unsubscribe(stream: string | string[]) {
         if (!this.isConnected()) {
-            console.warn('Not connected');
+            this.logger.warn('Not connected');
         } else {
             if (!Array.isArray(stream)) {
                 stream = [stream];
@@ -49,7 +50,7 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
                 params: stream,
                 id: Date.now()
             };
-            console.info('UNSUBSCRIBE', payload);
+            this.logger.info('UNSUBSCRIBE', payload);
             this.send(JSON.stringify(payload));
         }
     }

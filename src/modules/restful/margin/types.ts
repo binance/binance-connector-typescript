@@ -90,7 +90,7 @@ export interface marginAccountNewOrderResponse {
     fills?: marginAccountNewOrderFills[];
 }
 
-interface marginAccountNewOrderFills {
+export interface marginAccountNewOrderFills {
     price: string;
     qty: string;
     commission: string;
@@ -165,7 +165,7 @@ export interface getCrossMarginTransferHistoryResponse {
     total: number;
 }
 
-interface getCrossMarginTransferHistoryRows {
+export interface getCrossMarginTransferHistoryRows {
     amount: string;
     asset: string;
     status: MarginStatus;
@@ -195,7 +195,7 @@ export interface getInterestHistoryResponse {
     total: number;
 }
 
-interface getInterestHistoryRows {
+export interface getInterestHistoryRows {
     txId: bigint;
     interestAccuredTime: number;
     asset: string;
@@ -221,7 +221,7 @@ export interface getForceLiquidationRecordResponse {
     total: number;
 }
 
-interface getForceLiquidationRecordRows {
+export interface getForceLiquidationRecordRows {
     avgPrice: string;
     executedQty: string;
     orderId: number;
@@ -250,7 +250,7 @@ export interface getCrossMarginAccountDetailsResponse {
     userAssets: getCrossMarginAccountDetailsUserassets[];
 }
 
-interface getCrossMarginAccountDetailsUserassets {
+export interface getCrossMarginAccountDetailsUserassets {
     asset: string;
     borrowed: string;
     free: string;
@@ -375,13 +375,13 @@ export interface marginAccountNewOcoResponse {
     orderReports: marginAccountNewOcoOrderreports[];
 }
 
-interface marginAccountNewOcoOrders {
+export interface marginAccountNewOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
 }
 
-interface marginAccountNewOcoOrderreports {
+export interface marginAccountNewOcoOrderreports {
     symbol: string;
     orderId: number;
     orderListId: number;
@@ -420,13 +420,13 @@ export interface marginAccountCancelOcoResponse {
     orderReports: marginAccountCancelOcoOrderReports[];
 }
 
-interface marginAccountCancelOcoOrders {
+export interface marginAccountCancelOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
 }
 
-interface marginAccountCancelOcoOrderReports {
+export interface marginAccountCancelOcoOrderReports {
     symbol: string;
     origClientOrderId: string;
     orderId: number;
@@ -464,7 +464,7 @@ export interface getMarginAccountOcoResponse {
     orders: getMarginAccountOcoOrders[];
 }
 
-interface getMarginAccountOcoOrders {
+export interface getMarginAccountOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -492,7 +492,7 @@ export interface getMarginAccountAllOcoResponse {
     orders: getMarginAccountAllOcoOrders[];
 }
 
-interface getMarginAccountAllOcoOrders {
+export interface getMarginAccountAllOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -517,7 +517,7 @@ export interface getMarginAccountOpenOcoResponse {
 }
 
 
-interface getMarginAccountOpenOcoOrders {
+export interface getMarginAccountOpenOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -589,7 +589,7 @@ export interface getIsolatedMarginAccountInfoResponse {
     totalNetAssetOfBtc?: string;
 }
 
-interface getIsolatedMarginAccountInfoBaseasset {
+export interface getIsolatedMarginAccountInfoBaseasset {
     asset: string
     borrowEnabled: boolean
     borrowed: string
@@ -602,7 +602,7 @@ interface getIsolatedMarginAccountInfoBaseasset {
     totalAsset: string
 }
 
-interface getIsolatedMarginAccountInfoQuoteasset {
+export interface getIsolatedMarginAccountInfoQuoteasset {
     asset: string
     borrowEnabled: boolean
     borrowed: string
@@ -615,7 +615,7 @@ interface getIsolatedMarginAccountInfoQuoteasset {
     totalAsset: string
 }
 
-interface getIsolatedMarginAccountInfoAssets {
+export interface getIsolatedMarginAccountInfoAssets {
     baseAsset: getIsolatedMarginAccountInfoBaseasset;
     quoteAsset: getIsolatedMarginAccountInfoQuoteasset;
     symbol: string;
@@ -735,7 +735,7 @@ export interface getIsolatedMarginFeeDataResponse {
     data: getIsolatedMarginFeeDataData[];
 }
 
-interface getIsolatedMarginFeeDataData {
+export interface getIsolatedMarginFeeDataData {
     coin: string;
     dailyInterest: string;
     borrowLimit: string;
@@ -775,7 +775,7 @@ export interface crossMarginCollateralRatioResponse {
     assetNames: string[];
 }
 
-interface crossMarginCollateralRatioCollaterals {
+export interface crossMarginCollateralRatioCollaterals {
     minUsdValue: string;
     maxUsdValue?: string;
     discountRate: string;
@@ -817,7 +817,7 @@ export interface getSmallLiabilityExchangeHistoryResponse {
     rows: getSmallLiabilityExchangeHistoryRows[];
 }
 
-interface getSmallLiabilityExchangeHistoryRows {
+export interface getSmallLiabilityExchangeHistoryRows {
     asset: string;
     amount: string;
     targetAsset: string;

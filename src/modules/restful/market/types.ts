@@ -16,19 +16,19 @@ export interface exchangeInformationResponse {
     symbols: exchangeInformationSymbols[];
 }
 
-interface exchangeInformationRatelimits {
+export interface exchangeInformationRatelimits {
     rateLimitType: 'REQUEST_WEIGHT' | 'ORDERS' | 'RAW_REQUESTS';
     interval: 'SECOND' | 'MINUTE' | 'DAY';
     intervalNum: number;
     limit: number;
 }
 
-interface exchangefilters {
+export interface exchangefilters {
     filterType: string;
     maxNumOrders: number;
 }
 
-interface exchangeInformationSymbols {
+export interface exchangeInformationSymbols {
     symbol: string;
     status: string;
     baseAsset: string;
@@ -209,63 +209,63 @@ export interface rollingWindowPriceChangeStatisticsResponse {
 
 type filters = priceFilter | percentPrice | percentPriceBySide | lotSize | minNotional | notional | iceBergParts | marketLotSize | maxNumOrders | maxNumAlgoOrders | maxNumIcebergOrders | maxPosition | trailingDelta | exchangeMaxNumOrders | exchangeMaxNumAlgoOrders | exchangeMaxNumIcebergOrders;
 
-interface exchangeMaxNumOrders {
+export interface exchangeMaxNumOrders {
     filterType: 'EXCHANGE_MAX_NUM_ORDERS';
     maxNumOrders: number;
 }
 
-interface exchangeMaxNumAlgoOrders {
+export interface exchangeMaxNumAlgoOrders {
     filterType: 'EXCHANGE_MAX_NUM_ALGO_ORDERS';
     maxNumAlgoOrders: number;
 }
 
-interface exchangeMaxNumIcebergOrders {
+export interface exchangeMaxNumIcebergOrders {
     filterType: 'EXCHANGE_MAX_NUM_ICEBERG_ORDERS';
     maxNumIcebergOrders: number;
 }
 
-interface lotSize {
+export interface lotSize {
     filterType: 'LOT_SIZE';
     minQty: string;
     maxQty: string;
     stepSize: string;
 }
 
-interface marketLotSize {
+export interface marketLotSize {
     filterType: 'MARKET_LOT_SIZE';
     minQty: string;
     maxQty: string;
     stepSize: string;
 }
 
-interface maxNumAlgoOrders {
+export interface maxNumAlgoOrders {
     filterType: 'MAX_NUM_ALGO_ORDERS';
     maxNumAlgoOrders: number;
 }
 
-interface maxNumOrders {
+export interface maxNumOrders {
     filterType: 'MAX_NUM_ORDERS';
     maxNumOrders: number;
 }
 
-interface maxNumIcebergOrders {
+export interface maxNumIcebergOrders {
     filterType: 'MAX_NUM_ICEBERG_ORDERS';
     maxNumIcebergOrders: number;
 }
 
-interface maxPosition {
+export interface maxPosition {
     filterType: 'MAX_POSITION';
     maxPosition: string;
 }
 
-interface minNotional {
+export interface minNotional {
     filterType: 'MIN_NOTIONAL';
     minNotional: string;
     applyToMarket: boolean;
     avgPriceMins: number;
 }
 
-interface notional {
+export interface notional {
     filterType: 'NOTIONAL';
     minNotional: string;
     applyMinToMarket: boolean;
@@ -274,14 +274,14 @@ interface notional {
     avgPriceMins: number;
 }
 
-interface percentPrice {
+export interface percentPrice {
     filterType: 'PERCENT_PRICE';
     multiplierUp: string;
     multiplierDown: string;
     avgPriceMins: number;
 }
 
-interface percentPriceBySide {
+export interface percentPriceBySide {
     filterType: 'PERCENT_PRICE_BY_SIDE';
     bidMultiplierUp: string;
     bidMultiplierDown: string;
@@ -290,19 +290,19 @@ interface percentPriceBySide {
     avgPriceMins: number;
 }
 
-interface priceFilter {
+export interface priceFilter {
     filterType: 'PRICE_FILTER';
     minPrice: string;
     maxPrice: string;
     tickSize: string;
 }
 
-interface iceBergParts {
+export interface iceBergParts {
     filterType: 'ICEBERG_PARTS';
     limit: number;
 }
 
-interface trailingDelta {
+export interface trailingDelta {
     filterType: 'TRAILING_DELTA';
     minTrailingAboveDelta: number;
     maxTrailingAboveDelta: number;
@@ -311,7 +311,8 @@ interface trailingDelta {
 }
 
 export interface tradingDayTickerOptions {
-    symbols?: string;
+    symbol?: string;
+    symbols?: string[];
     timeZone?: string;
     type?: 'FULL' | 'MINI';
 }

@@ -1,5 +1,5 @@
 import { AxiosProxyConfig } from 'axios';
-import { WebsocketOptions } from '../modules/websocket/websocketBase/types';
+import { WebsocketOptions, WebsocketStreamOptions } from '../modules/websocket/websocketBase/types';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export type Constructor<T = any> = new (...args: any[]) => T;
@@ -26,6 +26,11 @@ export interface sendMessageOptions {
 }
 
 export interface WebsocketAPIOptions extends WebsocketOptions {
+    wsURL?: string;
+    combinedStreams?: boolean;
+}
+
+export interface WebsocketStreamAPIOptions extends WebsocketStreamOptions {
     wsURL?: string;
     combinedStreams?: boolean;
 }

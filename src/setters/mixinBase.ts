@@ -12,8 +12,9 @@ import {
 } from '../modules/restful/index';
 import { mixinWsAccount, mixinWsMarket, mixinWsTrade, mixinWsUserData, WebsocketBase } from '../modules/websocket/websocketAPI';
 import { mixinWsStream } from '../modules/websocket/websocketStream/stream';
-import { WebsocketCallbacks, WebsocketConnection } from '../modules/websocket/websocketBase/types';
-import { SpotOptions, WebsocketAPIOptions } from './types';
+import { WebsocketCallbacks, WebsocketStreamCallbacks, WebsocketConnection } from '../modules/websocket/websocketBase/types';
+import { SpotOptions, WebsocketAPIOptions, WebsocketStreamAPIOptions } from './types';
+import { Logger } from '../helpers/logger';
 
 
 export const SpotBase = mixinMargin(mixinMarket(mixinSimpleEarn(mixinStream(mixinSubAccount(mixinTrade(mixinWallet(class {
@@ -26,6 +27,7 @@ export const SpotBase = mixinMargin(mixinMarket(mixinSimpleEarn(mixinStream(mixi
     privateKey: Buffer;
     privateKeyPassphrase: string;
     privateKeyAlgo: 'RSA' | 'ED25519';
+    logger: Logger = Logger.getInstance();
 
     constructor(apiKey: string, apiSecret: string, options: SpotOptions = {}) {
         this.apiKey = apiKey;
@@ -95,6 +97,7 @@ export const WebsocketFeaturesBase = mixinWsAccount(mixinWsMarket(mixinWsTrade(m
     callbacks: WebsocketCallbacks;
     reconnectDelay: number;
     wsConnection: WebsocketConnection;
+    logger: Logger = Logger.getInstance();
 
     constructor(apiKey: string, apiSecret: string, options?: WebsocketAPIOptions) {
         this.apiKey = apiKey;
@@ -108,11 +111,12 @@ export const WebsocketFeaturesBase = mixinWsAccount(mixinWsMarket(mixinWsTrade(m
 
 export const WebsocketStreamFeaturesBase = mixinWsStream(WebsocketBase(class {
     wsURL: string;
-    callbacks: WebsocketCallbacks;
+    callbacks: WebsocketStreamCallbacks;
     reconnectDelay: number;
     wsConnection: WebsocketConnection;
+    logger: Logger = Logger.getInstance();
 
-    constructor(options: WebsocketAPIOptions = {}) {
+    constructor(options: WebsocketStreamAPIOptions = {}) {
         this.wsURL = options.wsURL || 'wss://ws-api.binance.com:443/ws-api/v3';
         this.callbacks = options.callbacks || {};
         this.reconnectDelay = options.reconnectDelay || 5000;

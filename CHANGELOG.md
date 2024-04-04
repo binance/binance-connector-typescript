@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.7 - 2024-04-04
+
+### Changed
+- Update types
+- Update dependencies
+- Add logger class
+- Fix issue #14: Add new `WebsocketStream` type 
+- Fix issue #16: Update parameters of `GET /api/v3/ticker/tradingDay`
+- Fix issue #18: Multiple websocket streams subscription are now handled
+
 ## 0.3.6 - 2024-01-24
 
 ### Added

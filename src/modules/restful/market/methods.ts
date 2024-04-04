@@ -43,5 +43,5 @@ export interface MarketMethods {
     symbolPriceTicker(options?: symbolPriceTickerOptions): Promise<symbolPriceTickerResponse | symbolPriceTickerResponse[]>;
     symbolOrderBookTicker(options?: symbolOrderBookTickerOptions): Promise<symbolOrderBookTickerResponse | symbolOrderBookTickerResponse[]>;
     rollingWindowPriceChangeStatistics(options?: rollingWindowPriceChangeStatisticsOptions): Promise<rollingWindowPriceChangeStatisticsResponse | rollingWindowPriceChangeStatisticsResponse[]>;
-    tradingDayTicker(symbol: string, options?: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]>;
+    tradingDayTicker(options?: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]>;
 }

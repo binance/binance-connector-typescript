@@ -59,10 +59,10 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#exchange-information}
          */
         exchangeInfo(options?: exchangeInfoOptions) {
-            if (Object.prototype.hasOwnProperty.call(options, 'symbol') && options && options.symbol) {
+            if (options && options.symbol && Object.prototype.hasOwnProperty.call(options, 'symbol')) {
                 options.symbol = options.symbol.toUpperCase();
             }
-            if (Object.prototype.hasOwnProperty.call(options, 'symbols') && options && options.symbols) {
+            if (options && options.symbols && Object.prototype.hasOwnProperty.call(options, 'symbols')) {
                 options.symbols = options.symbols.map(symbol => symbol.toUpperCase());
             }
             this.sendMessage('exchangeInfo', options);

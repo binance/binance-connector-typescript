@@ -114,7 +114,7 @@ export interface newOrderResponse {
     fills?: fill[] | [];
 }
 
-interface fill {
+export interface fill {
     price: string;
     qty: string;
     commission: string;
@@ -301,7 +301,7 @@ export interface newOcoResponse {
     orderReports: newOcoOrderReports[];
 }
 
-interface newOcoOrders {
+export interface newOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -344,7 +344,7 @@ export interface getOcoResponse {
     orders: getOcoOrders[];
 }
 
-interface getOcoOrders {
+export interface getOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -369,7 +369,7 @@ export interface cancelOcoResponse {
     orderReports: cancelOcoOrderReports[];
 }
 
-interface cancelOcoOrders {
+export interface cancelOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -415,7 +415,7 @@ export interface getAllOcoResponse {
 }
 
 
-interface getAllOcoOrders {
+export interface getAllOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -437,7 +437,7 @@ export interface getOpenOcoResponse {
     orders: getOpenOcoOrders[];
 }
 
-interface getOpenOcoOrders {
+export interface getOpenOcoOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
@@ -466,14 +466,14 @@ export interface accountInformationResponse {
     uid: number;
 }
 
-interface accountInformationCommissionrates {
+export interface accountInformationCommissionrates {
     maker: string;
     taker: string;
     buyer: string;
     seller: string;
 }
 
-interface accountInformationBalances {
+export interface accountInformationBalances {
     asset: string;
     free: string;
     locked: string;
