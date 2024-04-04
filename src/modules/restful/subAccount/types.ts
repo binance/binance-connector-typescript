@@ -20,7 +20,7 @@ export interface getSubAccountListResponse {
     subAccounts: getSubAccountListSubAccounts[];
 }
 
-interface getSubAccountListSubAccounts {
+export interface getSubAccountListSubAccounts {
     email: string;
     isFreeze: boolean;
     createTime: number;
@@ -62,7 +62,7 @@ export interface getSubAccountFuturesAssetTransferHistoryResponse {
     transfers: getSubAccountFuturesAssetTransferHistoryTransfers[];
 }
 
-interface getSubAccountFuturesAssetTransferHistoryTransfers {
+export interface getSubAccountFuturesAssetTransferHistoryTransfers {
     from: string;
     to: string;
     asset: string;
@@ -89,7 +89,7 @@ export interface getSubAccountAssetsResponse {
     balances: getSubAccountAssetsBalances[];
 }
 
-interface getSubAccountAssetsBalances {
+export interface getSubAccountAssetsBalances {
     asset: string;
     free: number;
     locked: number;
@@ -108,7 +108,7 @@ export interface getSubAccountSpotAssetsSummaryResponse {
     spotSubUserAssetBtcVoList: getSubAccountSpotAssetsSummarySpotSubUserAssetBtcVoList[];
 }
 
-interface getSubAccountSpotAssetsSummarySpotSubUserAssetBtcVoList {
+export interface getSubAccountSpotAssetsSummarySpotSubUserAssetBtcVoList {
     email: string;
     totalAsset: string;
 }
@@ -191,13 +191,13 @@ export interface detailOnSubAccountMarginAccountResponse {
     marginUserAssetVoList: marginUserAssetVoList[];
 }
 
-interface marginTradeCoeffVo {
+export interface marginTradeCoeffVo {
     forceLiquidationBar: string
     marginCallBar: string
     normalBar: string
 }
 
-interface marginUserAssetVoList {
+export interface marginUserAssetVoList {
     asset: string;
     borrowed: string;
     free: string;
@@ -217,7 +217,7 @@ export interface summaryOfSubAccountMarginAccountResponse {
     subAccountList: summaryOfSubAccountMarginAccountSubAccountlist[];
 }
 
-interface summaryOfSubAccountMarginAccountSubAccountlist {
+export interface summaryOfSubAccountMarginAccountSubAccountlist {
     email: string;
     totalAssetOfBtc: string;
     totalLiabilityOfBtc: string;
@@ -256,7 +256,7 @@ export interface detailOnSubAccountFuturesAccountResponse {
     updateTime: number;
 }
 
-interface detailOnSubAccountFuturesAccountAssets {
+export interface detailOnSubAccountFuturesAccountAssets {
     asset: string;
     initialMargin: string;
     maintenanceMargin: string;
@@ -284,7 +284,7 @@ export interface summaryOfSubAccountFuturesAccountResponse {
     subAccountList: summaryOfSubAccountFuturesAccountSubAccountlist[];
 }
 
-interface summaryOfSubAccountFuturesAccountSubAccountlist {
+export interface summaryOfSubAccountFuturesAccountSubAccountlist {
     email: string;
     totalInitialMargin: string;
     totalMaintenanceMargin: string;
@@ -394,7 +394,7 @@ export interface getUniversalTransferHistoryResponse {
     totalCount: number;
 }
 
-interface resultUniversalTransferHistoryResult {
+export interface resultUniversalTransferHistoryResult {
     tranId: number;
     fromEmail: string;
     toEmail: string;
@@ -415,7 +415,7 @@ export interface getDetailOnSubAccountFuturesAccountV2Response {
     futureAccountResp: detailOnSubAccountFuturesAccountV2Futureaccountresp;
 }
 
-interface detailOnSubAccountFuturesAccountV2Futureaccountresp {
+export interface detailOnSubAccountFuturesAccountV2Futureaccountresp {
     email: string;
     assets: detailOnSubAccountFuturesAccountV2Assets[];
     canDeposit: boolean;
@@ -433,7 +433,7 @@ interface detailOnSubAccountFuturesAccountV2Futureaccountresp {
     updateTime: number;
 }
 
-interface detailOnSubAccountFuturesAccountV2Assets {
+export interface detailOnSubAccountFuturesAccountV2Assets {
     asset: string;
     initialMargin: string;
     maintenanceMargin: string;
@@ -455,7 +455,7 @@ export interface summaryOfSubAccountFuturesAccountV2Response {
     futureAccountSummaryResp: summaryOfSubAccountFuturesAccountV2Futureaccountsummaryresp;
 }
 
-interface summaryOfSubAccountFuturesAccountV2Futureaccountsummaryresp {
+export interface summaryOfSubAccountFuturesAccountV2Futureaccountsummaryresp {
     totalInitialMargin: string
     totalMaintenanceMargin: string
     totalMarginBalance: string
@@ -467,7 +467,7 @@ interface summaryOfSubAccountFuturesAccountV2Futureaccountsummaryresp {
     subAccountList: summaryOfSubAccountFuturesAccountV2Subaccountlist[]
 }
 
-interface summaryOfSubAccountFuturesAccountV2Subaccountlist {
+export interface summaryOfSubAccountFuturesAccountV2Subaccountlist {
     email: string
     totalInitialMargin: string
     totalMaintenanceMargin: string
@@ -487,7 +487,7 @@ export interface futuresPositionriskOfSubAccountV2Response {
     futurePositionRiskVos: futurePositionRiskVos[];
 }
 
-interface futurePositionRiskVos {
+export interface futurePositionRiskVos {
     entryPrice: string;
     leverage: string;
     maxNotional: string;
@@ -586,13 +586,13 @@ export interface getManagedSubAccountSnapshotResponse {
     snapshotVos: snapshotVos[];
 }
 
-interface snapshotVos {
+export interface snapshotVos {
     data: managedSubAccountSnapshotData;
     type: string;
     updateTime: number;
 }
 
-interface managedSubAccountSnapshotData {
+export interface managedSubAccountSnapshotData {
     balances: object
     totalAssetOfBtc: string
 }
@@ -607,7 +607,7 @@ export interface getManagedSubAccountTransferLogResponse {
     count: number;
 }
 
-interface managerSubTransferHistoryVos {
+export interface managerSubTransferHistoryVos {
     fromEmail: string;
     fromAccountType: FromAccountType;
     toEmail: string;
@@ -636,24 +636,24 @@ export interface getManagedSubAccountFuturesAssetDetailsResponse {
     snapshotVos: futuresAssetDetailsSnapshotVos[];
 }
 
-interface futuresAssetDetailsSnapshotVos {
+export interface futuresAssetDetailsSnapshotVos {
     data: futuresAssetDetailsSnapshotData;
     type: string;
     updateTime: number;
 }
 
-interface futuresAssetDetailsSnapshotData {
+export interface futuresAssetDetailsSnapshotData {
     assets: futuresAssetDetailsSnapshotDataAssets[];
     position: futuresAssetDetailsSnapshotDataPosition[];
 }
 
-interface futuresAssetDetailsSnapshotDataAssets {
+export interface futuresAssetDetailsSnapshotDataAssets {
     asset: string;
     marginBalance: number;
     walletBalance: number;
 }
 
-interface futuresAssetDetailsSnapshotDataPosition {
+export interface futuresAssetDetailsSnapshotDataPosition {
     symbol: string;
     entryPrice: number;
     markPrice: number;
@@ -668,7 +668,7 @@ export interface getManagedSubAccountMarginAssetDetailsResponse {
     userAssets: userAssets[];
 }
 
-interface userAssets {
+export interface userAssets {
     asset: string;
     borrowed: string;
     free: string;
@@ -685,7 +685,7 @@ export interface getSubAccountAssetsForMasterAccountResponse {
     balances: getSubAccountAssetsForMasterAccountBalances[];
 }
 
-interface getSubAccountAssetsForMasterAccountBalances {
+export interface getSubAccountAssetsForMasterAccountBalances {
     asset: string;
     free: number;
     locked: number;
@@ -703,7 +703,7 @@ export interface getManagedSubAccountListResponse {
     managerSubUserInfoVoList: managerSubUserInfoVoList[];
 }
 
-interface managerSubUserInfoVoList {
+export interface managerSubUserInfoVoList {
     rootUserId: number;
     managersubUserId: number;
     bindParentUserId: number;
@@ -731,7 +731,7 @@ export interface getSubAccountTransactionStatisticsForMasterAccountResponse {
     tradeInfoVos: tradeInfoVos[];
 }
 
-interface tradeInfoVos {
+export interface tradeInfoVos {
     userId: number;
     btc: number;
     btcFutures: number;

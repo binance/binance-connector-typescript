@@ -26,7 +26,7 @@ export interface allCoinsInformationResponse {
     withdrawing: string;
 }
 
-interface allCoinsInformationNetworklist {
+export interface allCoinsInformationNetworklist {
     addressRegex: string;
     coin: string;
     depositDesc?: string;
@@ -63,18 +63,18 @@ export interface dailyAccountSnapshotResponse {
     snapshotVos: dailyAccountSnapshotSnapshotvos[];
 }
 
-interface dailyAccountSnapshotSnapshotvos {
+export interface dailyAccountSnapshotSnapshotvos {
     data: dailyAccountSnapshotData;
     type: string;
     updateTime: number;
 }
 
-interface dailyAccountSnapshotData {
+export interface dailyAccountSnapshotData {
     balances: dailyAccountSnapshotBalances[];
     totalAssetOfBtc: string;
 }
 
-interface dailyAccountSnapshotBalances {
+export interface dailyAccountSnapshotBalances {
     asset: string;
     free: string;
     locked: string;
@@ -193,14 +193,14 @@ export interface accountApiTradingStatusResponse {
     data: accountApiTradingStatusData;
 }
 
-interface accountApiTradingStatusData {
+export interface accountApiTradingStatusData {
     isLocked: boolean;
     plannedRecoverTime: number;
     triggerCondition: accountApiTradingStatusTriggercondition;
     updateTime: number;
 }
 
-interface accountApiTradingStatusTriggercondition {
+export interface accountApiTradingStatusTriggercondition {
     GCR: number;
     IFER: number;
     UFR: number;
@@ -218,7 +218,7 @@ export interface dustlogResponse {
     userAssetDribblets: dustlogUserassetdribblets[];
 }
 
-interface dustlogUserassetdribblets {
+export interface dustlogUserassetdribblets {
     operateTime: number;
     totalTransferedAmount: string;
     totalServiceChargeAmount: string;
@@ -226,7 +226,7 @@ interface dustlogUserassetdribblets {
     userAssetDribbletDetails: dustlogUserassetdribbletdetails[];
 }
 
-interface dustlogUserassetdribbletdetails {
+export interface dustlogUserassetdribbletdetails {
     transId: number;
     serviceChargeAmount: string;
     amount: string;
@@ -247,7 +247,7 @@ export interface getAssetsThatCanBeConvertedIntoBnbResponse {
     dribbletPercentage: string;
 }
 
-interface getAssetsThatCanBeConvertedIntoBnbDetails {
+export interface getAssetsThatCanBeConvertedIntoBnbDetails {
     asset: string;
     assetFullName: string;
     amountFree: string;
@@ -269,7 +269,7 @@ export interface dustTransferResponse {
     transferResult: dustTransferTransferResult[];
 }
 
-interface dustTransferTransferResult {
+export interface dustTransferTransferResult {
     amount: string;
     fromAsset: string;
     operateTime: number;
@@ -291,7 +291,7 @@ export interface assetDividendRecordResponse {
     total: number;
 }
 
-interface assetDividendRecordRows {
+export interface assetDividendRecordRows {
     id: number;
     amount: string;
     asset: string;
@@ -310,7 +310,7 @@ export interface assetDetailResponse {
     SKY?: assetDetail;
 }
 
-interface assetDetail {
+export interface assetDetail {
     minWithdrawAmount: string
     depositStatus: boolean
     withdrawFee: number
@@ -417,7 +417,7 @@ export interface getConvertTransferResponse {
     rows: getConvertTransferRows[];
 }
 
-interface getConvertTransferRows {
+export interface getConvertTransferRows {
     tranId: number;
     type: number;
     time: number;
@@ -442,7 +442,7 @@ export interface getCloudminingPaymentAndRefundHistoryResponse {
     rows: getCloudminingPaymentAndRefundHistoryRows[];
 }
 
-interface getCloudminingPaymentAndRefundHistoryRows {
+export interface getCloudminingPaymentAndRefundHistoryRows {
     createTime: number;
     tranId: number;
     type: number;
@@ -475,7 +475,7 @@ export interface getAutoconvertingStableCoinsResponse {
     exchangeRates: getAutoconvertingStableCoinsExchangerates;
 }
 
-interface getAutoconvertingStableCoinsExchangerates {
+export interface getAutoconvertingStableCoinsExchangerates {
     USDC: string
     TUSD: string
     USDP: string

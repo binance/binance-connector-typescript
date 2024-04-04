@@ -21,7 +21,7 @@ export interface getSimpleEarnFlexibleProductListResponse {
     total: number;
 }
 
-interface getSimpleEarnFlexibleProductListRows {
+export interface getSimpleEarnFlexibleProductListRows {
     asset: string;
     latestAnnualPercentageRate: string;
     tierAnnualPercentageRate: tierAnnualPercentageRate;
@@ -48,13 +48,13 @@ export interface getSimpleEarnLockedProductListResponse {
     total: number;
 }
 
-interface getSimpleEarnLockedProductListRows {
+export interface getSimpleEarnLockedProductListRows {
     projectId: string;
     detail: lockedProductDetails;
     quota: lockedProductQuota;
 }
 
-interface lockedProductDetails {
+export interface lockedProductDetails {
     asset: string;
     rewardAsset: string;
     duration: number;
@@ -67,7 +67,7 @@ interface lockedProductDetails {
     extraRewardAPR: string;
 }
 
-interface lockedProductQuota {
+export interface lockedProductQuota {
     totalPersonalQuota: string;
     minimum: string;
 }
@@ -129,7 +129,7 @@ export interface getFlexibleProductPositionResponse {
     total: number;
 }
 
-interface getFlexibleProductPositionRows {
+export interface getFlexibleProductPositionRows {
     totalAmount: string;
     tierAnnualPercentageRate: tierAnnualPercentageRate;
     latestAnnualPercentageRate: string;
@@ -146,7 +146,7 @@ interface getFlexibleProductPositionRows {
     autoSubscribe: boolean;
 }
 
-interface tierAnnualPercentageRate {
+export interface tierAnnualPercentageRate {
     '0-5BTC': number;
     '5-10BTC': number;
 }
@@ -165,7 +165,7 @@ export interface getLockedProductPositionResponse {
     total: number;
 }
 
-interface getLockedProductPositionRows {
+export interface getLockedProductPositionRows {
     positionId: string;
     projectId: string;
     asset: string;
@@ -209,7 +209,7 @@ export interface getFlexibleSubscriptionRecordResponse {
     total: number;
 }
 
-interface getFlexibleSubscriptionRecordRows {
+export interface getFlexibleSubscriptionRecordRows {
     amount: string;
     asset: string;
     time: number;
@@ -236,7 +236,7 @@ export interface getLockedSubscriptionRecordResponse {
     total: number;
 }
 
-interface getLockedSubscriptionRecordRows {
+export interface getLockedSubscriptionRecordRows {
     positionId: string;
     purchaseId: number;
     time: number;
@@ -265,7 +265,7 @@ export interface getFlexibleRedemptionRecordResponse {
     total: number;
 }
 
-interface getFlexibleRedemptionRecordRows {
+export interface getFlexibleRedemptionRecordRows {
     amount: string;
     asset: string;
     time: number;
@@ -291,7 +291,7 @@ export interface getLockedRedemptionRecordResponse {
     total: number;
 }
 
-interface getLockedRedemptionRecordRows {
+export interface getLockedRedemptionRecordRows {
     positionId: string;
     redeemId: number;
     time: number;
@@ -315,7 +315,7 @@ export interface getFlexibleRewardsHistoryResponse {
     total: number;
 }
 
-interface getFlexibleRewardsHistoryRows {
+export interface getFlexibleRewardsHistoryRows {
     asset: string;
     rewards: string;
     projectId: string;
@@ -337,7 +337,7 @@ export interface getLockedRewardsHistoryResponse {
     total: number;
 }
 
-interface getLockedRewardsHistoryRows {
+export interface getLockedRewardsHistoryRows {
     positionId: string;
     time: number;
     asset: string;
@@ -421,7 +421,7 @@ export interface getRateHistoryResponse {
     total: number;
 }
 
-interface getRateHistoryRows {
+export interface getRateHistoryRows {
     productId: string;
     asset: string;
     annualPercentageRate: string;
@@ -442,7 +442,7 @@ export interface getCollateralRecordResponse {
     total: number;
 }
 
-interface getCollateralRecordRows {
+export interface getCollateralRecordRows {
     amount: string;
     productId: string;
     asset: string;

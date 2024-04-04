@@ -286,20 +286,23 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         /**
          * Trading Day Ticker {@link https://binance-docs.github.io/apidocs/spot/en/#trading-day-ticker}
          * 
-         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {object} [options]
-         * @param {string} [options.symbols] - The maximum number of symbols allowed in a request is 100.
+         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
+         * @param {string[]} [options.symbols] - The maximum number of symbols allowed in a request is 100.
          * @param {string} [options.timeZone] - Default: 0 (UTC)
          * @param {string} [options.type] - Supported values: FULL or MINI., If none provided, the default is FULL
          */
-        async tradingDayTicker(symbol: string, options?: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]> {
-            validateRequiredParameters({ symbol });
+        async tradingDayTicker(options: tradingDayTickerOptions): Promise<tradingDayTickerResponse | tradingDayTickerResponse[]> {
+            if (options.symbol && options.symbols) throw new Error('Symbol and Symbols cannot be sent together.');
+            if (options && options.symbol && Object.prototype.hasOwnProperty.call(options, 'symbol')) {
+                options.symbol = options.symbol.toUpperCase();
+            }
+            if (options && options.symbols && Object.prototype.hasOwnProperty.call(options, 'symbols')) {
+                options.symbols = options.symbols.map(symbol => symbol.toUpperCase());
+            }
             const url = this.preparePath('/api/v3/ticker/tradingDay',
                 Object.assign(
                     options ? options : {},
-                    {
-                        symbol: symbol.toUpperCase()
-                    }
                 )
             );
             return await this.makeRequest('GET', url);

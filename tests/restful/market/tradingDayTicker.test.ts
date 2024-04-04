@@ -10,7 +10,7 @@ describe('Get Trading Day Ticker', () => {
     const client = new Spot('', '', { baseURL: baseURL });
     it('should return Trading Day Ticker', async () => {
         const spy = jest.spyOn(client, 'tradingDayTicker').mockReturnValue(Promise.resolve(mockResponse));
-        const res = await client.tradingDayTicker('BNBUSDT');
+        const res = await client.tradingDayTicker({symbol:'BNBUSDT'});
         expect(res).toBeDefined();
         expect(res).toBe(mockResponse);
         spy.mockRestore();

@@ -1,4 +1,5 @@
 import { WebsocketAPI } from '../../../websocketAPI';
+import { WebsocketStream } from '../../../websocketStream';
 import WebSocketClient from 'ws';
 
 export interface websocketBaseMethods {
@@ -44,4 +45,18 @@ export interface WebsocketConnection {
 export interface WebsocketOptions {
     reconnectDelay?: number;
     callbacks?: WebsocketCallbacks;
+}
+
+export interface WebsocketStreamCallbacks {
+    open?: (client: WebsocketStream) => void;
+    close?: () => void;
+    ping?: (data?: object) => void;
+    pong?: () => void;
+    error?: () => void;
+    message?: (data: string) => void;
+}
+
+export interface WebsocketStreamOptions {
+    reconnectDelay?: number;
+    callbacks?: WebsocketStreamCallbacks;
 }
