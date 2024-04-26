@@ -34,6 +34,7 @@ export async function httpRequest(config: HttpRequestConfig) {
         if (axios.isAxiosError(error) && error.response) {
             throw error.response.data.msg;
         } else {
+            console.log("origin :", error);
             throw new Error('Http request error');
         }
     }
