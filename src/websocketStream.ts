@@ -20,7 +20,7 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
 
     subscribe(stream: string | string[]) {
         if (!this.isConnected()) {
-            if (Array.isArray(stream)) stream = stream.toString().replace(',', '/');
+            if (Array.isArray(stream)) stream = stream.toString().replaceAll(',', '/');
             const url = this._prepareURL(stream);
             this.initConnect(url);
         } else {
