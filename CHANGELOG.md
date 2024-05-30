@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.3.8 - 2024-05-30
+
+### Added
+- `Convert`:
+  - `GET /sapi/v1/convert/exchangeInfo`
+  - `GET /sapi/v1/convert/assetInfo`
+  - `POST /sapi/v1/convert/getQuote`
+  - `POST /sapi/v1/convert/acceptQuote`
+  - `GET /sapi/v1/convert/orderStatus`
+  - `POST /sapi/v1/convert/limit/placeOrder`
+  - `POST /sapi/v1/convert/limit/cancelOrder`
+  - `GET /sapi/v1/convert/limit/queryOpenOrders`
+  - `GET /sapi/v1/convert/tradeFlow`
+
+- `Portfolio`:
+  - `GET /sapi/v1/portfolio/account`
+  - `GET /sapi/v1/portfolio/collateralRate`
+  - `GET /sapi/v1/portfolio/pmLoan`
+  - `POST /sapi/v1/portfolio/repay`
+  - `GET /sapi/v1/portfolio/interest-history`
+  - `GET /sapi/v1/portfolio/asset-index-price`
+  - `POST /sapi/v1/portfolio/auto-collection`
+  - `POST /sapi/v1/portfolio/asset-collection`
+  - `POST /sapi/v1/portfolio/bnb-transfer`
+  - `POST /sapi/v1/portfolio/repay-futures-switch`
+  - `GET /sapi/v1/portfolio/repay-futures-switch`
+  - `POST /sapi/v1/portfolio/repay-futures-negative-balance`
+  - `GET /sapi/v1/portfolio/margin-asset-leverage`
+
+### Changed
+- Update dependencies
+- Update `GET /api/v3/exchangeInfo` response type
+- Correct `createMarginListenKey`, `renewMarginListenKey` and `closeMarginListenKey` url
+- Update combined streams for websocket streams
+- Update Websocket Testnet endpoint
+
 ## 0.3.7 - 2024-04-04
 
 ### Changed

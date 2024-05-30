@@ -40,12 +40,15 @@ export interface exchangeInformationSymbols {
     orderTypes: string[];
     icebergAllowed: boolean;
     ocoAllowed: boolean;
+    otoAllowed: boolean;
     quoteOrderQtyMarketAllowed: boolean;
     allowTrailingStop: boolean;
+    cancelReplaceAllowed: boolean;
     isSpotTradingAllowed: boolean;
     isMarginTradingAllowed: boolean;
     filters: filters[];
     permissions: string[];
+    permissionSets: string[][];
     defaultSelfTradePreventionMode: string;
     allowedSelfTradePreventionModes: string[];
 }

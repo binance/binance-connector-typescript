@@ -35,6 +35,25 @@ export enum CancelRestrictions {
     ONLY_PARTIALLY_FILLED = 'ONLY_PARTIALLY_FILLED'
 }
 
+export enum ConvertExpiredType {
+    One_Day = '1_D',
+    Three_Day = '3_D',
+    Seven_Day = '7_D',
+    Thirty_Day = '30_D',
+}
+
+export enum ConvertOrderStatus {
+    PROCESS = 'PROCESS',
+    ACCEPT_SUCCESS = 'ACCEPT_SUCCESS',
+    SUCCESS = 'SUCCESS',
+    FAIL = 'FAIL',
+}
+
+export enum ConvertSide {
+    BUY = 'BUY',
+    SELL = 'SELL',
+}
+
 export enum CrossMarginAccountTransferType {
     TransferFromMainAccountToMarginAccount = 1,
     TransferFromMarginAccountToMainAccount = 2,
@@ -348,7 +367,28 @@ export enum Permissions {
     TRD_GRP_010 = 'TRD_GRP_010',
     TRD_GRP_011 = 'TRD_GRP_011',
     TRD_GRP_012 = 'TRD_GRP_012',
-    TRD_GRP_013 = 'TRD_GRP_013'
+    TRD_GRP_013 = 'TRD_GRP_013',
+}
+
+export enum PortfolioAccountStatus {
+    NORMAL = 'NORMAL',
+    MARGIN_CALL = 'MARGIN_CALL',
+    SUPPLY_MARGIN = 'SUPPLY_MARGIN',
+    REDUCE_ONLY = 'REDUCE_ONLY',
+    ACTIVE_LIQUIDATION = 'ACTIVE_LIQUIDATION',
+    FORCE_LIQUIDATION = 'FORCE_LIQUIDATION',
+    BANKRUPTED = 'BANKRUPTED',
+}
+
+export enum PortfolioAccountType {
+    PM_1 = 'PM_1',
+    PM_2 = 'PM_2',
+    PM_3 = 'PM_3',
+}
+
+export enum PortfolioMarginFrom {
+    SPOT = 'SPOT',
+    MARGIN = 'MARGIN',
 }
 
 export enum PositionSide {
@@ -513,6 +553,11 @@ export enum TransFrom {
     ISOLATED_MARGIN = 'ISOLATED_MARGIN',
 }
 
+export enum TransferSide {
+    TO_UM = 'TO_UM',
+    FROM_UM = 'FROM_UM',
+}
+
 export enum TransTo {
     SPOT = 'SPOT',
     ISOLATED_MARGIN = 'ISOLATED_MARGIN',
@@ -562,6 +607,11 @@ export enum ValidTime {
     '30s' = '30s',
     '1m' = '1m',
     '2m' = '2m',
+}
+
+export enum WalletType {
+    SPOT = 'SPOT',
+    FUNDING = 'FUNDING',
 }
 
 export enum WithdrawHistory {
