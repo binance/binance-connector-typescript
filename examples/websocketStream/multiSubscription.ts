@@ -6,7 +6,7 @@ const callbacks = {
     message: (data: string) => console.info(data)
 };
 
-const websocketStreamClient = new WebsocketStream({ callbacks });
+const websocketStreamClient = new WebsocketStream({ callbacks, combinedStreams: true });
 
 websocketStreamClient.subscribe(['bnbusdt@depth', 'btcusdt@depth']);
 

@@ -1,5 +1,5 @@
 import { Interval } from '../../enum';
-import { 
+import {
     checkServerTimeResponse,
     compressedAggregateTradesListOptions,
     compressedAggregateTradesListResponse,

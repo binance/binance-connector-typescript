@@ -41,7 +41,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
         * Create a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#create-a-listenkey-user_stream-2}
         */
         async createMarginListenKey(): Promise<listenkeyResponse> {
-            return await this.makeRequest('POST', '/api/v1/userDataStream');
+            return await this.makeRequest('POST', '/sapi/v1/userDataStream');
         }
 
 
@@ -52,7 +52,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
         */
         async renewMarginListenKey(listenKey: string): Promise<Record<string, never>> {
             validateRequiredParameters({ listenKey });
-            const url = this.preparePath('/api/v1/userDataStream', { listenKey: listenKey });
+            const url = this.preparePath('/sapi/v1/userDataStream', { listenKey: listenKey });
             return await this.makeRequest('PUT', url);
         }
 
@@ -64,7 +64,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
         */
         async closeMarginListenKey(listenKey: string): Promise<Record<string, never>> {
             validateRequiredParameters({ listenKey });
-            const url = this.preparePath('/api/v1/userDataStream', { listenKey: listenKey });
+            const url = this.preparePath('/sapi/v1/userDataStream', { listenKey: listenKey });
             return await this.makeRequest('DELETE', url);
         }
 
