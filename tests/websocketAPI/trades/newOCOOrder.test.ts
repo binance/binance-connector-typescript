@@ -2,18 +2,18 @@ import http from 'http';
 import WebSocket from 'ws';
 import { startServer, waitForSocketState, resultTemplate } from '../utils/webSocketTestUtils';
 import { mockNewOCOOrder }  from '../../mock_values/websocket/trades/newOCOOrder';
-import { NewOrderRespType, Side, StopLimitTimeInForce, WebsocketAPI } from '../../../src/index';
+import { OrderListAboveBelowType, Side, StopLimitTimeInForce, WebsocketAPI } from '../../../src/index';
 
 describe('New OCO Order', () => {
     let responseMessage: WebSocket.Data = '';
     let server: http.Server;
     const callbacks = {
-        open: (client: WebsocketAPI) => client.newOCOOrder('BNBUSDT', Side.BUY, 300, 0.1, {
+        open: (client: WebsocketAPI) => client.newOCOOrder('BNBUSDT', Side.BUY, 1, OrderListAboveBelowType.STOP_LOSS_LIMIT, OrderListAboveBelowType.LIMIT_MAKER, {
             listClientOrderId: 'my_list_order',
-            stopPrice: 330,
-            stopLimitPrice: 340,
-            stopLimitTimeInForce: StopLimitTimeInForce.GTC,
-            newOrderRespType: NewOrderRespType.FULL
+            abovePrice: 400,
+            aboveStopPrice: 405,
+            aboveTimeInForce: StopLimitTimeInForce.GTC,
+            belowPrice: 395
         }),
         close: () => console.log('Disconnected from WebSocket server'),
         message: (data: string) => responseMessage = data.toString()

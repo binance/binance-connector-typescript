@@ -66,7 +66,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * All Coins' Information (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#all-coins39-information-user_data}
+        * All Coins' Information (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -151,7 +151,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Deposit History (supporting network) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network}
+        * Deposit History (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data}
         *
         * @param {object} [options]
         * @param {string} [options.coin] - Coin name
@@ -172,7 +172,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Withdraw History (supporting network) {@link https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network}
+        * Withdraw History (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data}
         *
         * @param {object} [options]
         * @param {string} [options.coin] - Coin name
@@ -193,7 +193,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Deposit Address (supporting network) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network}
+        * Deposit Address (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data}
         *
         * @param {string} coin - Coin name
         * @param {object} [options]
@@ -411,7 +411,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Convert Transfer (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#convert-transfer-user_data}
+        * BUSD Convert (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#busd-convert-trade}
         *
         * @param {string} clientTranId - The unique flag, the min length is 20
         * @param {string} asset

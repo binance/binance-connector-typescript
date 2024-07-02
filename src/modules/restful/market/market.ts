@@ -108,7 +108,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Old Trade Lookup (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#old-trade-lookup-market_data}
+        * Old Trade Lookup {@link https://binance-docs.github.io/apidocs/spot/en/#old-trade-lookup}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]

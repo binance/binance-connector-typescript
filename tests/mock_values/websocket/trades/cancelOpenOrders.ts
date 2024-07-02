@@ -1,6 +1,6 @@
 import {
-    OCOOrderStatus,
-    OCOStatusType,
+    OrderListOrderStatus,
+    OrderListStatusType,
     OrderStatus,
     OrderType,
     SelfTradePreventionMode,
@@ -34,8 +34,8 @@ export const mockCancelOpenOrders: (WsTradeTypes.cancelOpenOrder | WsTradeTypes.
     {
         'orderListId': 19431,
         'contingencyType': 'OCO',
-        'listStatusType': OCOStatusType.ALL_DONE,
-        'listOrderStatus': OCOOrderStatus.ALL_DONE,
+        'listStatusType': OrderListStatusType.ALL_DONE,
+        'listOrderStatus': OrderListOrderStatus.ALL_DONE,
         'listClientOrderId': 'iuVNVJYYrByz6C4yGOPPK0',
         'transactionTime': 1660803702431,
         'symbol': 'BTCUSDT',

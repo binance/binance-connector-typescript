@@ -1,6 +1,6 @@
 import { RestSubAccountTypes } from '../../../../src/index';
 
-export const mockResponse: RestSubAccountTypes.updateIpRestrictionForSubAccountApiKeyResponse = {
+export const mockResponse: RestSubAccountTypes.addIpRestrictionForSubAccountApiKeyResponse = {
     'status': '2',
     'ipList': [''],
     'updateTime': 1636369557189,

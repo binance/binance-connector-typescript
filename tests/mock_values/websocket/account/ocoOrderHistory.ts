@@ -1,11 +1,11 @@
-import { OCOOrderStatus, OCOStatusType, RestTradeTypes } from '../../../../src/index';
+import { OrderListOrderStatus, OrderListStatusType, RestTradeTypes } from '../../../../src/index';
 
 export const mockOcoOrderHistory: RestTradeTypes.getOcoResponse[] = [
     {
         'orderListId': 1274512,
         'contingencyType': 'OCO',
-        'listStatusType': OCOStatusType.EXEC_STARTED,
-        'listOrderStatus': OCOOrderStatus.EXECUTING,
+        'listStatusType': OrderListStatusType.EXEC_STARTED,
+        'listOrderStatus': OrderListOrderStatus.EXECUTING,
         'listClientOrderId': '08985fedd9ea2cf6b28996',
         'transactionTime': 1660801713793,
         'symbol': 'BTCUSDT',

@@ -116,7 +116,7 @@ export function websocketServerReturnedValue(message: object, result: websocketR
     case 'order.status':
         result.data = mockGetOrder;
         return result;
-    case 'orderList.place':
+    case 'orderList.place.oco':
         result.data = mockNewOCOOrder;
         return result;
     case 'order.place':

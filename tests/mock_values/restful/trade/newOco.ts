@@ -1,10 +1,10 @@
-import { OCOOrderStatus, OCOStatusType, RestTradeTypes } from '../../../../src/index';
+import { OrderListOrderStatus, OrderListStatusType, RestTradeTypes } from '../../../../src/index';
 
 export const mockResponse: RestTradeTypes.newOcoResponse = {
     'orderListId': 0,
     'contingencyType': 'OCO',
-    'listStatusType': OCOStatusType.EXEC_STARTED,
-    'listOrderStatus': OCOOrderStatus.EXECUTING,
+    'listStatusType': OrderListStatusType.EXEC_STARTED,
+    'listOrderStatus': OrderListOrderStatus.EXECUTING,
     'listClientOrderId': 'JYVpp3F0f5CAG15DhtrqLp',
     'transactionTime': 1563417480525,
     'symbol': 'LTCBTC',
@@ -30,6 +30,7 @@ export const mockResponse: RestTradeTypes.newOcoResponse = {
         'side': '',
         'stopPrice': '',
         'workingTime': '',
+        'icebergQty': '',
         'selfTradePreventionMode': ''
     }
     ]

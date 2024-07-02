@@ -1,10 +1,10 @@
-import { OCOOrderStatus, OCOStatusType, RestTradeTypes } from '../../../../src/index';
+import { OrderListOrderStatus, OrderListStatusType, RestTradeTypes } from '../../../../src/index';
 
 export const mockResponse: RestTradeTypes.cancelOcoResponse = {
     'orderListId': 1929,
     'contingencyType': 'OCO',
-    'listStatusType': OCOStatusType.ALL_DONE,
-    'listOrderStatus': OCOOrderStatus.ALL_DONE,
+    'listStatusType': OrderListStatusType.ALL_DONE,
+    'listOrderStatus': OrderListOrderStatus.ALL_DONE,
     'listClientOrderId': 'C3wyj4WVEktd7u9aVBRXcN',
     'transactionTime': 1574040868128,
     'symbol': 'BNBBTC',

@@ -1,11 +1,11 @@
-import { OCOOrderStatus, OCOStatusType, RestMarginTypes } from '../../../../src/index';
+import { OrderListOrderStatus, OrderListStatusType, RestMarginTypes } from '../../../../src/index';
 
 export const mockResponse: RestMarginTypes.getMarginAccountOpenOcoResponse[] = [
     {
         'orderListId': 31,
         'contingencyType': 'OCO',
-        'listStatusType': OCOStatusType.EXEC_STARTED,
-        'listOrderStatus': OCOOrderStatus.EXECUTING,
+        'listStatusType': OrderListStatusType.EXEC_STARTED,
+        'listOrderStatus': OrderListOrderStatus.EXECUTING,
         'listClientOrderId': 'wuB13fmulKj3YjdqWEcsnp',
         'transactionTime': 1565246080644,
         'symbol': 'LTCBTC',

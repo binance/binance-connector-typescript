@@ -116,7 +116,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get historical trades.
          *
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#historical-trades-market_data}
+         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#historical-trades}
          * @param {string} symbol
          * @param {object} [options]
          * @param {number} [options.limit]
