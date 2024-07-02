@@ -1,9 +1,9 @@
 import {
     OrderType,
     OrderStatus,
-    OCOOrderStatus,
+    OrderListOrderStatus,
     MarginArchive,
-    OCOStatusType,
+    OrderListStatusType,
     IsIsolatedMargin,
     Side,
     NewOrderRespType,
@@ -410,8 +410,8 @@ export interface marginAccountCancelOcoOptions {
 export interface marginAccountCancelOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -455,8 +455,8 @@ export interface getMarginAccountOcoOptions {
 export interface getMarginAccountOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -483,8 +483,8 @@ export interface getMarginAccountAllOcoOptions {
 export interface getMarginAccountAllOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -507,8 +507,8 @@ export interface getMarginAccountOpenOcoOptions {
 export interface getMarginAccountOpenOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;

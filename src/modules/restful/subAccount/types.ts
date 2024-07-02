@@ -531,12 +531,12 @@ export interface deleteIpListForASubAccountApiKeyResponse {
     apiKey: string;
 }
 
-export interface updateIpRestrictionForSubAccountApiKeyOptions {
+export interface addIpRestrictionForSubAccountApiKeyOptions {
     ipAddress?: string;
     recvWindow?: number;
 }
 
-export interface updateIpRestrictionForSubAccountApiKeyResponse {
+export interface addIpRestrictionForSubAccountApiKeyResponse {
     status: string;
     ipList: string[];
     updateTime: number;

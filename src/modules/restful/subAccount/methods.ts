@@ -73,8 +73,8 @@ import {
     getIpRestrictionForASubAccountApiKeyResponse,
     deleteIpListForASubAccountApiKeyOptions,
     deleteIpListForASubAccountApiKeyResponse,
-    updateIpRestrictionForSubAccountApiKeyOptions,
-    updateIpRestrictionForSubAccountApiKeyResponse,
+    addIpRestrictionForSubAccountApiKeyOptions,
+    addIpRestrictionForSubAccountApiKeyResponse,
     getManagedSubAccountTransferLogOptions,
     getManagedSubAccountTransferLogResponse,
     getManagedSubAccountTransferLogForTradeParentOptions,
@@ -126,7 +126,7 @@ export interface SubAccountMethods {
     enableLeverageTokenForSubAccount(email: string, enableBlvt: boolean, options?: enableLeverageTokenForSubAccountOptions): Promise<enableLeverageTokenForSubAccountResponse>;
     getIpRestrictionForASubAccountApiKey(email: string, subAccountApiKey: string, options?: getIpRestrictionForASubAccountApiKeyOptions): Promise<getIpRestrictionForASubAccountApiKeyResponse>;
     deleteIpListForASubAccountApiKey(email: string, subAccountApiKey: string, options?: deleteIpListForASubAccountApiKeyOptions): Promise<deleteIpListForASubAccountApiKeyResponse>;
-    updateIpRestrictionForSubAccountApiKey(email: string, subAccountApiKey: string, status: string, options?: updateIpRestrictionForSubAccountApiKeyOptions): Promise<updateIpRestrictionForSubAccountApiKeyResponse>;
+    addIpRestrictionForSubAccountApiKey(email: string, subAccountApiKey: string, status: string, options?: addIpRestrictionForSubAccountApiKeyOptions): Promise<addIpRestrictionForSubAccountApiKeyResponse>;
     depositAssetsIntoTheManagedSubAccount(toEmail: string, asset: string, amount: number, options?: depositAssetsIntoTheManagedSubAccountOptions): Promise<depositAssetsIntoTheManagedSubAccountResponse>;
     getManagedSubAccountAssetDetails(email: string, options?: getManagedSubAccountAssetDetailsOptions): Promise<getManagedSubAccountAssetDetailsResponse[]>;
     withdrawlAssetsFromTheManagedSubAccount(fromEmail: string, asset: string, amount: number, options?: withdrawlAssetsFromTheManagedSubAccountOptions): Promise<withdrawlAssetsFromTheManagedSubAccountResponse>;

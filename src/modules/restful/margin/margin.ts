@@ -315,7 +315,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account Order (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-order-user_data}
+        * Query Margin Account's Order (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-order-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -339,7 +339,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account Open Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-open-orders-user_data}
+        * Query Margin Account's Open Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-open-orders-user_data}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -355,7 +355,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account All Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-all-orders-user_data}
+        * Query Margin Account's All Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-all-orders-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -447,7 +447,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-oco-user_data}
+        * Query Margin Account's OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-oco-user_data}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -466,7 +466,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account all OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-all-oco-user_data}
+        * Query Margin Account's all OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-all-oco-user_data}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -486,7 +486,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account Open OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-open-oco-user_data}
+        * Query Margin Account's Open OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-open-oco-user_data}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -502,7 +502,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account Trade List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-trade-list-user_data}
+        * Query Margin Account's Trade List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-trade-list-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -658,7 +658,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get All Isolated Margin Symbol (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-isolated-margin-symbol-user_data}
+        * Get All Isolated Margin Symbol (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-isolated-margin-symbol-market_data}
         *
         * @param {object} [options]
         * @param {string} [options.symbol]
@@ -703,7 +703,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Interest Rate History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-interest-rate-history-user_data}
+        * Query Margin Interest Rate History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-interest-rate-history-user_data}
         *
         * @param {string} asset
         * @param {object} [options]

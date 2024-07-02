@@ -12,7 +12,7 @@ import {
     openOrdersOptions,
     testNewOrderOptions
 } from './types';
-import { CancelReplaceMode, OrderType, Side } from '../../../enum';
+import { CancelReplaceMode, OrderListAboveBelowType, OrderType, Side } from '../../../enum';
 
 export interface TradeMethods {
     newOrder(symbol: string, side: Side, type: OrderType, options?: newOrderOptions): void;
@@ -22,7 +22,7 @@ export interface TradeMethods {
     cancelReplaceOrder(symbol: string, cancelReplaceMode: CancelReplaceMode, cancelOrderId: number, side: Side, type: OrderType, options?: cancelReplaceOrderOptions): void;
     openOrders(options?: openOrdersOptions): void;
     cancelOpenOrders(symbol: string, options?: cancelOpenOrdersOptions): void;
-    newOCOOrder(symbol: string, side: Side, price: number, quantity: number, options?: newOCOOrderOptions): void;
+    newOCOOrder(symbol: string, side: Side, quantity: number, aboveType: OrderListAboveBelowType, belowType: OrderListAboveBelowType, options?: newOCOOrderOptions): void;
     getOCOOrder(origClientOrderId: string, options?: getOCOOrderOptions): void;
     cancelOCOOrder(symbol: string, orderListId: number, options?: cancelOCOOrderOptions): void;
     getOCOOpenOrders(options?: getOCOOpenOrdersOptions): void;

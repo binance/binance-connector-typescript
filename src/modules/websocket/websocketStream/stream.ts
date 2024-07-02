@@ -51,7 +51,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@kline_<interval>
          * Update Speed: 2000ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-streams}
+         * {@link https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-streams-for-utc}
          *
          * @param {string} symbol
          * @param {string} interval - m -> minutes; h -> hours; d -> days; w -> weeks; M -> months:
@@ -145,8 +145,6 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Update Speed: Real-time
          *
          * {@link https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-book-ticker-streams}
-         *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#all-book-tickers-stream}
          *
          * @param {string} [symbol]
          */

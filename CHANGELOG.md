@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.9 - 2024-07-02
+
+### Added
+- `POST /api/v3/orderList/oto`
+- `POST /api/v3/orderList/otoco`
+
+### Changed
+- Updated dependencies
+- Updated `Restful` OCO trade deprecated endpoint `POST /api/v3/order/oco` to `POST /api/v3/orderList/oco`
+- Updated `Websocket API` OCO trade deprecated endpoint `orderList.place` to `orderList.place.oco`
+- Updated `updateIpRestrictionForSubAccountApiKey` function typo to `addIpRestrictionForSubAccountApiKey`
+- Updated following enums:
+  - `OCOOrderStatus` to `OrderListOrderStatus`
+  - `OCOStatusType` to `OrderListStatusType`
+
 ## 0.3.8 - 2024-05-30
 
 ### Added

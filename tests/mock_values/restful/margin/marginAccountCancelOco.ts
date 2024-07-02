@@ -1,6 +1,6 @@
 import {
-    OCOOrderStatus,
-    OCOStatusType,
+    OrderListOrderStatus,
+    OrderListStatusType,
     OrderStatus,
     RestMarginTypes,
     TimeInForce,
@@ -12,8 +12,8 @@ import {
 export const mockResponse: RestMarginTypes.marginAccountCancelOcoResponse = {
     'orderListId': 0,
     'contingencyType': 'OCO',
-    'listStatusType': OCOStatusType.ALL_DONE,
-    'listOrderStatus': OCOOrderStatus.ALL_DONE,
+    'listStatusType': OrderListStatusType.ALL_DONE,
+    'listOrderStatus': OrderListOrderStatus.ALL_DONE,
     'listClientOrderId': 'C3wyj4WVEktd7u9aVBRXcN',
     'transactionTime': 1574040868128,
     'symbol': 'BNBUSDT',

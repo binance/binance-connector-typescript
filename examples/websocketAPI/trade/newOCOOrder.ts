@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { NewOrderRespType, Side, StopLimitTimeInForce, WebsocketAPI, WsTradeTypes } from '../../../src/index';
+import { OrderListAboveBelowType, Side, WebsocketAPI, WsTradeTypes } from '../../../src/index';
 
 dotenv.config();
 
@@ -8,15 +8,13 @@ const apiSecret = process.env.BINANCE_API_SECRET || '';
 const wsURL = 'wss://ws-api.testnet.binance.vision:9443/ws-api/v3'; // we setup wsURL to testnet. The default value set to production site: wss://ws-api.binance.com/ws-api/v3
 const options: WsTradeTypes.newOCOOrderOptions = {
     listClientOrderId: 'my_list_order',
-    stopPrice: 330,
-    stopLimitPrice: 340,
-    stopLimitTimeInForce: StopLimitTimeInForce.GTC,
-    newOrderRespType: NewOrderRespType.FULL
+    abovePrice: 400,
+    belowPrice: 395
 };
 const callbacks = {
     open: (client: WebsocketAPI) => {
         console.debug('Connected to WebSocket server');
-        client.newOCOOrder('BNBUSDT', Side.BUY, 300, 0.1, options);
+        client.newOCOOrder('BNBUSDT', Side.BUY, 1, OrderListAboveBelowType.LIMIT_MAKER, OrderListAboveBelowType.LIMIT_MAKER, options);
     },
     close: () => console.debug('Disconnected from WebSocket server'),
     message: (data: string) => {

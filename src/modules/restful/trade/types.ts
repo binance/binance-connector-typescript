@@ -3,8 +3,9 @@ import {
     CancelResult,
     NewOrderRespType,
     NewOrderResult,
-    OCOStatusType,
-    OCOOrderStatus,
+    OrderListStatusType,
+    OrderListOrderStatus,
+    OrderListAboveBelowType,
     OrderStatus,
     OrderType,
     Permissions,
@@ -274,40 +275,46 @@ export interface allOrdersResponse {
 
 export interface newOcoOptions {
     listClientOrderId?: string;
-    limitClientOrderId?: string;
-    limitStrategyId?: number;
-    limitStrategyType?: number;
-    limitIcebergQty?: number;
-    trailingDelta?: number;
-    stopClientOrderId?: string;
-    stopStrategyId?: number;
-    stopStrategyType?: number;
-    stopLimitPrice?: number;
-    stopIcebergQty?: number;
-    stopLimitTimeInForce?: StopLimitTimeInForce;
+    aboveClientOrderId?: string;
+    aboveIcebergQty?: number;
+    abovePrice?: number;
+    aboveStopPrice?: number;
+    aboveTrailingDelta?: number;
+    aboveTimeInForce?: StopLimitTimeInForce;
+    aboveStrategyId?: number;
+    aboveStrategyType?: number;
+    belowClientOrderId?: string;
+    belowIcebergQty?: number;
+    belowPrice?: number;
+    belowStopPrice?: number;
+    belowTrailingDelta?: number;
+    belowTimeInForce?: StopLimitTimeInForce;
+    belowStrategyId?: number;
+    belowStrategyType?: number;
     newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: SelfTradePreventionMode;
     recvWindow?: number;
 }
 
 export interface newOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
-    orders: newOcoOrders[];
-    orderReports: newOcoOrderReports[];
+    orders: newOrderListOrders[];
+    orderReports: newOrderListOrderReports[];
 }
 
-export interface newOcoOrders {
+export interface newOrderListOrders {
     symbol: string;
     orderId: number;
     clientOrderId: string;
 }
 
-export interface newOcoOrderReports {
+export interface newOrderListOrderReports {
     symbol: string;
     orderId: number;
     orderListId: number;
@@ -321,11 +328,84 @@ export interface newOcoOrderReports {
     timeInForce: TimeInForce | '';
     type: OrderType | '';
     side: Side | '';
-    stopPrice: string;
+    stopPrice?: string;
     workingTime: string | number;
+    icebergQty?: string;
     selfTradePreventionMode: SelfTradePreventionMode | '';
 }
 
+export interface newOtoOptions {
+    listClientOrderId?: string;
+    workingIcebergQty?: number;
+    newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: string;
+    workingClientOrderId?: string;
+    workingTimeInForce?: TimeInForce;
+    workingStrategyId?: number;
+    workingStrategyType?: number;
+    pendingClientOrderId?: string;
+    pendingPrice?: number;
+    pendingStopPrice?: number;
+    pendingTrailingDelta?: number;
+    pendingIcebergQty?: number;
+    pendingTimeInForce?: TimeInForce;
+    pendingStrategyId?: number;
+    pendingStrategyType?: number;
+    recvWindow?: number;
+}
+
+export interface newOtoResponse {
+    orderListId: number;
+    contingencyType: string;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
+    listClientOrderId: string;
+    transactionTime: number;
+    symbol: string;
+    orders: newOrderListOrders[];
+    orderReports: newOrderListOrderReports[];
+}
+
+export interface newOtocoOptions {
+    listClientOrderId?: string;
+    newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: string;
+    workingClientOrderId?: string;
+    workingIcebergQty?: number;
+    workingTimeInForce?: TimeInForce;
+    workingStrategyId?: number;
+    workingStrategyType?: number;
+    pendingAboveClientOrderId?: string;
+    pendingAbovePrice?: number;
+    pendingAboveStopPrice?: number;
+    pendingAboveTrailingDelta?: number;
+    pendingAboveIcebergQty?: number;
+    pendingAboveTimeInForce?: TimeInForce;
+    pendingAboveStrategyId?: number;
+    pendingAboveStrategyType?: number;
+    pendingBelowType?: OrderListAboveBelowType;
+    pendingBelowClientOrderId?: string;
+    pendingBelowPrice?: number;
+    pendingBelowStopPrice?: number;
+    pendingBelowTrailingDelta?: number;
+    pendingBelowIcebergQty?: number;
+    pendingBelowTimeInForce?: TimeInForce;
+    pendingBelowStrategyId?: number;
+    pendingBelowStrategyType?: number;
+    recvWindow?: number;
+}
+
+export interface newOtocoResponse {
+    orderListId: number;
+    contingencyType: string;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
+    listClientOrderId: string;
+    transactionTime: number;
+    symbol: string;
+    orders: newOrderListOrders[];
+    orderReports: newOrderListOrderReports[];
+}
 
 export interface getOcoOptions {
     orderListId?: number;
@@ -336,8 +416,8 @@ export interface getOcoOptions {
 export interface getOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -360,8 +440,8 @@ export interface cancelOcoOptions {
 export interface cancelOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -405,8 +485,8 @@ export interface getAllOcoOptions {
 export interface getAllOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;
@@ -429,8 +509,8 @@ export interface getOpenOcoOptions {
 export interface getOpenOcoResponse {
     orderListId: number;
     contingencyType: string;
-    listStatusType: OCOStatusType;
-    listOrderStatus: OCOOrderStatus;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
     listClientOrderId: string;
     transactionTime: number;
     symbol: string;

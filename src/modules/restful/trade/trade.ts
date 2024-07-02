@@ -34,6 +34,10 @@ import {
     getPreventedMatchesResponse,
     newOcoOptions,
     newOcoResponse,
+    newOtoOptions,
+    newOtoResponse,
+    newOtocoOptions,
+    newOtocoResponse,
     newOrderOptions,
     newOrderResponse,
     newOrderSOROptions,
@@ -43,7 +47,7 @@ import {
     testNewOrderSOROptions
 } from './types';
 import { TradeMethods } from './methods';
-import { Side, OrderType, CancelReplaceMode } from '../../enum';
+import { OrderListAboveBelowType, OrderType, OtoPendingType, orderListWorkingType, Side, CancelReplaceMode } from '../../enum';
 
 export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMethods> & T {
     return class extends base {
@@ -273,40 +277,46 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * New OCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-oco-trade}
+        * New Order List - OCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-order-list-oco-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
-        * @param {Side} side
-        * @param {number} quantity
-        * @param {number} price - Order price
-        * @param {number} stopPrice
+        * @param {Side} side - BUY or SELL
+        * @param {number} quantity - Quantity for both legs of the order list.
+        * @param {OrderListAboveBelowType} aboveType - Supported values: STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER
+        * @param {OrderListAboveBelowType} belowType - Supported values: STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER
         * @param {object} [options]
-        * @param {string} [options.listClientOrderId] - A unique Id for the entire orderList
-        * @param {string} [options.limitClientOrderId] - A unique Id for the limit order
-        * @param {number} [options.limitStrategyId]
-        * @param {number} [options.limitStrategyType] - The value cannot be less than 1000000.
-        * @param {number} [options.limitIcebergQty]
-        * @param {number} [options.trailingDelta]
-        * @param {string} [options.stopClientOrderId] - A unique Id for the stop loss/stop loss limit leg
-        * @param {number} [options.stopStrategyId]
-        * @param {number} [options.stopStrategyType]
-        * @param {number} [options.stopLimitPrice] - If provided, stopLimitTimeInForce is required.
-        * @param {number} [options.stopIcebergQty]
-        * @param {StopLimitTimeInForce} [options.stopLimitTimeInForce]
+        * @param {string} [options.listClientOrderId] - Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `aboveClientOrderId` and the `belowCLientOrderId`
+        * @param {string} [options.aboveClientOrderId] - Arbitrary unique ID among open orders for the above leg order. Automatically generated if not sent
+        * @param {number} [options.aboveIcebergQty] - Note that this can only be used if aboveTimeInForce is GTC.
+        * @param {number} [options.abovePrice]
+        * @param {number} [options.aboveStopPrice] - Can be used if aboveType is STOP_LOSS or STOP_LOSS_LIMIT. Either aboveStopPrice or aboveTrailingDelta or both, must be specified.
+        * @param {number} [options.aboveTrailingDelta]
+        * @param {number} [options.aboveTimeInForce] - Required if the aboveType is STOP_LOSS_LIMIT.
+        * @param {number} [options.aboveStrategyId] - Arbitrary numeric value identifying the above leg order within an order strategy.
+        * @param {number} [options.aboveStrategyType] - Arbitrary numeric value identifying the above leg order strategy. Values smaller than 1000000 are reserved and cannot be used.
+        * @param {string} [options.belowClientOrderId] - Arbitrary unique ID among open orders for the below leg order. Automatically generated if not sent
+        * @param {number} [options.belowIcebergQty] - Note that this can only be used if belowTimeInForce is GTC.
+        * @param {number} [options.belowPrice]
+        * @param {number} [options.belowStopPrice] - Can be used if belowType is STOP_LOSS or STOP_LOSS_LIMIT. Either belowStopPrice or belowTrailingDelta or both, must be specified.
+        * @param {number} [options.belowTrailingDelta]
+        * @param {number} [options.belowTimeInForce] - Required if the belowType is STOP_LOSS_LIMIT.
+        * @param {number} [options.belowStrategyId] - Arbitrary numeric value identifying the below leg order within an order strategy.
+        * @param {number} [options.belowStrategyType] - Arbitrary numeric value identifying the below leg order strategy.Values smaller than 1000000 are reserved and cannot be used.
         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON.
+        * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
-        async newOco(symbol: string, side: Side, quantity: number, price: number, stopPrice: number, options?: newOcoOptions): Promise<newOcoResponse> {
-            validateRequiredParameters({ symbol, side, quantity, price, stopPrice });
-            const url = this.prepareSignedPath('/api/v3/order/oco',
+        async newOco(symbol: string, side: Side, quantity: number, aboveType: OrderListAboveBelowType, belowType: OrderListAboveBelowType, options?: newOcoOptions): Promise<newOcoResponse> {
+            validateRequiredParameters({ symbol, side, quantity, aboveType, belowType });
+            const url = this.prepareSignedPath('/api/v3/orderList/oco',
                 Object.assign(
                     options ? options : {},
                     {
                         symbol: symbol.toUpperCase(),
                         side: side,
                         quantity: quantity,
-                        price: price,
-                        stopPrice: stopPrice
+                        aboveType: aboveType,
+                        belowType: belowType
                     }
                 )
             );
@@ -315,7 +325,118 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-oco-user_data}
+         * New Order List - OTO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-order-list-oto-trade}
+         * 
+         * @param {string} symbol
+         * @param {orderListWorkingType} workingType - Supported values: `LIMIT`, `LIMIT_MAKER`
+         * @param {Side} workingSide - Supported values: `BUY`, `SELL`
+         * @param {number} workingPrice
+         * @param {number} workingQuantity - Sets the quantity for the working order.
+         * @param {OtoPendingType} pendingType - Note that `MARKET` orders using `quoteOrderQty` are not supported.
+         * @param {Side} pendingSide - Supported values: `BUY`, `SELL`
+         * @param {number} pendingQuantity - Sets the quantity for the pending order.
+         * @param {object} [options]
+         * @param {string} [options.listClientOrderId] - Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.
+         * @param {number} [options.workingIcebergQty] - This can only be used if workingTimeInForce is `GTC` or if workingType is `LIMIT_MAKER`
+         * @param {NewOrderRespType} [options.newOrderRespType] - Format of the JSON response. Supported values: `ACK`, `FULL`, `RESULT`
+         * @param {string} [options.selfTradePreventionMode] - The allowed values are dependent on what is configured on the symbol.
+         * @param {string} [options.workingClientOrderId] - Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.
+         * @param {TimeInForce} [options.workingTimeInForce] - Supported values: `FOK`, `IOC`, `GTC`
+         * @param {number} [options.workingStrategyId] - Arbitrary numeric value identifying the working order within an order strategy.
+         * @param {number} [options.workingStrategyType] - Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {string} [options.pendingClientOrderId] - Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent.
+         * @param {number} [options.pendingPrice]
+         * @param {number} [options.pendingStopPrice]
+         * @param {number} [options.pendingTrailingDelta]
+         * @param {number} [options.pendingIcebergQty] - This can only be used if pendingTimeInForce is GTC or if pendingType is LIMIT_MAKER
+         * @param {TimeInForce} [options.pendingTimeInForce] - Supported values: `GTC`, `FOK`, `IOC`
+         * @param {number} [options.pendingStrategyId] - Arbitrary numeric value identifying the pending order within an order strategy.
+         * @param {number} [options.pendingStrategyType] - Arbitrary numeric value identifying the pending order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000.
+         */
+        async newOto(symbol: string, workingType: orderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingType: OtoPendingType, pendingSide: Side, pendingQuantity: number, options?: newOtoOptions): Promise<newOtoResponse> {
+            validateRequiredParameters({ symbol, workingType, workingSide, workingPrice, workingQuantity, pendingType, pendingSide, pendingQuantity});
+            const url = this.prepareSignedPath('/api/v3/orderList/oto',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase(),
+                        workingType: workingType,
+                        workingSide: workingSide,
+                        workingPrice: workingPrice,
+                        workingQuantity: workingQuantity,
+                        pendingType: pendingType,
+                        pendingSide: pendingSide,
+                        pendingQuantity: pendingQuantity
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+
+        /**
+         * New Order List - OTOCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#new-order-list-otoco-trade}
+         * 
+         * @param {string} symbol
+         * @param {orderListWorkingType} workingType - Supported values: `LIMIT`, `LIMIT_MAKER`
+         * @param {Side} workingSide - Supported values: `BUY`, `SELL`
+         * @param {number} workingPrice
+         * @param {number} workingQuantity
+         * @param {Side} pendingSide - Supported values: `BUY`, `SELL`
+         * @param {number} pendingQuantity - Sets the quantity for the pending order.
+         * @param {OrderListAboveBelowType} pendingAboveType - Supported values: LIMIT_MAKER, STOP_LOSS, and STOP_LOSS_LIMIT
+         * @param {object} [options]
+         * @param {string} [options.listClientOrderId] - Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.
+         * @param {NewOrderRespType} [options.newOrderRespType] - Format of the JSON response. Supported values: `ACK`, `FULL`, `RESULT`
+         * @param {string} [options.selfTradePreventionMode] - The allowed values are dependent on what is configured on the symbol
+         * @param {string} [options.workingClientOrderId] - Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.
+         * @param {number} [options.workingIcebergQty] - This can only be used if workingTimeInForce is `GTC` or if workingType is `LIMIT_MAKER`
+         * @param {TimeInForce} [options.workingTimeInForce] - Supported values: `FOK`, `IOC`, `GTC`
+         * @param {number} [options.workingStrategyId] - Arbitrary numeric value identifying the working order within an order strategy.
+         * @param {number} [options.workingStrategyType] - Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {string} [options.pendingAboveClientOrderId] - Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent.
+         * @param {number} [options.pendingAbovePrice]
+         * @param {number} [options.pendingAboveStopPrice]
+         * @param {number} [options.pendingAboveTrailingDelta]
+         * @param {number} [options.pendingAboveIcebergQty] - This can only be used if pendingAboveTimeInForce is GTC or if pendingAboveType is LIMIT_MAKER.
+         * @param {TimeInForce} [options.pendingAboveTimeInForce]
+         * @param {number} [options.pendingAboveStrategyId] - Arbitrary numeric value identifying the pending above order within an order strategy.
+         * @param {number} [options.pendingAboveStrategyType] - Arbitrary numeric value identifying the pending above order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {OrderListAboveBelowType} [options.pendingBelowType] - Supported values: LIMIT_MAKER, STOP_LOSS, and STOP_LOSS_LIMIT
+         * @param {string} [options.pendingBelowClientOrderId] - Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent.
+         * @param {number} [options.pendingBelowPrice]
+         * @param {number} [options.pendingBelowStopPrice]
+         * @param {number} [options.pendingBelowTrailingDelta]
+         * @param {number} [options.pendingBelowIcebergQty] - This can only be used if pendingBelowTimeInForce is GTC or if pendingBelowType is LIMIT_MAKER.
+         * @param {TimeInForce} [options.pendingBelowTimeInForce]
+         * @param {number} [options.pendingBelowStrategyId] - Arbitrary numeric value identifying the pending below order within an order strategy.
+         * @param {number} [options.pendingBelowStrategyType] - Arbitrary numeric value identifying the pending below order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000.
+         */
+        async newOtoco(symbol: string, workingType: orderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingSide: Side, pendingQuantity: number, pendingAboveType: OrderListAboveBelowType, options?: newOtocoOptions): Promise<newOtocoResponse> {
+            validateRequiredParameters({ symbol, workingType, workingSide, workingPrice, workingQuantity, pendingSide, pendingQuantity, pendingAboveType });
+            const url = this.prepareSignedPath('/api/v3/orderList/otoco',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        symbol: symbol.toUpperCase(),
+                        workingType: workingType,
+                        workingSide: workingSide,
+                        workingPrice: workingPrice,
+                        workingQuantity: workingQuantity,
+                        pendingSide: pendingSide,
+                        pendingQuantity: pendingQuantity,
+                        pendingAboveType: pendingAboveType
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
+
+
+        /**
+        * Query Order lists (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-order-lists-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.orderListId] - Order list id
@@ -323,7 +444,6 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async getOco(options?: getOcoOptions): Promise<getOcoResponse> {
-
             const url = this.prepareSignedPath('/api/v3/orderList',
                 options ? options : {}
             );
@@ -332,7 +452,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Cancel OCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#cancel-oco-trade}
+        * Cancel Order lists (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#cancel-order-lists-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -356,7 +476,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query all OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-all-oco-user_data}
+        * Query all Order lists (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-all-order-lists-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.fromId] - Trade id to fetch from. Default gets most recent trades.
@@ -375,7 +495,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query Open OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-open-oco-user_data}
+        * Query Open Order lists (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-open-order-lists-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000

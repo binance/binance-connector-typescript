@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Side, RestTradeTypes, Spot } from '../../../src/index';
+import { OrderListAboveBelowType, RestTradeTypes, Side, Spot } from '../../../src/index';
 
 dotenv.config();
 
@@ -10,8 +10,10 @@ const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
 
 const options: RestTradeTypes.newOcoOptions = {
     recvWindow: 5000,
+    abovePrice: 510,
+    belowPrice: 500
 };
 
-client.newOco('BNBUSDT', Side.SELL, 1, 218, 220, options).then((res: RestTradeTypes.newOcoResponse) => {
+client.newOco('BNBUSDT', Side.SELL, 1, OrderListAboveBelowType.LIMIT_MAKER, OrderListAboveBelowType.LIMIT_MAKER, options).then((res: RestTradeTypes.newOcoResponse) => {
     console.log(res);
 }).catch(err => { console.log(err); });

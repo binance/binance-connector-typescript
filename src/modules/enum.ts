@@ -281,10 +281,16 @@ export enum NewOrderResult {
     NOT_ATTEMPTED = 'NOT_ATTEMPTED'
 }
 
-export enum OCOOrderStatus {
+export enum OrderListOrderStatus {
     EXECUTING = 'EXECUTING',
     ALL_DONE = 'ALL_DONE',
     REJECT = 'REJECT',
+}
+
+export enum OrderListAboveBelowType {
+    STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT',
+    STOP_LOSS = 'STOP_LOSS',
+    LIMIT_MAKER = 'LIMIT_MAKER'
 }
 
 export enum OcoNewOrderRespType {
@@ -293,7 +299,7 @@ export enum OcoNewOrderRespType {
     FULL = 'FULL',
 }
 
-export enum OCOStatusType {
+export enum OrderListStatusType {
     RESPONSE = 'RESPONSE',
     EXEC_STARTED = 'EXEC_STARTED',
     ALL_DONE = 'ALL_DONE',
@@ -333,6 +339,7 @@ export enum OptionalTransTo {
 
 export enum OrderStatus {
     NEW = 'NEW',
+    PENDING_NEW = 'PENDING_NEW',
     PARTIALLY_FILLED = 'PARTIALLY_FILLED',
     FILLED = 'FILLED',
     CANCELED = 'CANCELED',
@@ -349,6 +356,19 @@ export enum OrderType {
     STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT',
     TAKE_PROFIT = 'TAKE_PROFIT',
     TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT',
+    LIMIT_MAKER = 'LIMIT_MAKER',
+}
+
+export enum OtoPendingType {
+    LIMIT = 'LIMIT',
+    STOP_LOSS = 'STOP_LOSS',
+    TAKE_PROFIT = 'TAKE_PROFIT',
+    STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT',
+    TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT',
+}
+
+export enum orderListWorkingType {
+    LIMIT = 'LIMIT',
     LIMIT_MAKER = 'LIMIT_MAKER',
 }
 

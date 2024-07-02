@@ -6,8 +6,7 @@ import {
     cancelOrderResponse,
     cancelAnExistingOrderAndSendANewOrderResponse,
     cancelAnExistingOrderAndSendANewOrderCancelresponse,
-    newOcoResponse,
-    newOcoOrderReports
+    newOcoResponse
 } from '../../../restful/trade/types';
 
 export interface newOrderOptions extends sendMessageOptions {
@@ -84,18 +83,22 @@ export interface cancelOpenOrdersOptions extends sendMessageOptions {
 
 export interface newOCOOrderOptions extends sendMessageOptions {
     listClientOrderId?: string;
-    limitClientOrderId?: string;
-    limitIcebergQty?: number;
-    limitStrategyId?: number;
-    limitStrategyType?: number;
-    stopPrice?: number;
-    trailingDelta?: number;
-    stopClientOrderId?: string;
-    stopLimitPrice?: number;
-    stopLimitTimeInForce?: StopLimitTimeInForce;
-    stopIcebergQty?: number;
-    stopStrategyId?: number;
-    stopStrategyType?: string;
+    aboveClientOrderId?: string;
+    aboveIcebergQty?: number;
+    abovePrice?: number;
+    aboveStopPrice?: number;
+    aboveTrailingDelta?: number;
+    aboveTimeInForce?: StopLimitTimeInForce;
+    aboveStrategyId?: number;
+    aboveStrategyType?: number;
+    belowClientOrderId?: string;
+    belowIcebergQty?: number;
+    belowPrice?: number;
+    belowStopPrice?: number;
+    belowTrailingDelta?: number;
+    belowTimeInForce?: StopLimitTimeInForce;
+    belowStrategyId?: number;
+    belowStrategyType?: number;
     newOrderRespType?: NewOrderRespType;
     selfTradePreventionMode?: SelfTradePreventionMode;
     recvWindow?: number;
@@ -166,11 +169,4 @@ export interface cancelResponse extends cancelAnExistingOrderAndSendANewOrderCan
     transactTime: number;
 }
 
-export interface newOCOOrder extends Omit<newOcoResponse, 'orderReports'>, sendMessageOptions {
-    orderReports: orderReports[];
-}
-
-export interface orderReports extends Omit<newOcoOrderReports, 'stopPrice'>, sendMessageOptions {
-    workingTime: number;
-    stopPrice?: string;
-}
+export interface newOCOOrder extends newOcoResponse, sendMessageOptions { }

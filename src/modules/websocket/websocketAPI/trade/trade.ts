@@ -1,4 +1,4 @@
-import { OrderType, Side, CancelReplaceMode } from '../../../enum';
+import { OrderListAboveBelowType, OrderType, Side, CancelReplaceMode } from '../../../enum';
 import { Constructor } from '../../../../setters/types';
 import {
     cancelOCOOrderOptions,
@@ -211,40 +211,46 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
         }
 
         /**
-         * Place new OCO
+         * Place new Order list - OCO (TRADE)
          *
-         * Send in a new OCO order.
+         * Send in an one-cancels the other (OCO) pair, where activation of one order immediately cancels the other.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#place-new-oco-trade}
+         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#place-new-order-list-oco-trade}
          *
-         * @param {string} symbol
-         * @param {Side} side
-         * @param {number} price
-         * @param {number} quantity
+         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
+         * @param {Side} side - BUY or SELL
+         * @param {number} quantity - Quantity for both legs of the order list.
+         * @param {OrderListAboveBelowType} aboveType - Supported values: STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER
+         * @param {OrderListAboveBelowType} belowType - Supported values: STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER
          * @param {object} [options]
-         * @param {string} [options.listClientOrderId]
-         * @param {string} [options.limitClientOrderId]
-         * @param {number} [options.limitIcebergQty]
-         * @param {number} [options.limitStrategyId]
-         * @param {number} [options.limitStrategyType]
-         * @param {number} [options.stopPrice]
-         * @param {number} [options.trailingDelta]
-         * @param {number} [options.stopClientOrderId]
-         * @param {number} [options.stopLimitPrice]
-         * @param {StopLimitTimeInForce} [options.stopLimitTimeInForce]
-         * @param {number} [options.stopIcebergQty]
-         * @param {number} [options.stopStrategyId]
-         * @param {string} [options.stopStrategyType]
-         * @param {NewOrderRespType} [options.newOrderRespType]
-         * @param {SelfTradePreventionMode} [options.selfTradePreventionMode]
-         * @param {number} [options.recvWindow]
+         * @param {string} [options.listClientOrderId] - Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `aboveClientOrderId` and the `belowCLientOrderId`
+         * @param {string} [options.aboveClientOrderId] - Arbitrary unique ID among open orders for the above leg order. Automatically generated if not sent
+         * @param {number} [options.aboveIcebergQty] - Note that this can only be used if aboveTimeInForce is GTC.
+         * @param {number} [options.abovePrice]
+         * @param {number} [options.aboveStopPrice] - Can be used if aboveType is STOP_LOSS or STOP_LOSS_LIMIT. Either aboveStopPrice or aboveTrailingDelta or both, must be specified.
+         * @param {number} [options.aboveTrailingDelta]
+         * @param {number} [options.aboveTimeInForce] - Required if the aboveType is STOP_LOSS_LIMIT.
+         * @param {number} [options.aboveStrategyId] - Arbitrary numeric value identifying the above leg order within an order strategy.
+         * @param {number} [options.aboveStrategyType] - Arbitrary numeric value identifying the above leg order strategy. Values smaller than 1000000 are reserved and cannot be used.
+         * @param {string} [options.belowClientOrderId] - Arbitrary unique ID among open orders for the below leg order. Automatically generated if not sent
+         * @param {number} [options.belowIcebergQty] - Note that this can only be used if belowTimeInForce is GTC.
+         * @param {number} [options.belowPrice]
+         * @param {number} [options.belowStopPrice] - Can be used if belowType is STOP_LOSS or STOP_LOSS_LIMIT. Either belowStopPrice or belowTrailingDelta or both, must be specified.
+         * @param {number} [options.belowTrailingDelta]
+         * @param {number} [options.belowTimeInForce] - Required if the belowType is STOP_LOSS_LIMIT.
+         * @param {number} [options.belowStrategyId] - Arbitrary numeric value identifying the below leg order within an order strategy.
+         * @param {number} [options.belowStrategyType] - Arbitrary numeric value identifying the below leg order strategy.Values smaller than 1000000 are reserved and cannot be used.
+         * @param {NewOrderRespType} [options.newOrderRespType] - Set the response JSON.
+         * @param {SelfTradePreventionMode} [options.selfTradePreventionMode] - The allowed enums is dependent on what is configured on the symbol. The possible supported values are EXPIRE_TAKER, EXPIRE_MAKER, EXPIRE_BOTH, NONE.
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
          */
-        newOCOOrder(symbol: string, side: Side, price: number, quantity: number, options?: newOCOOrderOptions) {
-            this.sendSignatureMessage('orderList.place', {
+        newOCOOrder(symbol: string, side: Side, quantity: number, aboveType: OrderListAboveBelowType, belowType: OrderListAboveBelowType, options?: newOCOOrderOptions) {
+            this.sendSignatureMessage('orderList.place.oco', {
                 symbol,
                 side,
-                price,
                 quantity,
+                aboveType,
+                belowType,
                 ...options
             });
         }
