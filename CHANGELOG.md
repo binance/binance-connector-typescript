@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.10 - 2024-08-19
+### Changed
+- Updated dependencies
+
 ## 0.3.9 - 2024-07-02
 
 ### Added
