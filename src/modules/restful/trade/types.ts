@@ -524,6 +524,7 @@ export interface getOpenOcoOrders {
 }
 
 export interface accountInformationOptions {
+    omitZeroBalances?: boolean;
     recvWindow?: number;
 }
 
