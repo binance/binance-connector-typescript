@@ -1,10 +1,5 @@
 # Changelog
 
-## 0.3.11 - 2024-09-18
-### Changed
-- Updated dependencies
-- Added `omitZeroBalances` option in `accountInformation` method
-
 ## 0.3.10 - 2024-08-19
 ### Changed
 - Updated dependencies

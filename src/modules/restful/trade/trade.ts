@@ -512,7 +512,6 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         * Account Information (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#account-information-user_data}
         *
         * @param {object} [options]
-        * @param {number} [options.omitZeroBalances] - When set to true, emits only the non-zero balances of an account. Default value: false
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async accountInformation(options?: accountInformationOptions): Promise<accountInformationResponse> {
