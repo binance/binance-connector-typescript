@@ -1,10 +1,4 @@
-export enum LogLevel {
-    NONE = '',
-    DEBUG = 'debug',
-    INFO = 'info',
-    WARN = 'warn',
-    ERROR = 'error',
-}
+import { LogLevel } from "../modules/enum";
 
 export class Logger {
     private static instance: Logger;
