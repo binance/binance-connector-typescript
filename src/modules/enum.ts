@@ -501,8 +501,8 @@ export enum SimpleEarnStatus {
 
 export enum SimpleEarnType {
     AUTO = 'AUTO',
-    NORMAL ='NORMAL',
-    CONVERT ='CONVERT',
+    NORMAL = 'NORMAL',
+    CONVERT = 'CONVERT',
     LOAN = 'LOAN',
     AI = 'AI',
     TRANSFER = 'TRANSFER'
