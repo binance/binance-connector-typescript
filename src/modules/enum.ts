@@ -217,6 +217,14 @@ export enum LiquidityRemoveType {
     COMBINATION = 'COMBINATION',
 }
 
+export enum LogLevel {
+    NONE = '',
+    DEBUG = 'debug',
+    INFO = 'info',
+    WARN = 'warn',
+    ERROR = 'error'
+}
+
 export enum MarginBorrowRepayType {
     BORROW = 'BORROW',
     REPAY = 'REPAY',
@@ -493,8 +501,8 @@ export enum SimpleEarnStatus {
 
 export enum SimpleEarnType {
     AUTO = 'AUTO',
-    NORMAL ='NORMAL',
-    CONVERT ='CONVERT',
+    NORMAL = 'NORMAL',
+    CONVERT = 'CONVERT',
     LOAN = 'LOAN',
     AI = 'AI',
     TRANSFER = 'TRANSFER'

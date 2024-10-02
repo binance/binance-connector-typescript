@@ -1,4 +1,5 @@
-import { LogLevel, Logger } from '../../src/helpers/logger';
+import { Logger } from '../../src/helpers/logger';
+import { LogLevel } from '../../src/modules/enum';
 
 describe('Logger', () => {
     let logger: Logger;
