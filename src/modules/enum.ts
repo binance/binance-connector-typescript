@@ -4,11 +4,6 @@ export enum AccountSnapshotType {
     FUTURES = 'FUTURES',
 }
 
-export enum AccountType {
-    MAIN = 'MAIN',
-    CARD = 'CARD',
-}
-
 export enum AddLiquidityPreviewType {
     SINGLE = 'SINGLE',
     COMBINATION = 'COMBINATION',
@@ -217,6 +212,14 @@ export enum LiquidityRemoveType {
     COMBINATION = 'COMBINATION',
 }
 
+export enum LogLevel {
+    NONE = '',
+    DEBUG = 'debug',
+    INFO = 'info',
+    WARN = 'warn',
+    ERROR = 'error',
+}
+
 export enum MarginBorrowRepayType {
     BORROW = 'BORROW',
     REPAY = 'REPAY',
@@ -422,11 +425,6 @@ export enum PositionStatus {
     REDEEMED = 'REDEEMED',
 }
 
-export enum QueryConvertTransfer {
-    MAIN = 'MAIN',
-    CARD = 'CARD',
-}
-
 export enum QuerySubAccountList {
     true = 'true',
     false = 'false',
@@ -493,8 +491,8 @@ export enum SimpleEarnStatus {
 
 export enum SimpleEarnType {
     AUTO = 'AUTO',
-    NORMAL ='NORMAL',
-    CONVERT ='CONVERT',
+    NORMAL = 'NORMAL',
+    CONVERT = 'CONVERT',
     LOAN = 'LOAN',
     AI = 'AI',
     TRANSFER = 'TRANSFER'

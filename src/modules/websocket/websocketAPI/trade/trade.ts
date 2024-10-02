@@ -27,7 +27,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Send in a new order.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#place-new-order-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#place-new-order-trade}
          *
          * @param {string} symbol
          * @param {Side} side
@@ -61,7 +61,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Test a new order.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#test-new-order-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#test-new-order-trade}
          *
          * @param {string} symbol
          * @param {Side} side
@@ -95,7 +95,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Check execution status of an order.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#query-order-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#query-order-user_data}
          *
          * @param {string} symbol
          * @param {number} orderId
@@ -116,7 +116,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Cancel an active order.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#cancel-order-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#cancel-order-trade}
          *
          * @param {string} symbol
          * @param {number} orderId
@@ -139,7 +139,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Cancel an existing order and immediately place a new order instead of the canceled one.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#cancel-and-replace-order-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#cancel-and-replace-order-trade}
          *
          * @param {string} symbol
          * @param {string} cancelReplaceMode
@@ -180,7 +180,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Query execution status of all open orders.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#current-open-orders-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#current-open-orders-user_data}
          *
          * @param {object} [options]
          * @param {string} [options.symbol]
@@ -197,7 +197,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Cancel all open orders on a symbol, including OCO orders.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#cancel-open-orders-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#cancel-open-orders-trade}
          *
          * @param {string} symbol
          * @param {object} [options]
@@ -215,7 +215,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Send in an one-cancels the other (OCO) pair, where activation of one order immediately cancels the other.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#place-new-order-list-oco-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#place-new-order-list---oco-trade}
          *
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {Side} side - BUY or SELL
@@ -260,7 +260,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Check execution status of an OCO.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#query-oco-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api}
          *
          * @param {string} origClientOrderId
          * @param {object} [options]
@@ -279,7 +279,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Check execution status of an OCO.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#cancel-oco-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api}
          *
          * @param {string} symbol
          * @param {number} orderListId
@@ -301,7 +301,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          *
          * Query execution status of all open OCOs.
          *
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#current-open-ocos-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api}
          *
          * @param {object} [options]
          * @param {number} [options.recvWindow]
@@ -315,7 +315,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          * 
          * Places an order using smart order routing (SOR).
          * 
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#place-new-order-using-sor-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#place-new-order-using-sor-trade}
          * 
          * @param {string} symbol
          * @param {Side} side
@@ -347,7 +347,7 @@ export function mixinWsTrade<T extends Constructor>(base: T): Constructor<TradeM
          * 
          * Places an order using smart order routing (SOR).
          * 
-         * {@link https://binance-docs.github.io/apidocs/websocket_api/en/#test-new-order-using-sor-trade}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#test-new-order-using-sor-trade}
          * 
          * @param {string} symbol
          * @param {Side} side

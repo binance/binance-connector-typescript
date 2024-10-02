@@ -26,7 +26,7 @@ import { ConvertExpiredType, ConvertSide } from '../../enum';
 export function mixinConvert<T extends Constructor>(base: T): Constructor<ConvertMethods> & T {
     return class extends base { 
         /**
-        * List All Convert Pairs (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#list-all-convert-pairs}
+        * List All Convert Pairs (USER_DATA) {@link https://developers.binance.com/docs/convert/market-data/List-all-convert-pairs}
         *
         * @param {object} [options]
         * @param {string} [options.fromAsset] - User spends coin
@@ -42,7 +42,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
   
         /**
-        * Query order quantity precision per asset (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-order-quantity-precision-per-asset-user_data}
+        * Query order quantity precision per asset (USER_DATA) {@link https://developers.binance.com/docs/convert/market-data/Query-order-quantity-precision-per-asset}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -56,7 +56,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
   
         /**
-        * Send quote request (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#send-quote-request-user_data}
+        * Send quote request (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Send-quote-request}
         *
         * @param {string} fromAsset
         * @param {string} toAsset
@@ -83,7 +83,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
   
         /**
-        * Accept Quote (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#accept-quote-trade}
+        * Accept Quote (TRADE) {@link https://developers.binance.com/docs/convert/trade/Accept-Quote}
         *
         * @param {string} quoteId
         * @param {object} [options]
@@ -104,7 +104,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
   
         /**
-        * Order status (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#order-status-user_data}
+        * Order status (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Order-Status}
         *
         * @param {object} [options]
         * @param {string} [options.orderId] - Either orderId or quoteId is required
@@ -120,7 +120,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
 
         /**
-         * Place limit order (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#place-limit-order-user_data}
+         * Place limit order (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Place-Order}
          * 
          * @param {string} baseAsset - base asset (use the response fromIsBase from GET /sapi/v1/convert/exchangeInfo api to check which one is baseAsset)
          * @param {string} quoteAsset - quote asset
@@ -152,7 +152,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
 
         /**
-         * Cancel limit order (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#cancel-limit-order-user_data}
+         * Cancel limit order (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Cancel-Order}
          * 
          * @param {number} orderId - The orderId from placeOrder api
          * @param {object} [options]
@@ -172,7 +172,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
         }
 
         /**
-         * Query limit open orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-limit-open-orders-user_data}
+         * Query limit open orders (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Query-Order}
          * 
          * @param {object} [options]
          * @param {number} [options.recvWindow] - default 100, max 1000
@@ -186,7 +186,7 @@ export function mixinConvert<T extends Constructor>(base: T): Constructor<Conver
 
   
         /**
-        * Get Convert Trade History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-convert-trade-history-user_data}
+        * Get Convert Trade History (USER_DATA) {@link https://developers.binance.com/docs/convert/trade/Get-Convert-Trade-History}
         *
         * @param {number} startTime - UTC timestamp in ms
         * @param {number} endTime - UTC timestamp in ms

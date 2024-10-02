@@ -1,4 +1,4 @@
-import { AccountType, DustAccountType, UnivTransferType, NeedBtcValuation, QueryConvertTransfer, UnivStatus } from '../../enum';
+import { DustAccountType, UnivTransferType, NeedBtcValuation, UnivStatus } from '../../enum';
 
 export interface systemStatusResponse {
     status: number;
@@ -394,41 +394,6 @@ export interface userAssetResponse {
     btcValuation: string;
 }
 
-export interface convertTransferOptions {
-    accountType?: QueryConvertTransfer;
-}
-
-export interface convertTransferResponse {
-    tranId: number;
-    status: string;
-}
-
-export interface getConvertTransferOptions {
-    tranId?: number;
-    clientTranId?: string;
-    asset?: string;
-    accountType?: AccountType;
-    current?: number;
-    size?: number;
-}
-
-export interface getConvertTransferResponse {
-    total: number;
-    rows: getConvertTransferRows[];
-}
-
-export interface getConvertTransferRows {
-    tranId: number;
-    type: number;
-    time: number;
-    deductedAsset: string;
-    deductedAmount: string;
-    targetAsset: string;
-    targetAmount: string;
-    status: string;
-    accountType: AccountType;
-}
-
 export interface getCloudminingPaymentAndRefundHistoryOptions {
     tranId?: number;
     clientTranId?: string;
@@ -467,18 +432,6 @@ export interface getApiKeyPermissionResponse {
     enableMargin: boolean;
     enableSpotAndMarginTrading: boolean;
     tradingAuthorityExpirationTime: number;
-}
-
-export interface getAutoconvertingStableCoinsResponse {
-    convertEnabled: boolean;
-    coins: string[];
-    exchangeRates: getAutoconvertingStableCoinsExchangerates;
-}
-
-export interface getAutoconvertingStableCoinsExchangerates {
-    USDC: string
-    TUSD: string
-    USDP: string
 }
 
 export interface oneClickArrivalDepositApplyOptions {

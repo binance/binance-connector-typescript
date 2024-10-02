@@ -40,25 +40,20 @@ import {
     fundingWalletResponse,
     userAssetOptions,
     userAssetResponse,
-    convertTransferOptions,
-    convertTransferResponse,
-    getConvertTransferOptions,
-    getConvertTransferResponse,
     getCloudminingPaymentAndRefundHistoryOptions,
     getCloudminingPaymentAndRefundHistoryResponse,
     getApiKeyPermissionOptions,
     getApiKeyPermissionResponse,
-    getAutoconvertingStableCoinsResponse,
     oneClickArrivalDepositApplyOptions,
     oneClickArrivalDepositApplyResponse
 } from './types';
 import { WalletMethods } from './methods';
-import { AccountSnapshotType, UnivTransferType, BusdStableCoinsConversion } from '../../enum';
+import { AccountSnapshotType, UnivTransferType } from '../../enum';
 
 export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletMethods> & T {
     return class extends base {
         /**
-        * System Status (System) {@link https://binance-docs.github.io/apidocs/spot/en/#system-status-system}
+        * System Status (System) {@link https://developers.binance.com/docs/wallet/others/system-status}
         */
         async systemStatus(): Promise<systemStatusResponse> {
             return await this.makeRequest('GET', '/sapi/v1/system/status');
@@ -66,7 +61,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * All Coins' Information (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data}
+        * All Coins' Information (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/all-coins-info}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -80,7 +75,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Daily Account Snapshot (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data}
+        * Daily Account Snapshot (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/daily-account-snapshoot}
         *
         * @param {AccountSnapshotType} type
         * @param {object} [options]
@@ -99,7 +94,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Disable Fast Withdraw Switch (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#disable-fast-withdraw-switch-user_data}
+        * Disable Fast Withdraw Switch (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/disable-fast-withdraw-switch}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -113,7 +108,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Enable Fast Withdraw Switch (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-fast-withdraw-switch-user_data}
+        * Enable Fast Withdraw Switch (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/enable-fast-withdraw-switch}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -127,7 +122,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Withdraw (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#withdraw-user_data}
+        * Withdraw (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/withdraw}
         *
         * @param {string} coin - Coin name
         * @param {string} address
@@ -151,7 +146,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Deposit History (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data}
+        * Deposit History (supporting network) (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/deposite-history}
         *
         * @param {object} [options]
         * @param {string} [options.coin] - Coin name
@@ -172,7 +167,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Withdraw History (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data}
+        * Withdraw History (supporting network) (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/withdraw-history}
         *
         * @param {object} [options]
         * @param {string} [options.coin] - Coin name
@@ -193,7 +188,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Deposit Address (supporting network) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data}
+        * Deposit Address (supporting network) (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/deposite-address}
         *
         * @param {string} coin - Coin name
         * @param {object} [options]
@@ -211,7 +206,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Account Status (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#account-status-user_data}
+        * Account Status (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/account-status}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -225,7 +220,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Account API Trading Status (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#account-api-trading-status-user_data}
+        * Account API Trading Status (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/account-api-trading-status}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -239,7 +234,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * DustLog (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#dustlog-user_data}
+        * DustLog (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/dust-log}
         *
         * @param {object} [options]
         * @param {DustAccountType} [options.accountType] - SPOT or MARGIN, default SPOT
@@ -256,7 +251,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Get Assets That Can Be Converted Into BNB (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-assets-that-can-be-converted-into-bnb-user_data}
+        * Get Assets That Can Be Converted Into BNB (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/assets-can-convert-bnb}
         *
         * @param {object} [options]
         * @param {DustAccountType} [options.accountType] - SPOT or MARGIN, default SPOT
@@ -271,7 +266,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Dust Transfer (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#dust-transfer-user_data}
+        * Dust Transfer (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/dust-transfer}
         *
         * @param {string[]} asset - The asset being converted. For example: asset=BTC,USDT
         * @param {object} [options]
@@ -289,7 +284,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Asset Dividend Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#asset-dividend-record-user_data}
+        * Asset Dividend Record (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/assets-divided-record}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -307,7 +302,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Asset Detail (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#asset-detail-user_data}
+        * Asset Detail (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/asset-detail}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -322,7 +317,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Trade Fee (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#trade-fee-user_data}
+        * Trade Fee (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/trade-fee}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -337,7 +332,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * User Universal Transfer (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#user-universal-transfer-user_data}
+        * User Universal Transfer (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/user-universal-transfer}
         *
         * @param {UnivTransferType} type - Universal transfer type
         * @param {string} asset
@@ -357,7 +352,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Query User Universal Transfer History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data}
+        * Query User Universal Transfer History (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/query-user-universal-transfer}
         *
         * @param {UnivTransferType} type - Universal transfer type
         * @param {object} [options]
@@ -379,7 +374,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Funding Wallet (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#funding-wallet-user_data}
+        * Funding Wallet (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/funding-wallet}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -395,7 +390,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * User Asset (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#user-asset-user_data}
+        * User Asset (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/user-assets}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -411,56 +406,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * BUSD Convert (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#busd-convert-trade}
-        *
-        * @param {string} clientTranId - The unique flag, the min length is 20
-        * @param {string} asset
-        * @param {number} amount
-        * @param {string} targetAsset - Target asset you want to convert
-        * @param {object} [options]
-        * @param {QueryConvertTransfer} [options.accountType] - The value cannot be greater than 60000
-        */
-        async convertTransfer(clientTranId: string, asset: string, amount: number, targetAsset: string, options?: convertTransferOptions): Promise<convertTransferResponse> {
-            validateRequiredParameters({ clientTranId, asset, amount, targetAsset });
-            const url = this.prepareSignedPath('/sapi/v1/asset/convert-transfer',
-                Object.assign(
-                    options ? options : {},
-                    {
-                        clientTranId: clientTranId,
-                        asset: asset.toUpperCase(),
-                        amount: amount,
-                        targetAsset: targetAsset
-                    }
-                )
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Query Convert Transfer (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-convert-transfer-user_data}
-        *
-        * @param {number} startTime - inclusive, unit: ms
-        * @param {number} endTime - exclusive, unit: ms
-        * @param {object} [options]
-        * @param {number} [options.tranId] - The transaction id
-        * @param {string} [options.clientTranId] - The user-defined transaction id
-        * @param {string} [options.asset] - If it is blank, we will match deducted asset and target asset.
-        * @param {AccountType} [options.accountType] - MAIN: main account. CARD: funding account. If it is blank, we will query spot and card wallet, otherwise, we just query the corresponding wallet
-        * @param {number} [options.current] - current page, default 1, the min value is 1
-        * @param {number} [options.size] - page size, default 10, the max value is 100
-        */
-        async getConvertTransfer(startTime: number, endTime: number, options?: getConvertTransferOptions): Promise<getConvertTransferResponse> {
-            validateRequiredParameters({ startTime, endTime });
-            const url = this.prepareSignedPath('/sapi/v1/asset/convert-transfer/queryByPage',
-                Object.assign(options ? options : {}, { startTime: startTime, endTime: endTime })
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-
-        /**
-        * Get Cloud-Mining payment and refund history (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-cloud-mining-payment-and-refund-history-user_data}
+        * Get Cloud-Mining payment and refund history (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/cloud-mining-payment-and-refund-history}
         *
         * @param {number} startTime - inclusive, unit: ms
         * @param {number} endTime - exclusive, unit: ms
@@ -487,7 +433,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Get API Key Permission (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-api-key-permission-user_data}
+        * Get API Key Permission (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/api-key-permission}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -501,29 +447,7 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
-        * Query auto-converting stable coins (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-auto-converting-stable-coins-user_data}
-        */
-        async getAutoconvertingStableCoins(): Promise<getAutoconvertingStableCoinsResponse> {
-            return await this.makeRequest('GET', '/sapi/v1/capital/contract/convertible-coins');
-        }
-
-
-        /**
-        * Switch on/off BUSD and stable coins conversion (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#switch-on-off-busd-and-stable-coins-conversion-user_data}
-        *
-        * @param {BusdStableCoinsConversion} coin - Must be USDC, USDP or TUSD
-        * @param {boolean} enable - true: turn on the auto-conversion. false: turn off the auto-conversion
-        */
-        async switchOnOffBusdAndStableCoinsConversion(coin: BusdStableCoinsConversion, enable: boolean): Promise<void> {
-            validateRequiredParameters({ coin, enable });
-            const url = this.prepareSignedPath('/sapi/v1/capital/contract/convertible-coins',
-                { coin: coin, enable: enable }
-            );
-            return await this.makeRequest('POST', url);
-        }
-
-        /**
-        * One click arrival deposit apply (for expired address deposit) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#one-click-arrival-deposit-apply-for-expired-address-deposit-user_data}
+        * One click arrival deposit apply (for expired address deposit) (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/one-click-arrival-deposite-apply}
         *
         * @param {object} [options]
         * @param {number} [options.depositId] - Deposit record Id, priority use

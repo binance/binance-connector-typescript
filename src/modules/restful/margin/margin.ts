@@ -95,7 +95,7 @@ import { Side, OrderType, IsIsolatedMargin, MarginBorrowRepayType } from '../../
 export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginMethods> & T {
     return class extends base {
         /**
-        * Get All Margin Assets (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-margin-assets-market_data}
+        * Get All Margin Assets (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Get-All-Margin-Assets}
         * 
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -109,7 +109,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get All Cross Margin Pairs (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-cross-margin-pairs-market_data}
+        * Get All Cross Margin Pairs (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Get-All-Cross-Margin-Pairs}
         * 
         * @param {object} [options]
         * @param {string} [options.symbol]
@@ -123,7 +123,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin PriceIndex (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-priceindex-market_data}
+        * Query Margin PriceIndex (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Query-Margin-PriceIndex}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         */
@@ -138,7 +138,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Account New Order (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-new-order-trade}
+        * Margin Account New Order (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Account-New-Order}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side
@@ -175,7 +175,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Account Cancel Order (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-cancel-order-trade}
+        * Margin Account Cancel Order (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Account-Cancel-Order}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -200,7 +200,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Account Cancel all Open Orders on a Symbol (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-cancel-all-open-orders-on-a-symbol-trade}
+        * Margin Account Cancel all Open Orders on a Symbol (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Account-Cancel-All-Open-Orders}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -222,7 +222,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-         * Adjust cross margin max leverage (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#adjust-cross-margin-max-leverage-user_data}
+         * Adjust cross margin max leverage (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Adjust-Cross-Margin-Max-Leverage}
          * 
          * @param {number} maxLeverage - Can only adjust 3 , 5 or 10，Example: maxLeverage=10 for Cross Margin Pro ，maxLeverage = 5 or 3 for Cross Margin Classic
          */
@@ -238,7 +238,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Cross Margin Transfer History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-cross-margin-transfer-history-user_data}
+        * Get Cross Margin Transfer History (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/transfer/Get-Cross-Margin-Transfer-History}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -260,7 +260,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Interest History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-interest-history-user_data}
+        * Get Interest History (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Get-Interest-History}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -281,7 +281,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Force Liquidation Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-force-liquidation-record-user_data}
+        * Get Force Liquidation Record (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Get-Force-Liquidation-Record}
         *
         * @param {object} [options]
         * @param {number} [options.startTime] - UTC timestamp in ms
@@ -301,7 +301,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Cross Margin Account Details (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-cross-margin-account-details-user_data}
+        * Query Cross Margin Account Details (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Query-Cross-Margin-Account-Details}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -315,7 +315,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's Order (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-order-user_data}
+        * Query Margin Account's Order (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Order}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -339,7 +339,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's Open Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-open-orders-user_data}
+        * Query Margin Account's Open Orders (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Open-Orders}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -355,7 +355,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's All Orders (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-all-orders-user_data}
+        * Query Margin Account's All Orders (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-All-Orders}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -381,7 +381,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Account New OCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-new-oco-trade}
+        * Margin Account New OCO (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Account-New-OCO}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side
@@ -422,7 +422,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Margin Account Cancel OCO (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-cancel-oco-trade}
+        * Margin Account Cancel OCO (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Account-Cancel-OCO}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -447,7 +447,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-oco-user_data}
+        * Query Margin Account's OCO (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-OCO}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -466,7 +466,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's all OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-all-oco-user_data}
+        * Query Margin Account's all OCO (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-All-OCO}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -486,7 +486,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's Open OCO (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-open-oco-user_data}
+        * Query Margin Account's Open OCO (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Open-OCO}
         *
         * @param {object} [options]
         * @param {IsIsolatedMargin} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -502,7 +502,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Account's Trade List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-account-39-s-trade-list-user_data}
+        * Query Margin Account's Trade List (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Trade-List}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -529,7 +529,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Max Borrow (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-max-borrow-user_data}
+        * Query Max Borrow (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Query-Max-Borrow}
         *
         * @param {string} asset
         * @param {object} [options]
@@ -551,7 +551,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Max Transfer-Out Amount (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-max-transfer-out-amount-user_data}
+        * Query Max Transfer-Out Amount (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/transfer/Query-Max-Transfer-Out-Amount}
         *
         * @param {string} asset
         * @param {object} [options]
@@ -573,7 +573,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Summary of Margin account (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-summary-of-margin-account-user_data}
+        * Get Summary of Margin account (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Get-Summary-Of-Margin-Account}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -587,7 +587,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Isolated Margin Account Info (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-isolated-margin-account-info-user_data}
+        * Query Isolated Margin Account Info (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Query-Isolated-Margin-Account-Info}
         *
         * @param {object} [options]
         * @param {string} [options.symbols] - Max 5 symbols can be sent; separated by ','
@@ -602,7 +602,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Disable Isolated Margin Account (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#disable-isolated-margin-account-trade}
+        * Disable Isolated Margin Account (TRADE) {@link https://developers.binance.com/docs/margin_trading/account/Disable-Isolated-Margin-Account}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -623,7 +623,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Enable Isolated Margin Account (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-isolated-margin-account-trade}
+        * Enable Isolated Margin Account (TRADE) {@link https://developers.binance.com/docs/margin_trading/account/Enable-Isolated-Margin-Account}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -644,7 +644,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Enabled Isolated Margin Account Limit (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-enabled-isolated-margin-account-limit-user_data}
+        * Query Enabled Isolated Margin Account Limit (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Query-Enabled-Isolated-Margin-Account-Limit}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -658,7 +658,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get All Isolated Margin Symbol (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-all-isolated-margin-symbol-market_data}
+        * Get All Isolated Margin Symbol (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Get-All-Isolated-Margin-Symbol}
         *
         * @param {object} [options]
         * @param {string} [options.symbol]
@@ -673,7 +673,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Toggle BNB Burn On Spot Trade And Margin Interest (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#toggle-bnb-burn-on-spot-trade-and-margin-interest-user_data}
+        * Toggle BNB Burn On Spot Trade And Margin Interest (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Toggle-BNB-Burn-On-Spot-Trade-And-Margin-Interest}
         *
         * @param {object} [options]
         * @param {SpotBNBBurn} [options.spotBNBBurn] - Determines whether to use BNB to pay for trading fees on SPOT
@@ -689,7 +689,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get BNB Burn Status (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-bnb-burn-status-user_data}
+        * Get BNB Burn Status (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Get-BNB-Burn-Status}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -703,7 +703,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Margin Interest Rate History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-interest-rate-history-user_data}
+        * Query Margin Interest Rate History (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Query-Margin-Interest-Rate-History}
         *
         * @param {string} asset
         * @param {object} [options]
@@ -727,7 +727,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Cross Margin Fee Data (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-cross-margin-fee-data-user_data}
+        * Query Cross Margin Fee Data (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Query-Cross-Margin-Fee-Data}
         *
         * @param {object} [options]
         * @param {number} [options.vipLevel] - Defaults to user vip level
@@ -743,7 +743,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Isolated Margin Fee Data (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-isolated-margin-fee-data-user_data}
+        * Query Isolated Margin Fee Data (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/account/Query-Isolated-Margin-Fee-Data}
         *
         * @param {object} [options]
         * @param {number} [options.vipLevel] - Defaults to user vip level
@@ -759,7 +759,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Isolated Margin Tier Data (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-isolated-margin-tier-data-user_data}
+        * Query Isolated Margin Tier Data (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Query-Isolated-Margin-Tier-Data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -781,7 +781,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Query Current Margin Order Count Usage (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#query-current-margin-order-count-usage-trade}
+        * Query Current Margin Order Count Usage (TRADE) {@link https://developers.binance.com/docs/margin_trading/trade/Query-Current-Margin-Order-Count-Usage}
         *
         * @param {object} [options]
         * @param {string} [options.isIsolated] - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -798,7 +798,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Cross margin collateral ratio (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#cross-margin-collateral-ratio-market_data}
+        * Cross margin collateral ratio (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Cross-margin-collateral-ratio}
         *
         */
         async crossMarginCollateralRatio(): Promise<crossMarginCollateralRatioResponse> {
@@ -807,7 +807,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Small Liability Exchange Coin List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-small-liability-exchange-coin-list-user_data}
+        * Get Small Liability Exchange Coin List (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Get-Small-Liability-Exchange-Coin-List}
         *
         * @param {object} [options]
         * @param {number} [options.startTime] - UTC timestamp in ms
@@ -823,7 +823,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Small Liability Exchange (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#small-liability-exchange-margin}
+        * Small Liability Exchange (MARGIN) {@link https://developers.binance.com/docs/margin_trading/trade/Small-Liability-Exchange}
         *
         * @param {string[]} assetNames - The assets list of small liability exchange, Example: assetNames = BTC,ETH
         * @param {object} [options]
@@ -844,7 +844,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get Small Liability Exchange History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-small-liability-exchange-history-user_data}
+        * Get Small Liability Exchange History (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/trade/Get-Small-Liability-Exchange-History}
         *
         * @param {object} [options]
         * @param {number} [options.startTime] - UTC timestamp in ms
@@ -866,7 +866,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         }
 
         /**
-        * Get a future hourly interest rate (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-a-future-hourly-interest-rate-user_data}
+        * Get a future hourly interest rate (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Get-a-future-hourly-interest-rate}
         *
         * @param {string} assets - List of assets, separated by commas, up to 20
         * @param {IsIsolatedMargin} isIsolated - * `TRUE` - For isolated margin, * `FALSE` - Default, not for isolated margin
@@ -884,7 +884,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-        * Get tokens or symbols delist schedule for cross margin and isolated margin (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-tokens-or-symbols-delist-schedule-for-cross-margin-and-isolated-margin-market_data}
+        * Get tokens or symbols delist schedule for cross margin and isolated margin (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Get-Delist-Schedule}
         * 
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -897,7 +897,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         }
 
         /**
-         * Get the available margin inventory (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-margin-available-inventory-user_data}
+         * Get the available margin inventory (USER_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Query-margin-avaliable-inventory}
          * 
          * @param {string} type - MARGIN, ISOLATED
          * @param {object} [options]
@@ -918,7 +918,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
 
 
         /**
-         * Margin manual liquidation (MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-manual-liquidation-margin}
+         * Margin manual liquidation (MARGIN) {@link https://developers.binance.com/docs/margin_trading/trade/Margin-Manual-Liquidation}
          * 
          * @param {string} type - MARGIN, ISOLATED
          * @param {object} [options]
@@ -939,7 +939,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         }
 
         /**
-         * Get the liability assets leverage bracket in Cross Margin Pro Mode (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-liability-coin-leverage-bracket-in-cross-margin-pro-mode-market_data}
+         * Get the liability assets leverage bracket in Cross Margin Pro Mode (MARKET_DATA) {@link https://developers.binance.com/docs/margin_trading/market-data/Query-Liability-Coin-Leverage-Bracket-in-Cross-Margin-Pro-Mode}
          */
         async getLeverageBracket(): Promise<getLeverageBracketResponse[]> {
             const url = this.prepareSignedPath('/sapi/v1/margin/leverageBracket');
@@ -947,7 +947,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         }
 
         /**
-         * Margin account borrow/repay(MARGIN) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-account-borrow-repay-margin}
+         * Margin account borrow/repay(MARGIN) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Margin-Account-Borrow-Repay}
          * 
          * @param {string} asset
          * @param {string} isIsolated - TRUE for Isolated Margin, FALSE for Cross Margin, Default FALSE
@@ -975,7 +975,7 @@ export function mixinMargin<T extends Constructor>(base: T): Constructor<MarginM
         }
 
         /**
-         * Query borrow/repay records in Margin account(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-borrow-repay-records-in-margin-account-user_data}
+         * Query borrow/repay records in Margin account(USER_DATA) {@link https://developers.binance.com/docs/margin_trading/borrow-and-repay/Query-Borrow-Repay}
          * 
          * @param {MarginBorrowRepayType} type - BORROW or REPAY
          * @param {object} [options]
