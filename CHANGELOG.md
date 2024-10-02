@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.12 - 2024-10-02
+### Added
+- Added `LogLevel` to exported enums
+
+### Changed
+- Updated dependencies
+
+### Removed
+- BUSD Wallet endpoints:
+  - `POST /sapi/v1/asset/convert-transfer`
+  - `GET /sapi/v1/asset/convert-transfer/queryByPage`
+  - `GET /sapi/v1/capital/contract/convertible-coins`
+  - `POST /sapi/v1/capital/contract/convertible-coins`
+
 ## 0.3.11 - 2024-09-18
 ### Changed
 - Updated dependencies

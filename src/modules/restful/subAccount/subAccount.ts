@@ -96,7 +96,7 @@ import { FromAccountType, ToAccountType, AccountSnapshotType } from '../../enum'
 export function mixinSubAccount<T extends Constructor>(base: T): Constructor<SubAccountMethods> & T {
     return class extends base {
         /**
-        * Create a Virtual Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#create-a-virtual-sub-account-for-master-account}
+        * Create a Virtual Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Create-a-Virtual-Sub-account}
         *
         * @param {string} subAccountString - Please input a string. We will create a virtual email using that string for you to register
         * @param {object} [options]
@@ -117,7 +117,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Sub-account List (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-list-for-master-account}
+        * Query Sub-account List (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Query-Sub-account-List}
         *
         * @param {object} [options]
         * @param {string} [options.email] - Sub-account email
@@ -135,7 +135,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Sub-account Spot Asset Transfer History (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-spot-asset-transfer-history-for-master-account}
+        * Query Sub-account Spot Asset Transfer History (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Sub-account-Spot-Asset-Transfer-History}
         *
         * @param {object} [options]
         * @param {string} [options.fromEmail] - Sub-account email
@@ -155,7 +155,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Sub-account Futures Asset Transfer History (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-futures-asset-transfer-history-for-master-account}
+        * Query Sub-account Futures Asset Transfer History (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Sub-account-Futures-Asset-Transfer-History}
         *
         * @param {string} email - Sub-account email
         * @param {number} futuresType - 1:USDT-margined Futures, 2: Coin-margined Futures
@@ -182,7 +182,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Sub-account Futures Asset Transfer (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#sub-account-futures-asset-transfer-for-master-account}
+        * Sub-account Futures Asset Transfer (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Sub-account-Futures-Asset-Transfer}
         *
         * @param {string} fromEmail - Sender email
         * @param {string} toEmail - Recipient email
@@ -211,7 +211,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Sub-account Assets (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-assets-for-master-account}
+        * Query Sub-account Assets (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Sub-account-Assets-V3}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -232,7 +232,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Sub-account Spot Assets Summary (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-spot-assets-summary-for-master-account}
+        * Query Sub-account Spot Assets Summary (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Sub-account-Spot-Assets-Summary}
         *
         * @param {object} [options]
         * @param {string} [options.email] - Sub-account email
@@ -249,7 +249,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Sub-account Deposit Address (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-sub-account-deposit-address-for-master-account}
+        * Get Sub-account Deposit Address (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Sub-account-Deposit-Address}
         *
         * @param {string} email - Sub-account email
         * @param {string} coin - Coin name
@@ -274,7 +274,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Sub-account Deposit History (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-sub-account-deposit-history-for-master-account}
+        * Get Sub-account Deposit History (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Sub-account-Deposit-History}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -302,7 +302,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Sub-account's Status on Margin/Futures (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-sub-account-39-s-status-on-margin-futures-for-master-account}
+        * Get Sub-account's Status on Margin/Futures (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Get-Sub-accounts-Status-on-Margin-Or-Futures}
         *
         * @param {object} [options]
         * @param {string} [options.email] - Sub-account email
@@ -317,7 +317,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Enable Margin for Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-margin-for-sub-account-for-master-account}
+        * Enable Margin for Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Enable-Margin-for-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -338,7 +338,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Detail on Sub-account's Margin Account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-detail-on-sub-account-39-s-margin-account-for-master-account}
+        * Get Detail on Sub-account's Margin Account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Detail-on-Sub-accounts-Margin-Account}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -359,7 +359,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Summary of Sub-account's Margin Account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-summary-of-sub-account-39-s-margin-account-for-master-account}
+        * Get Summary of Sub-account's Margin Account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Margin-Account}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -373,7 +373,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Enable Futures for Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-futures-for-sub-account-for-master-account}
+        * Enable Futures for Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Enable-Futures-for-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -394,7 +394,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Detail on Sub-account's Futures Account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-detail-on-sub-account-39-s-futures-account-for-master-account}
+        * Get Detail on Sub-account's Futures Account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Detail-on-Sub-accounts-Futures-Account}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -415,7 +415,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Summary of Sub-account's Futures Account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-summary-of-sub-account-39-s-futures-account-for-master-account}
+        * Get Summary of Sub-account's Futures Account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Futures-Account}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -429,7 +429,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Futures Position-Risk of Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-futures-position-risk-of-sub-account-for-master-account}
+        * Get Futures Position-Risk of Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Get-Futures-Position-Risk-of-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -450,7 +450,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Futures Transfer for Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#futures-transfer-for-sub-account-for-master-account}
+        * Futures Transfer for Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Futures-Transfer-for-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {string} asset
@@ -477,7 +477,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Margin Transfer for Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#margin-transfer-for-sub-account-for-master-account}
+        * Margin Transfer for Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Margin-Transfer-for-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {string} asset
@@ -504,7 +504,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Transfer to Sub-account of Same Master (For Sub-account) {@link https://binance-docs.github.io/apidocs/spot/en/#transfer-to-sub-account-of-same-master-for-sub-account}
+        * Transfer to Sub-account of Same Master (For Sub-account) {@link https://developers.binance.com/docs/sub_account/asset-management/Transfer-to-Sub-account-of-Same-Master}
         *
         * @param {string} toEmail - Recipient email
         * @param {string} asset
@@ -529,7 +529,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Transfer to Master (For Sub-account) {@link https://binance-docs.github.io/apidocs/spot/en/#transfer-to-master-for-sub-account}
+        * Transfer to Master (For Sub-account) {@link https://developers.binance.com/docs/sub_account/asset-management/Transfer-to-Master}
         *
         * @param {string} asset
         * @param {number} amount
@@ -552,7 +552,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Sub-account Transfer History (For Sub-account) {@link https://binance-docs.github.io/apidocs/spot/en/#sub-account-transfer-history-for-sub-account}
+        * Sub-account Transfer History (For Sub-account) {@link https://developers.binance.com/docs/sub_account/asset-management/Sub-account-Transfer-History}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -571,7 +571,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Universal Transfer (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#universal-transfer-for-master-account}
+        * Universal Transfer (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Universal-Transfer}
         *
         * @param {FromAccountType} fromAccountType
         * @param {ToAccountType} toAccountType
@@ -602,7 +602,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Universal Transfer History (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-universal-transfer-history-for-master-account}
+        * Query Universal Transfer History (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Universal-Transfer-History}
         *
         * @param {object} [options]
         * @param {string} [options.fromEmail] - Sub-account email
@@ -623,7 +623,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Detail on Sub-account's Futures Account V2 (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-detail-on-sub-account-39-s-futures-account-v2-for-master-account}
+        * Get Detail on Sub-account's Futures Account V2 (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Detail-on-Sub-accounts-Futures-Account-V2}
         *
         * @param {string} email - Sub-account email
         * @param {number} futuresType - * `1` - USDT Margined Futures, * `2` - COIN Margined Futures
@@ -646,7 +646,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Summary of Sub-account's Futures Account V2 (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-summary-of-sub-account-39-s-futures-account-v2-for-master-account}
+        * Get Summary of Sub-account's Futures Account V2 (For Master Account) {@link https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Futures-Account-V2}
         *
         * @param {number} futuresType - * `1` - USDT Margined Futures, * `2` - COIN Margined Futures
         * @param {object} [options]
@@ -669,7 +669,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get Futures Position-Risk of Sub-account V2 (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-futures-position-risk-of-sub-account-v2-for-master-account}
+        * Get Futures Position-Risk of Sub-account V2 (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Get-Futures-Position-Risk-of-Sub-account-V2}
         *
         * @param {string} email - Sub-account email
         * @param {number} futuresType - * `1` - USDT Margined Futures, * `2` - COIN Margined Futures
@@ -692,7 +692,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Enable Leverage Token for Sub-account (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-leverage-token-for-sub-account-for-master-account}
+        * Enable Leverage Token for Sub-account (For Master Account) {@link https://developers.binance.com/docs/sub_account/account-management/Enable-Leverage-Token-for-Sub-account}
         *
         * @param {string} email - Sub-account email
         * @param {boolean} enableBlvt - Only true for now
@@ -715,7 +715,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Get IP Restriction for a Sub-account API Key (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#get-ip-restriction-for-a-sub-account-api-key-for-master-account}
+        * Get IP Restriction for a Sub-account API Key (For Master Account) {@link https://developers.binance.com/docs/sub_account/api-management/Get-IP-Restriction-for-a-Sub-account-API-Key}
         *
         * @param {string} email - Sub-account email
         * @param {string} subAccountApiKey
@@ -738,7 +738,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Delete IP List for a Sub-account API Key (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#delete-ip-list-for-a-sub-account-api-key-for-master-account}
+        * Delete IP List for a Sub-account API Key (For Master Account) {@link https://developers.binance.com/docs/sub_account/api-management/Delete-IP-List-For-a-Sub-account-API-Key}
         *
         * @param {string} email - Sub-account email
         * @param {string} subAccountApiKey
@@ -763,7 +763,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Add IP Restriction for Sub-Account API key (For Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#add-ip-restriction-for-sub-account-api-key-for-master-account}
+        * Add IP Restriction for Sub-Account API key (For Master Account) {@link https://developers.binance.com/docs/sub_account/api-management/Add-IP-Restriction-for-Sub-Account-API-key}
         *
         * @param {string} email - Sub-account email
         * @param {string} subAccountApiKey
@@ -789,7 +789,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Deposit assets into the managed sub-account (For Investor Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#deposit-assets-into-the-managed-sub-account-for-investor-master-account}
+        * Deposit assets into the managed sub-account (For Investor Master Account) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Deposit-Assets-Into-The-Managed-Sub-account}
         *
         * @param {string} toEmail - Recipient email
         * @param {string} asset
@@ -814,7 +814,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Managed Sub-account Asset Details (For Investor Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-asset-details-for-investor-master-account}
+        * Query Managed Sub-account Asset Details (For Investor Master Account) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-account-Asset-Details}
         *
         * @param {string} email - Sub-account email
         * @param {object} [options]
@@ -835,7 +835,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Withdrawl assets from the managed sub-account (For Investor Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#withdrawl-assets-from-the-managed-sub-account-for-investor-master-account}
+        * Withdrawl assets from the managed sub-account (For Investor Master Account) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Withdrawl-Assets-From-The-Managed-Sub-account}
         *
         * @param {string} fromEmail - Sender email
         * @param {string} asset
@@ -861,7 +861,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-        * Query Managed Sub-account Snapshot (For Investor Master Account) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-snapshot-for-investor-master-account}
+        * Query Managed Sub-account Snapshot (For Investor Master Account) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-account-Snapshot}
         *
         * @param {string} email - Sub-account email
         * @param {AccountSnapshotType} type - 'SPOT', 'MARGIN'(cross), 'FUTURES'(UM)
@@ -887,7 +887,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-transfer-log-for-investor-master-account-user_data}
+         * Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-Account-Transfer-Log-Investor}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {number} startTime - Start Time
@@ -917,7 +917,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-transfer-log-for-trading-team-master-account-user_data}
+         * Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-Account-Transfer-Log-Trading-Team-Master}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {number} startTime - Start Time
@@ -948,7 +948,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub-account Futures Asset Details（For Investor Master Account）(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-futures-asset-details-for-investor-master-account-user_data}
+         * Query Managed Sub-account Futures Asset Details（For Investor Master Account）(USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-account-Futures-Asset-Details}
          * 
          * @param {string} email - Managed Sub Account Email
          */
@@ -964,7 +964,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-margin-asset-details-for-investor-master-account-user_data}
+         * Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-account-Margin-Asset-Details}
          * 
          * @param {string} email - Managed Sub Account Email
          */
@@ -980,7 +980,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Sub-account Assets (For Master Account)(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-assets-for-master-account-user_data}
+         * Query Sub-account Assets (For Master Account)(USER_DATA) {@link https://developers.binance.com/docs/sub_account/asset-management/Query-Sub-account-Assets-V4}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {option} [options]
@@ -1001,7 +1001,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub-account List {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-list-for-investor-user_data}
+         * Query Managed Sub-account List {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-account-List}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {option} [options]
@@ -1024,7 +1024,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Sub-account Transaction Statistics (For Master Account) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-sub-account-transaction-statistics-for-master-account-user_data}
+         * Query Sub-account Transaction Statistics (For Master Account) (USER_DATA) {@link https://developers.binance.com/docs/sub_account/account-management/Query-Sub-account-Transaction-Statistics}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {option} [options]
@@ -1045,7 +1045,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Get Managed Sub-account Deposit Address (For Investor Master Account) (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-managed-sub-account-deposit-address-for-investor-master-account-user_data}
+         * Get Managed Sub-account Deposit Address (For Investor Master Account) (USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Get-Managed-Sub-account-Deposit-Address}
          * 
          * @param {string} email - Sub user email
          * @param {string} coin
@@ -1069,7 +1069,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Enable Options for Sub-account (For Master Account)(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#enable-options-for-sub-account-for-master-account-user_data}
+         * Enable Options for Sub-account (For Master Account)(USER_DATA) {@link https://developers.binance.com/docs/sub_account/account-management/Enable-Options-for-Sub-account}
          * 
          * @param {string} email - Managed Sub Account Email
          * @param {option} [options]
@@ -1090,7 +1090,7 @@ export function mixinSubAccount<T extends Constructor>(base: T): Constructor<Sub
 
 
         /**
-         * Query Managed Sub Account Transfer Log (For Trading Team Sub Account)(USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-managed-sub-account-transfer-log-for-trading-team-sub-account-user_data}
+         * Query Managed Sub Account Transfer Log (For Trading Team Sub Account)(USER_DATA) {@link https://developers.binance.com/docs/sub_account/managed-sub-account/Query-Managed-Sub-Account-Transfer-Log-Trading-Team-Sub}
          * 
          * @param {number} startTime - Start Time
          * @param {number} endTime - End Time (The start time and end time interval cannot exceed half a year)

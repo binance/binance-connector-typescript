@@ -18,7 +18,6 @@ import { WebsocketAPI } from './websocketAPI';
 import { WebsocketStream } from './websocketStream';
 import {
     AccountSnapshotType,
-    AccountType,
     AddLiquidityPreviewType,
     BusdStableCoinsConversion,
     CancelReplaceMode,
@@ -83,7 +82,6 @@ import {
     PortfolioMarginFrom,
     PositionSide,
     PositionStatus,
-    QueryConvertTransfer,
     QuerySubAccountList,
     RedeemDestAccount,
     RemoveLiquidityPreviewType,
@@ -122,7 +120,6 @@ import {
 
 export {
     AccountSnapshotType,
-    AccountType,
     AddLiquidityPreviewType,
     BusdStableCoinsConversion,
     CancelReplaceMode,
@@ -188,7 +185,6 @@ export {
     PortfolioMarginFrom,
     PositionSide,
     PositionStatus,
-    QueryConvertTransfer,
     QuerySubAccountList,
     RemoveLiquidityPreviewType,
     RedeemDestAccount,

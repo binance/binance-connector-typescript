@@ -39,15 +39,10 @@ import {
     fundingWalletResponse,
     userAssetOptions,
     userAssetResponse,
-    convertTransferOptions,
-    convertTransferResponse,
-    getConvertTransferOptions,
-    getConvertTransferResponse,
     getCloudminingPaymentAndRefundHistoryOptions,
     getCloudminingPaymentAndRefundHistoryResponse,
     getApiKeyPermissionOptions,
     getApiKeyPermissionResponse,
-    getAutoconvertingStableCoinsResponse,
     oneClickArrivalDepositApplyOptions,
     oneClickArrivalDepositApplyResponse
 } from './types';
@@ -74,11 +69,7 @@ export interface WalletMethods {
     getUserUniversalTransferHistory(type: UnivTransferType, options?: getUserUniversalTransferHistoryOptions): Promise<getUserUniversalTransferHistoryResponse>;
     fundingWallet(options?: fundingWalletOptions): Promise<fundingWalletResponse[]>;
     userAsset(options?: userAssetOptions): Promise<userAssetResponse[]>;
-    convertTransfer(clientTranId: string, asset: string, amount: number, targetAsset: string, options?: convertTransferOptions): Promise<convertTransferResponse>;
-    getConvertTransfer(startTime: number, endTime: number, options?: getConvertTransferOptions): Promise<getConvertTransferResponse>;
     getCloudminingPaymentAndRefundHistory(startTime: number, endTime: number, options?: getCloudminingPaymentAndRefundHistoryOptions): Promise<getCloudminingPaymentAndRefundHistoryResponse>;
     getApiKeyPermission(options?: getApiKeyPermissionOptions): Promise<getApiKeyPermissionResponse>;
-    getAutoconvertingStableCoins(): Promise<getAutoconvertingStableCoinsResponse>;
-    switchOnOffBusdAndStableCoinsConversion(coin: string, enable: boolean): Promise<void>;
     oneClickArrivalDepositApply(options?: oneClickArrivalDepositApplyOptions): Promise<oneClickArrivalDepositApplyResponse>;
 }

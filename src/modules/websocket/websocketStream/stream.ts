@@ -17,7 +17,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@aggTrade
          * Update Speed: Real-time
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#aggregate-trade-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#aggregate-trade-streams}
          *
          * @param {string} symbol
          */
@@ -34,7 +34,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@trade
          * Update Speed: Real-time
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#trade-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#trade-streams}
          *
          * @param {string} symbol
          */
@@ -51,7 +51,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@kline_<interval>
          * Update Speed: 2000ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-streams-for-utc}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#kline-candlestick-streams-for-utc}
          *
          * @param {string} symbol
          * @param {string} interval - m -> minutes; h -> hours; d -> days; w -> weeks; M -> months:
@@ -71,9 +71,9 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@miniTicker or !miniTicker@arr
          * Update Speed: 1000ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-mini-ticker-stream}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#individual-symbol-mini-ticker-stream}
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#all-market-mini-tickers-stream}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#all-market-mini-tickers-stream}
          *
          * @param {string} [symbol]
          */
@@ -94,9 +94,9 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@ticker or !ticker@arr
          * Update Speed: 1000ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-ticker-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#individual-symbol-ticker-streams}
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#all-market-tickers-stream}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#all-market-tickers-stream}
          *
          * @param {string} [symbol]
          */
@@ -121,9 +121,9 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          *
          * As such, the effective window might be up to 59999ms wider that <window_size>.
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-rolling-window-statistics-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#individual-symbol-rolling-window-statistics-streams}
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#all-market-rolling-window-statistics-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#all-market-rolling-window-statistics-streams}
          *
          * @param {string} [windowSize]
          * @param {string} [symbol]
@@ -144,7 +144,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Name: <symbol>@bookTicker or !bookTicker
          * Update Speed: Real-time
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-book-ticker-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#individual-symbol-book-ticker-streams}
          *
          * @param {string} [symbol]
          */
@@ -161,7 +161,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Names: <symbol>@depth<levels> or <symbol>@depth<levels>@100ms.
          * Update Speed: 1000ms or 100ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#partial-book-depth-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#partial-book-depth-streams}
          *
          * @param {string} symbol
          * @param {string} levels - 5, 10, or 20
@@ -180,7 +180,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
          * Stream Names: <symbol>@depth or <symbol>@depth@100ms
          * Update Speed: 1000ms or 100ms
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#diff-depth-stream}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams#diff-depth-stream}
          *
          * @param {string} symbol
          * @param {string} speed - 1000ms or 100ms
@@ -193,7 +193,7 @@ export function mixinWsStream<T extends Constructor>(base: T): Constructor<Strea
         /**
          * Listen to User data stream
          *
-         * {@link https://binance-docs.github.io/apidocs/spot/en/#user-data-streams}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/user-data-stream}
          *
          * @param {string} listenKey
          */

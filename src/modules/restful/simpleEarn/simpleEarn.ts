@@ -53,7 +53,7 @@ import { SimpleEarnMethods } from './methods';
 export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<SimpleEarnMethods> & T {
     return class extends base {
         /**
-        * Get Simple Earn Flexible Product List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-simple-earn-flexible-product-list-user_data}
+        * Get Simple Earn Flexible Product List (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Simple-Earn-Flexible-Product-List}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -70,7 +70,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Simple Earn Locked Product List (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-simple-earn-locked-product-list-user_data}
+        * Get Simple Earn Locked Product List (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Simple-Earn-Locked-Product-List}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -87,7 +87,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Subscribe Flexible Product (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#subscribe-flexible-product-trade}
+        * Subscribe Flexible Product (TRADE) {@link https://developers.binance.com/docs/simple_earn/earn/Subscribe-Flexible-Product}
         *
         * @param {string} productId
         * @param {number} amount
@@ -112,7 +112,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Subscribe Locked Product (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#subscribe-locked-product-trade}
+        * Subscribe Locked Product (TRADE) {@link https://developers.binance.com/docs/simple_earn/earn/Subscribe-Locked-Product}
         *
         * @param {string} projectId
         * @param {number} amount
@@ -137,7 +137,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Redeem Flexible Product (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#redeem-flexible-product-trade}
+        * Redeem Flexible Product (TRADE) {@link https://developers.binance.com/docs/simple_earn/earn/Redeem-Flexible-Product}
         *
         * @param {string} productId
         * @param {object} [options]
@@ -161,7 +161,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Redeem Locked Product (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#redeem-locked-product-trade}
+        * Redeem Locked Product (TRADE) {@link https://developers.binance.com/docs/simple_earn/earn/Redeem-Locked-Product}
         *
         * @param {string} positionId - 1234
         * @param {object} [options]
@@ -182,7 +182,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Product Position (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-product-position-user_data}
+        * Get Flexible Product Position (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Flexible-Product-Position}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -200,7 +200,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Product Position (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-product-position-user_data}
+        * Get Locked Product Position (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Locked-Product-Position}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -219,7 +219,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Simple Account (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#simple-account-user_data}
+        * Simple Account (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Simple-Account}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -233,7 +233,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Subscription Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-subscription-record-user_data}
+        * Get Flexible Subscription Record (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Flexible-Subscription-Record}
         *
         * @param {object} [options]
         * @param {string} [options.productId]
@@ -254,7 +254,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Subscription Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-subscription-record-user_data}
+        * Get Locked Subscription Record (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Locked-Subscription-Record}
         *
         * @param {object} [options]
         * @param {string} [options.purchaseId]
@@ -274,7 +274,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Redemption Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-redemption-record-user_data}
+        * Get Flexible Redemption Record (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Flexible-Redemption-Record}
         *
         * @param {object} [options]
         * @param {string} [options.productId]
@@ -294,7 +294,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Redemption Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-redemption-record-user_data}
+        * Get Locked Redemption Record (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Locked-Redemption-Record}
         *
         * @param {object} [options]
         * @param {string} [options.positionId]
@@ -315,7 +315,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Rewards History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-rewards-history-user_data}
+        * Get Flexible Rewards History (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Flexible-Rewards-History}
         *
         * @param {string} type - "BONUS", "REALTIME", "REWARDS"
         * @param {object} [options]
@@ -339,7 +339,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Rewards History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-rewards-history-user_data}
+        * Get Locked Rewards History (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Locked-Rewards-History}
         *
         * @param {object} [options]
         * @param {string} [options.positionId]
@@ -358,7 +358,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Set Flexible Auto Subscribe (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#set-flexible-auto-subscribe-user_data}
+        * Set Flexible Auto Subscribe (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/earn/Set-Flexible-Auto-Subscribe}
         *
         * @param {string} productId
         * @param {boolean} autoSubscribe - true or false
@@ -381,7 +381,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Set Locked Auto Subscribe (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#set-locked-auto-subscribe-user_data}
+        * Set Locked Auto Subscribe (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/earn/Set-Locked-Auto-Subscribe}
         *
         * @param {string} positionId
         * @param {boolean} autoSubscribe - true or false
@@ -404,7 +404,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Personal Left Quota (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-personal-left-quota-user_data}
+        * Get Flexible Personal Left Quota (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Flexible-Personal-Left-Quota}
         *
         * @param {string} productId
         * @param {object} [options]
@@ -425,7 +425,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Personal Left Quota (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-personal-left-quota-user_data}
+        * Get Locked Personal Left Quota (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/account/Get-Locked-Personal-Left-Quota}
         *
         * @param {string} projectId
         * @param {object} [options]
@@ -446,7 +446,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Flexible Subscription Preview (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-flexible-subscription-preview-user_data}
+        * Get Flexible Subscription Preview (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/earn/Get-Flexible-Subscription-Preview}
         *
         * @param {string} productId
         * @param {number} amount
@@ -469,7 +469,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Locked Subscription Preview (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-locked-subscription-preview-user_data}
+        * Get Locked Subscription Preview (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/earn/Get-Locked-Subscription-Preview}
         *
         * @param {string} projectId
         * @param {number} amount
@@ -493,7 +493,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Rate History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-rate-history-user_data}
+        * Get Rate History (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Rate-History}
         *
         * @param {string} productId
         * @param {object} [options]
@@ -518,7 +518,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
 
 
         /**
-        * Get Collateral Record (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-collateral-record-user_data}
+        * Get Collateral Record (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Collateral-Record}
         *
         * @param {string} productId
         * @param {object} [options]

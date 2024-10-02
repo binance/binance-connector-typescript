@@ -6,7 +6,7 @@ import { StreamMethods } from './methods';
 export function mixinStream<T extends Constructor>(base: T): Constructor<StreamMethods> & T {
     return class extends base {
         /**
-        * Create a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#create-a-listenkey-user_stream}
+        * Create a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/binance-spot-api-docs/user-data-stream#create-a-listenkey-user_stream}
         */
         async createListenKey(): Promise<listenkeyResponse> {
             return await this.makeRequest('POST', '/api/v3/userDataStream');
@@ -14,7 +14,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#ping-keep-alive-a-listenkey-user_stream}
+        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/binance-spot-api-docs/user-data-stream#ping-keep-alive-a-listenkey-user_stream}
         *
         * @param {string} listenKey
         */
@@ -26,7 +26,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Close a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#close-a-listenkey-user_stream}
+        * Close a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/binance-spot-api-docs/user-data-stream#close-a-listenkey-user_stream}
         *
         * @param {string} listenKey
         */
@@ -38,7 +38,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Create a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#create-a-listenkey-user_stream-2}
+        * Create a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Start-Margin-User-Data-Stream}
         */
         async createMarginListenKey(): Promise<listenkeyResponse> {
             return await this.makeRequest('POST', '/sapi/v1/userDataStream');
@@ -46,7 +46,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#ping-keep-alive-a-listenkey-user_stream-2}
+        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Keepalive-Margin-User-Data-Stream}
         *
         * @param {string} listenKey
         */
@@ -58,7 +58,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Close a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#close-a-listenkey-user_stream-2}
+        * Close a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Close-Margin-User-Data-Stream}
         *
         * @param {string} listenKey
         */
@@ -70,7 +70,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Generate a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#listen-key-isolated-margin}
+        * Generate a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Start-Isolated-Margin-User-Data-Stream}
         * 
         * @param {string} symbol
         */
@@ -82,7 +82,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#ping-keep-alive-a-listen-key-user_stream}
+        * Ping/Keep-alive a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Keepalive-Isolated-Margin-User-Data-Stream}
         *
         * @param {string} symbol
         * @param {string} listenKey
@@ -95,7 +95,7 @@ export function mixinStream<T extends Constructor>(base: T): Constructor<StreamM
 
 
         /**
-        * Close a ListenKey (USER_STREAM) {@link https://binance-docs.github.io/apidocs/spot/en/#close-a-listenkey-user_stream-3}
+        * Close a ListenKey (USER_STREAM) {@link https://developers.binance.com/docs/margin_trading/trade-data-stream/Close-Isolated-Margin-User-Data-Stream}
         *
         * @param {string} symbol
         * @param {string} listenKey

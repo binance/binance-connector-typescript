@@ -1,4 +1,4 @@
-import { LogLevel } from "../modules/enum";
+import { LogLevel } from '../modules/enum';
 
 export class Logger {
     private static instance: Logger;

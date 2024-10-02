@@ -34,7 +34,7 @@ import { Interval } from '../../enum';
 export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketMethods> & T {
     return class extends base {
         /**
-        * Test Connectivity {@link https://binance-docs.github.io/apidocs/spot/en/#test-connectivity}
+        * Test Connectivity {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#test-connectivity}
         */
         async testConnectivity(): Promise<Record<string, never>> {
             return await this.makeRequest('GET', '/api/v3/ping');
@@ -42,7 +42,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Check Server Time {@link https://binance-docs.github.io/apidocs/spot/en/#check-server-time}
+        * Check Server Time {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#check-server-time}
         */
         async checkServerTime(): Promise<checkServerTimeResponse> {
             return await this.makeRequest('GET', '/api/v3/time');
@@ -50,7 +50,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Exchange Information {@link https://binance-docs.github.io/apidocs/spot/en/#exchange-information}
+        * Exchange Information {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#exchange-information}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -66,7 +66,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Order Book {@link https://binance-docs.github.io/apidocs/spot/en/#order-book}
+        * Order Book {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#order-book}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -87,7 +87,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Recent Trades List {@link https://binance-docs.github.io/apidocs/spot/en/#recent-trades-list}
+        * Recent Trades List {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#recent-trades-list}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -108,7 +108,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Old Trade Lookup {@link https://binance-docs.github.io/apidocs/spot/en/#old-trade-lookup}
+        * Old Trade Lookup {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#old-trade-lookup}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -130,7 +130,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Compressed/Aggregate Trades List {@link https://binance-docs.github.io/apidocs/spot/en/#compressed-aggregate-trades-list}
+        * Compressed/Aggregate Trades List {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#compressedaggregate-trades-list}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -154,7 +154,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Kline/Candlestick Data {@link https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-data}
+        * Kline/Candlestick Data {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#klinecandlestick-data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Interval} interval - kline intervals
@@ -180,7 +180,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * UIKlines {@link https://binance-docs.github.io/apidocs/spot/en/#uiklines}
+        * UIKlines {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#uiklines}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Interval} interval - kline intervals
@@ -206,7 +206,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Current Average Price {@link https://binance-docs.github.io/apidocs/spot/en/#current-average-price}
+        * Current Average Price {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#current-average-price}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         */
@@ -221,7 +221,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * 24hr Ticker Price Change Statistics {@link https://binance-docs.github.io/apidocs/spot/en/#24hr-ticker-price-change-statistics}
+        * 24hr Ticker Price Change Statistics {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#24hr-ticker-price-change-statistics}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -237,7 +237,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Symbol Price Ticker {@link https://binance-docs.github.io/apidocs/spot/en/#symbol-price-ticker}
+        * Symbol Price Ticker {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#symbol-price-ticker}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -252,7 +252,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Symbol Order Book Ticker {@link https://binance-docs.github.io/apidocs/spot/en/#symbol-order-book-ticker}
+        * Symbol Order Book Ticker {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#symbol-order-book-ticker}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -267,7 +267,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-        * Rolling window price change statistics {@link https://binance-docs.github.io/apidocs/spot/en/#rolling-window-price-change-statistics}
+        * Rolling window price change statistics {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#rolling-window-price-change-statistics}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -284,7 +284,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
 
 
         /**
-         * Trading Day Ticker {@link https://binance-docs.github.io/apidocs/spot/en/#trading-day-ticker}
+         * Trading Day Ticker {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api#trading-day-ticker}
          * 
          * @param {object} [options]
          * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT

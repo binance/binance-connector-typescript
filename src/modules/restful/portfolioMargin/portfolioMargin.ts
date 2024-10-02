@@ -32,7 +32,7 @@ import { PortfolioMarginMethods } from './methods';
 export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructor<PortfolioMarginMethods> & T {
     return class extends base {
         /**
-        * Get Portfolio Margin Pro Account Info (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-portfolio-margin-pro-account-info-user_data}
+        * Get Portfolio Margin Pro Account Info (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Classic-Portfolio-Margin-Account-Info}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -46,7 +46,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Portfolio Margin Pro Collateral Rate (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#portfolio-margin-pro-collateral-rate-market_data}
+        * Portfolio Margin Pro Collateral Rate (MARKET_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/market-data/Classic-Portfolio-Margin-Collateral-Rate}
         */
         async portfolioMarginCollateralRate(): Promise<portfolioMarginCollateralRateResponse[]> {
             return await this.makeRequest('GET', '/sapi/v1/portfolio/collateralRate');
@@ -54,7 +54,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Query Portfolio Margin Pro Bankruptcy Loan Amount (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-portfolio-margin-pro-bankruptcy-loan-amount-user_data}
+        * Query Portfolio Margin Pro Bankruptcy Loan Amount (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Query-Classic-Portfolio-Margin-Bankruptcy-Loan-Amount}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -68,7 +68,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Portfolio Margin Bankruptcy Loan Repay (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#portfolio-margin-pro-bankruptcy-loan-repay}
+        * Portfolio Margin Bankruptcy Loan Repay (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Classic-Portfolio-Margin-Bankruptcy-Loan-Repay}
         *
         * @param {object} [options]
         * @param {PortfolioMarginFrom} [options.from] - SPOT or MARGIN，default SPOT
@@ -83,7 +83,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Query Portfolio Margin Pro Negative Balance Interest History (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-portfolio-margin-pro-negative-balance-interest-history-user_data}
+        * Query Portfolio Margin Pro Negative Balance Interest History (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Query-Classic-Portfolio-Margin-Negative-Balance-Interest-History}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -101,7 +101,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Query Portfolio Margin Asset Index Price (MARKET_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#query-portfolio-margin-asset-index-price-market_data}
+        * Query Portfolio Margin Asset Index Price (MARKET_DATA) {@link https://developers.binance.com/docs/derivatives/coin-margined-futures/market-data/Index-Price-and-Mark-Price}
         *
         * @param {object} [options]
         * @param {string} [options.asset]
@@ -115,7 +115,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Fund Auto-collection (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#fund-auto-collection-user_data}
+        * Fund Auto-collection (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Fund-Auto-collection}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -129,7 +129,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Fund Collection by Asset (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#fund-collection-by-asset-user_data}
+        * Fund Collection by Asset (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Fund-Collection-by-Asset}
         *
         * @param {string} asset
         * @param {object} [options]
@@ -150,7 +150,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * BNB transfer (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#bnb-transfer-user_data}
+        * BNB transfer (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/BNB-transfer}
         *
         * @param {number} amount
         * @param {TransferSide} transferSide
@@ -173,7 +173,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Change Auto-repay-futures Status (TRADE) {@link https://binance-docs.github.io/apidocs/spot/en/#change-auto-repay-futures-status-trade}
+        * Change Auto-repay-futures Status (TRADE) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Change-Auto-repay-futures-Status}
         *
         * @param {boolean} autoRepay
         * @param {object} [options]
@@ -194,7 +194,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Get Auto-repay-futures Status (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-auto-repay-futures-status-user_data}
+        * Get Auto-repay-futures Status (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Auto-repay-futures-Status}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -208,7 +208,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
 
 
         /**
-        * Repay futures Negative Balance (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#repay-futures-negative-balance-user_data}
+        * Repay futures Negative Balance (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Repay-futures-Negative-Balance#http-request}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -221,7 +221,7 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
         }
 
         /**
-         * Get Portfolio Margin Asset Leverage (USER_DATA) {@link https://binance-docs.github.io/apidocs/spot/en/#get-portfolio-margin-asset-leverage-user_data}
+         * Get Portfolio Margin Asset Leverage (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/market-data/Get-Portfolio-Margin-Asset-Leverage}
          */
         async getPortfolioMarginAssetLeverage(): Promise<getPortfolioMarginAssetLeverageResponse[]> {
             return await this.makeRequest('GET', '/sapi/v1/portfolio/margin-asset-leverage');
