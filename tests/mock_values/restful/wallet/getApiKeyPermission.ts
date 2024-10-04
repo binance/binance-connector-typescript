@@ -11,5 +11,6 @@ export const mockResponse: RestWalletTypes.getApiKeyPermissionResponse = {
     'enableFutures': false,
     'enableMargin': false,
     'enableSpotAndMarginTrading': false,
-    'tradingAuthorityExpirationTime': 1628985600000
+    'tradingAuthorityExpirationTime': 1628985600000,
+    'enablePortfolioMarginTrading': false
 };
