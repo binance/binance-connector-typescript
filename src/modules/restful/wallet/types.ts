@@ -431,7 +431,7 @@ export interface getApiKeyPermissionResponse {
     enableFutures: boolean;
     enableMargin: boolean;
     enableSpotAndMarginTrading: boolean;
-    tradingAuthorityExpirationTime: number;
+    enablePortfolioMarginTrading: boolean;
 }
 
 export interface oneClickArrivalDepositApplyOptions {

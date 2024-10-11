@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.13 - 2024-10-11
+### Added
+- `Dual Investment`:
+  - `GET /sapi/v1/dci/product/list`
+  - `POST /sapi/v1/dci/product/subscribe`
+  - `GET /sapi/v1/dci/product/positions`
+  - `GET /sapi/v1/dci/product/accounts`
+  - `POST /sapi/v1/dci/product/auto_compound/edit-status`
+
+### Changed
+- Fixed an issue with string arrays in market endpoints
+- Updated `GET /sapi/v1/account/apiRestrictions` response
+
 ## 0.3.12 - 2024-10-02
 ### Added
 - Added `LogLevel` to exported enums

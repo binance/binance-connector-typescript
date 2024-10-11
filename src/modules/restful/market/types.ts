@@ -4,8 +4,8 @@ export interface checkServerTimeResponse {
 
 export interface exchangeInformationOptions {
     symbol?: string;
-    symbols?: string;
-    permissions?: string;
+    symbols?: string[];
+    permissions?: string[];
 }
 
 export interface exchangeInformationResponse {
@@ -136,7 +136,7 @@ export interface currentAveragePriceResponse {
 
 export interface ticker24hrOptions {
     symbol?: string;
-    symbols?: string;
+    symbols?: string[];
     type?: 'FULL' | 'MINI';
 }
 
@@ -164,7 +164,7 @@ export interface ticker24hrResponse {
 
 export interface symbolPriceTickerOptions {
     symbol?: string;
-    symbols?: string;
+    symbols?: string[];
 }
 
 export interface symbolPriceTickerResponse {
@@ -174,7 +174,7 @@ export interface symbolPriceTickerResponse {
 
 export interface symbolOrderBookTickerOptions {
     symbol?: string;
-    symbols?: string;
+    symbols?: string[];
 }
 
 export interface symbolOrderBookTickerResponse {
@@ -187,7 +187,7 @@ export interface symbolOrderBookTickerResponse {
 
 export interface rollingWindowPriceChangeStatisticsOptions {
     symbol?: string;
-    symbols?: string;
+    symbols?: string[];
     windowSize?: string;
     type?: 'FULL' | 'MINI';
 }

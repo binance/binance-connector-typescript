@@ -9,6 +9,12 @@ export enum AddLiquidityPreviewType {
     COMBINATION = 'COMBINATION',
 }
 
+export enum AutoCompoundPlan {
+    NONE = 'NONE',
+    STANDARD = 'STANDARD',
+    ADVANCED = 'ADVANCED',
+}
+
 export enum BusdStableCoinsConversion {
     USDC = 'USDC',
     USDP = 'USDP',
@@ -83,6 +89,16 @@ export enum DepositHistory {
 export enum Direction {
     ADDITIONAL = 'ADDITIONAL',
     REDUCED = 'REDUCED',
+}
+
+export enum DualInvestmentPurchaseStatus {
+    PENDING = 'PENDING',
+    PURCHASE_SUCCESS = 'PURCHASE_SUCCESS',
+    SETTLED = 'SETTLED',
+    PURCHASE_FAIL = 'PURCHASE_FAIL',
+    REFUNDING = 'REFUNDING',
+    REFUND_SUCCESS = 'REFUND_SUCCESS',
+    SETTLING = 'SETTLING'
 }
 
 export enum Featured {
@@ -338,6 +354,11 @@ export enum OptionalTransFrom {
 export enum OptionalTransTo {
     SPOT = 'SPOT',
     ISOLATED_MARGIN = 'ISOLATED_MARGIN',
+}
+
+export enum OptionType {
+    CALL = 'CALL',
+    PUT = 'PUT',
 }
 
 export enum OrderStatus {

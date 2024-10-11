@@ -225,7 +225,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {string} [options.symbols]
+        * @param {string[]} [options.symbols]
         * @param {string} [options.type] - Supported values: FULL or MINI., If none provided, the default is FULL
         */
         async ticker24hr(options?: ticker24hrOptions): Promise<ticker24hrResponse | ticker24hrResponse[]> {
@@ -241,7 +241,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {string} [options.symbols]
+        * @param {string[]} [options.symbols]
         */
         async symbolPriceTicker(options?: symbolPriceTickerOptions): Promise<symbolPriceTickerResponse | symbolPriceTickerResponse[]> {
             const url = this.preparePath('/api/v3/ticker/price',
@@ -256,7 +256,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {string} [options.symbols]
+        * @param {string[]} [options.symbols]
         */
         async symbolOrderBookTicker(options?: symbolOrderBookTickerOptions): Promise<symbolOrderBookTickerResponse | symbolOrderBookTickerResponse[]> {
             const url = this.preparePath('/api/v3/ticker/bookTicker',
@@ -271,7 +271,7 @@ export function mixinMarket<T extends Constructor>(base: T): Constructor<MarketM
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
-        * @param {string} [options.symbols]
+        * @param {string[]} [options.symbols]
         * @param {string} [options.windowSize] - Defaults to 1d if no parameter provided., Supported windowSize values:, 1m,2m....59m for minutes, 1h, 2h....23h - for hours, 1d...7d - for days., , Units cannot be combined (e.g. 1d2h is not allowed)
         * @param {string} [options.type] - Supported values: FULL or MINI., If none provided, the default is FULL
         */
