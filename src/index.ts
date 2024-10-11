@@ -1,4 +1,5 @@
 import * as RestConvertTypes from './modules/restful/convert/types';
+import * as RestDualInvestmentTypes from './modules/restful/dualInvestment/types';
 import * as RestMarginTypes from './modules/restful/margin/types';
 import * as RestMarketTypes from './modules/restful/market/types';
 import * as RestPortfolioMarginTypes from './modules/restful/portfolioMargin/types';
@@ -19,6 +20,7 @@ import { WebsocketStream } from './websocketStream';
 import {
     AccountSnapshotType,
     AddLiquidityPreviewType,
+    AutoCompoundPlan,
     BusdStableCoinsConversion,
     CancelReplaceMode,
     CancelRestrictions,
@@ -31,6 +33,7 @@ import {
     CrossMarginTrans,
     DepositHistory,
     Direction,
+    DualInvestmentPurchaseStatus,
     DustAccountType,
     Featured,
     FixedAndActivityProductType,
@@ -69,6 +72,7 @@ import {
     OptionalSide,
     OptionalTransFrom,
     OptionalTransTo,
+    OptionType,
     OrderListAboveBelowType,
     OrderListOrderStatus,
     OrderListStatusType,
@@ -121,6 +125,7 @@ import {
 export {
     AccountSnapshotType,
     AddLiquidityPreviewType,
+    AutoCompoundPlan,
     BusdStableCoinsConversion,
     CancelReplaceMode,
     CancelResult,
@@ -133,6 +138,7 @@ export {
     CrossMarginTrans,
     DepositHistory,
     Direction,
+    DualInvestmentPurchaseStatus,
     DustAccountType,
     Featured,
     FixedAndActivityProductType,
@@ -175,6 +181,7 @@ export {
     OptionalSide,
     OptionalTransFrom,
     OptionalTransTo,
+    OptionType,
     OrderStatus,
     OrderType,
     OtoPendingType,
@@ -223,6 +230,7 @@ export {
     WithdrawHistory,
     WorkingFloor,
     RestConvertTypes,
+    RestDualInvestmentTypes,
     RestMarginTypes,
     RestMarketTypes,
     RestPortfolioMarginTypes,

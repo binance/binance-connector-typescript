@@ -7,7 +7,7 @@ const baseURL = process.env.BINANCE_BASE_URL || '';
 const client = new Spot('', '', { baseURL: baseURL });
 
 const options: RestMarketTypes.exchangeInformationOptions = {
-    symbol: 'BNBUSDT',
+    symbols: ['BTCUSDT', 'ETHUSDT']
 };
 
 client.exchangeInformation(options).then((res: RestMarketTypes.exchangeInformationResponse) => {

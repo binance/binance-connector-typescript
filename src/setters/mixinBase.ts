@@ -3,6 +3,7 @@ import { httpRequest, buildQueryString, removeEmptyValue } from '../helpers/util
 import * as crypto from 'crypto';
 import {
     mixinConvert,
+    mixinDualInvestment,
     mixinMargin,
     mixinMarket,
     mixinPortfolioMargin,
@@ -19,7 +20,7 @@ import { SpotOptions, WebsocketAPIOptions, WebsocketStreamAPIOptions } from './t
 import { Logger } from '../helpers/logger';
 
 
-export const SpotBase = mixinConvert(mixinMargin(mixinMarket(mixinPortfolioMargin(mixinSimpleEarn(mixinStream(mixinSubAccount(mixinTrade(mixinWallet(class {
+export const SpotBase = mixinConvert(mixinDualInvestment(mixinMargin(mixinMarket(mixinPortfolioMargin(mixinSimpleEarn(mixinStream(mixinSubAccount(mixinTrade(mixinWallet(class {
     apiKey: string;
     apiSecret: string;
     baseURL: string;
@@ -90,7 +91,7 @@ export const SpotBase = mixinConvert(mixinMargin(mixinMarket(mixinPortfolioMargi
         }
         return `${path}?${params}&signature=${signature}`;
     }
-})))))))));
+}))))))))));
 
 export const WebsocketFeaturesBase = mixinWsAccount(mixinWsMarket(mixinWsTrade(mixinWsUserData(WebsocketBase(class {
     apiKey: string;

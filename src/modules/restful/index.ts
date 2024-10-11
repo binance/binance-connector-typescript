@@ -1,4 +1,5 @@
 import { mixinConvert } from './convert/convert';
+import { mixinDualInvestment } from './dualInvestment/dualInvestment';
 import { mixinMargin } from './margin/margin';
 import { mixinMarket } from './market/market';
 import { mixinPortfolioMargin } from './portfolioMargin/portfolioMargin';
@@ -10,6 +11,7 @@ import { mixinWallet } from './wallet/wallet';
 
 export {
     mixinConvert,
+    mixinDualInvestment,
     mixinMargin,
     mixinMarket,
     mixinPortfolioMargin,
