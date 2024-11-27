@@ -18,6 +18,22 @@ export interface portfolioMarginCollateralRateResponse {
     collateralRate: string;
 }
 
+export interface getTieredCollateralRateOptions {
+    recvWindow?: number;
+}
+
+export interface getTieredCollateralRateResponse {
+    asset: string;
+    collateralInfo: collateralInfo[];
+}
+
+export interface collateralInfo {
+    tierFloor: string;
+    tierCap: string;
+    collateralRate: string;
+    cum: string;
+}
+
 export interface portfolioMarginBankruptcyLoanAmountOptions {
     recvWindow?: number;
 }
@@ -50,6 +66,50 @@ export interface getClassicPortfolioMarginNegativeBalanceInterestHistoryResponse
     interestAccruedTime: number;
     interestRate: string;
     principal: string;
+}
+
+export interface getSpanAccountInfoOptions {
+    recvWindow?: number;
+}
+
+export interface getSpanAccountInfoResponse {
+    uniMMR: string;
+    accountEquity: string;
+    actualEquity: string;
+    accountMaintMargin: string;
+    riskUnitMMList: riskUnitMMList[];
+    marginMM: string;
+    otherMM: string;
+    accountStatus: string;
+    accountType: string;
+}
+
+export interface riskUnitMMList{
+    asset: string;
+    uniMaintainUsd: string;
+}
+
+export interface getAccountBalanceOptions {
+    asset?: string;
+    recvWindow?: number;
+}
+
+export interface getAccountBalanceResponse {
+    asset: string;
+    totalWalletBalance: string;
+    crossMarginAsset: string;
+    crossMarginBorrowed: string;
+    crossMarginFree: string;
+    crossMarginInterest: string;
+    crossMarginLocked: string;
+    umWalletBalance: string;
+    umUnrealizedPNL: string;
+    cmWalletBalance: string;
+    cmUnrealizedPNL: string;
+    updateTime: number;
+    negativeBalance: string;
+    optionWalletBalance: string;
+    optionEquity: string;
 }
 
 export interface getPortfolioMarginAssetIndexPriceOptions{

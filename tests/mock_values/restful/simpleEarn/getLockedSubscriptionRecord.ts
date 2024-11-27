@@ -5,6 +5,7 @@ export const mockResponse: RestSimpleEarnTypes.getLockedSubscriptionRecordRespon
         {
             'positionId': '123123',
             'purchaseId': 26055,
+            'projectId': 'Axs*90',
             'time': 1575018510000,
             'asset': 'BNB',
             'amount': '21312.23223',

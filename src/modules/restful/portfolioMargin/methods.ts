@@ -8,6 +8,8 @@ import {
     fundAutocollectionResponse,
     fundCollectionByAssetOptions,
     fundCollectionByAssetResponse,
+    getAccountBalanceOptions,
+    getAccountBalanceResponse,
     getAutorepayfuturesStatusOptions,
     getAutorepayfuturesStatusResponse,
     getClassicPortfolioMarginNegativeBalanceInterestHistoryOptions,
@@ -15,6 +17,10 @@ import {
     getPortfolioMarginAssetIndexPriceOptions,
     getPortfolioMarginAssetIndexPriceResponse,
     getPortfolioMarginAssetLeverageResponse,
+    getSpanAccountInfoOptions,
+    getSpanAccountInfoResponse,
+    getTieredCollateralRateOptions,
+    getTieredCollateralRateResponse,
     portfolioMarginAccountOptions,
     portfolioMarginAccountResponse,
     portfolioMarginBankruptcyLoanAmountOptions,
@@ -29,9 +35,12 @@ import {
 export interface PortfolioMarginMethods {
     portfolioMarginAccount(options?: portfolioMarginAccountOptions): Promise<portfolioMarginAccountResponse>;
     portfolioMarginCollateralRate(): Promise<portfolioMarginCollateralRateResponse[]>;
+    getTieredCollateralRate(options?: getTieredCollateralRateOptions): Promise<getTieredCollateralRateResponse[]>;
     portfolioMarginBankruptcyLoanAmount(options?: portfolioMarginBankruptcyLoanAmountOptions): Promise<portfolioMarginBankruptcyLoanAmountResponse>;
     portfolioMarginBankruptcyLoanRepay(options?: portfolioMarginBankruptcyLoanRepayOptions): Promise<portfolioMarginBankruptcyLoanRepayResponse>;
     getClassicPortfolioMarginNegativeBalanceInterestHistory(options?: getClassicPortfolioMarginNegativeBalanceInterestHistoryOptions): Promise<getClassicPortfolioMarginNegativeBalanceInterestHistoryResponse[]>;
+    getSpanAccountInfo(options?: getSpanAccountInfoOptions): Promise<getSpanAccountInfoResponse>;
+    getAccountBalance(options?: getAccountBalanceOptions): Promise<getAccountBalanceResponse[]>;
     getPortfolioMarginAssetIndexPrice(options?: getPortfolioMarginAssetIndexPriceOptions): Promise<getPortfolioMarginAssetIndexPriceResponse[]>;
     fundAutocollection(options?: fundAutocollectionOptions): Promise<fundAutocollectionResponse>;
     fundCollectionByAsset(asset: string, options?: fundCollectionByAssetOptions): Promise<fundCollectionByAssetResponse>;

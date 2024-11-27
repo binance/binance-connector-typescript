@@ -90,6 +90,8 @@ export interface getSubAccountAssetsResponse {
 }
 
 export interface getSubAccountAssetsBalances {
+    freeze: number;
+    withdrawing: number;
     asset: string;
     free: number;
     locked: number;
@@ -686,9 +688,11 @@ export interface getSubAccountAssetsForMasterAccountResponse {
 }
 
 export interface getSubAccountAssetsForMasterAccountBalances {
+    freeze: string;
+    withdrawing: string;
     asset: string;
-    free: number;
-    locked: number;
+    free: string;
+    locked: string;
 }
 
 export interface getManagedSubAccountListOptions {

@@ -9,6 +9,8 @@ import {
     fundAutocollectionResponse,
     fundCollectionByAssetOptions,
     fundCollectionByAssetResponse,
+    getAccountBalanceOptions,
+    getAccountBalanceResponse,
     getAutorepayfuturesStatusOptions,
     getAutorepayfuturesStatusResponse,
     getClassicPortfolioMarginNegativeBalanceInterestHistoryOptions,
@@ -16,6 +18,10 @@ import {
     getPortfolioMarginAssetIndexPriceOptions,
     getPortfolioMarginAssetIndexPriceResponse,
     getPortfolioMarginAssetLeverageResponse,
+    getSpanAccountInfoOptions,
+    getSpanAccountInfoResponse,
+    getTieredCollateralRateOptions,
+    getTieredCollateralRateResponse,
     portfolioMarginAccountOptions,
     portfolioMarginAccountResponse,
     portfolioMarginBankruptcyLoanAmountOptions,
@@ -50,6 +56,20 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
         */
         async portfolioMarginCollateralRate(): Promise<portfolioMarginCollateralRateResponse[]> {
             return await this.makeRequest('GET', '/sapi/v1/portfolio/collateralRate');
+        }
+
+
+        /**
+         * Portfolio Margin Pro Tiered Collateral Rate (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/market-data/Portfolio-Margin-Pro-Tiered-Collateral-Rate}
+         * 
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getTieredCollateralRate(options?: getTieredCollateralRateOptions): Promise<getTieredCollateralRateResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v2/portfolio/collateralRate',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
         }
 
 
@@ -94,6 +114,35 @@ export function mixinPortfolioMargin<T extends Constructor>(base: T): Constructo
         */
         async getClassicPortfolioMarginNegativeBalanceInterestHistory(options?: getClassicPortfolioMarginNegativeBalanceInterestHistoryOptions): Promise<getClassicPortfolioMarginNegativeBalanceInterestHistoryResponse[]> {
             const url = this.prepareSignedPath('/sapi/v1/portfolio/interest-history',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Get Portfolio Margin Pro SPAN Account Info (USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Classic-Portfolio-Margin-Account-Info-V2}
+         * 
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getSpanAccountInfo(options?: getSpanAccountInfoOptions): Promise<getSpanAccountInfoResponse> {
+            const url = this.prepareSignedPath('/sapi/v2/portfolio/account',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Get Portfolio Margin Pro Account Balance(USER_DATA) {@link https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Classic-Portfolio-Margin-Balance-Info}
+         * 
+         * @param {object} [options]
+         * @param {string} [options.asset]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getAccountBalance(options?: getAccountBalanceOptions): Promise<getAccountBalanceResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/portfolio/balance',
                 options ? options : {}
             );
             return await this.makeRequest('GET', url);

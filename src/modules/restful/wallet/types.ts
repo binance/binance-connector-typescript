@@ -5,6 +5,15 @@ export interface systemStatusResponse {
     msg: string;
 }
 
+export interface getSymbolsDelistScheduleOptions {
+    recvWindow?: number;
+}
+
+export interface getSymbolsDelistScheduleResponse {
+    delistTime: number;
+    symbols: string[];
+}
+
 export interface allCoinsInformationOptions {
     recvWindow?: number;
 }
@@ -177,6 +186,17 @@ export interface depositAddressResponse {
     url: string;
 }
 
+export interface depositAddressListOptions {
+    network?: string;
+}
+
+export interface depositAddressListResponse {
+    coin: string;
+    address: string;
+    tag: string;
+    isDefault: number;
+}
+
 export interface accountStatusOptions {
     recvWindow?: number;
 }
@@ -310,6 +330,16 @@ export interface assetDetailResponse {
     SKY?: assetDetail;
 }
 
+export interface queryUserWalletBalanceOptions {
+    recvWindow?: number;
+}
+
+export interface queryUserWalletBalanceResponse {
+    activate: boolean;
+    balance: string;
+    walletName: string;
+}
+
 export interface assetDetail {
     minWithdrawAmount: string
     depositStatus: boolean
@@ -405,6 +435,39 @@ export interface getCloudminingPaymentAndRefundHistoryOptions {
 export interface getCloudminingPaymentAndRefundHistoryResponse {
     total: number;
     rows: getCloudminingPaymentAndRefundHistoryRows[];
+}
+
+export interface queryUserDelegationHistoryOptions {
+    type?: string;
+    asset?: string;
+    current?: number;
+    size?: number;
+    recvWindow?: number;
+}
+
+export interface queryUserDelegationHistoryResponse {
+    total: number;
+    rows: queryUserDelegationHistoryRows[];
+}
+
+export interface queryUserDelegationHistoryRows {
+    clientTranId: string;
+    transferType: string;
+    asset: string;
+    amount: string;
+    time: number;
+}
+
+export interface accountInfoOptions {
+    recvWindow?: number;
+}
+
+export interface accountInfoResponse {
+    vipLevel: number;
+    isMarginEnabled: boolean;
+    isFutureEnabled: boolean;
+    isOptionsEnabled: boolean;
+    isPortfolioMarginRetailEnabled: boolean;
 }
 
 export interface getCloudminingPaymentAndRefundHistoryRows {

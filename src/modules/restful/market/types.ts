@@ -1,3 +1,5 @@
+import { SymbolStatus } from '../../enum';
+
 export interface checkServerTimeResponse {
     serverTime: number;
 }
@@ -6,6 +8,8 @@ export interface exchangeInformationOptions {
     symbol?: string;
     symbols?: string[];
     permissions?: string[];
+    showPermissionSets?: boolean;
+    symbolStatus?: SymbolStatus;
 }
 
 export interface exchangeInformationResponse {

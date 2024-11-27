@@ -4,8 +4,9 @@ import { RestMarginTypes, Spot } from '../../../src/index';
 dotenv.config();
 
 const apiKey = process.env.BINANCE_API_KEY || '';
+const apiSecret = process.env.BINANCE_API_SECRET || '';
 const baseURL = process.env.BINANCE_BASE_URL || '';
-const client = new Spot(apiKey, '', { baseURL: baseURL });
+const client = new Spot(apiKey, apiSecret, { baseURL: baseURL });
 
 
 client.getMarginPriceIndex('BNBUSDT').then((res: RestMarginTypes.getMarginPriceIndexResponse) => {

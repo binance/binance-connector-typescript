@@ -1,54 +1,65 @@
 import { AccountSnapshotType, UnivTransferType } from '../../enum';
 import {
-    systemStatusResponse,
-    allCoinsInformationOptions,
-    allCoinsInformationResponse,
-    dailyAccountSnapshotOptions,
-    dailyAccountSnapshotResponse,
-    disableFastWithdrawSwitchOptions,
-    enableFastWithdrawSwitchOptions,
-    withdrawOptions,
-    withdrawResponse,
-    depositHistoryOptions,
-    depositHistoryResponse,
-    withdrawHistoryOptions,
-    withdrawHistoryResponse,
-    depositAddressOptions,
-    depositAddressResponse,
-    accountStatusOptions,
-    accountStatusResponse,
     accountApiTradingStatusOptions,
     accountApiTradingStatusResponse,
-    dustlogOptions,
-    dustlogResponse,
-    getAssetsThatCanBeConvertedIntoBnbOptions,
-    getAssetsThatCanBeConvertedIntoBnbResponse,
-    dustTransferOptions,
-    dustTransferResponse,
-    assetDividendRecordOptions,
-    assetDividendRecordResponse,
+    accountInfoOptions,
+    accountInfoResponse,
+    accountStatusOptions,
+    accountStatusResponse,
+    allCoinsInformationOptions,
+    allCoinsInformationResponse,
     assetDetailOptions,
     assetDetailResponse,
-    tradeFeeOptions,
-    tradeFeeResponse,
-    getUserUniversalTransferHistoryOptions,
-    getUserUniversalTransferHistoryResponse,
-    userUniversalTransferOptions,
-    userUniversalTransferResponse,
+    assetDividendRecordOptions,
+    assetDividendRecordResponse,
+    dailyAccountSnapshotOptions,
+    dailyAccountSnapshotResponse,
+    depositAddressOptions,
+    depositAddressResponse,
+    depositAddressListOptions,
+    depositAddressListResponse,
+    depositHistoryOptions,
+    depositHistoryResponse,
+    disableFastWithdrawSwitchOptions,
+    dustlogOptions,
+    dustlogResponse,
+    dustTransferOptions,
+    dustTransferResponse,
+    enableFastWithdrawSwitchOptions,
     fundingWalletOptions,
     fundingWalletResponse,
-    userAssetOptions,
-    userAssetResponse,
-    getCloudminingPaymentAndRefundHistoryOptions,
-    getCloudminingPaymentAndRefundHistoryResponse,
     getApiKeyPermissionOptions,
     getApiKeyPermissionResponse,
+    getAssetsThatCanBeConvertedIntoBnbOptions,
+    getAssetsThatCanBeConvertedIntoBnbResponse,
+    getCloudminingPaymentAndRefundHistoryOptions,
+    getCloudminingPaymentAndRefundHistoryResponse,
+    getSymbolsDelistScheduleOptions,
+    getSymbolsDelistScheduleResponse,
+    getUserUniversalTransferHistoryOptions,
+    getUserUniversalTransferHistoryResponse,
     oneClickArrivalDepositApplyOptions,
-    oneClickArrivalDepositApplyResponse
+    oneClickArrivalDepositApplyResponse,
+    queryUserWalletBalanceOptions,
+    queryUserWalletBalanceResponse,
+    queryUserDelegationHistoryOptions,
+    queryUserDelegationHistoryResponse,
+    systemStatusResponse,
+    tradeFeeOptions,
+    tradeFeeResponse,
+    userAssetOptions,
+    userAssetResponse,
+    userUniversalTransferOptions,
+    userUniversalTransferResponse,
+    withdrawHistoryOptions,
+    withdrawHistoryResponse,
+    withdrawOptions,
+    withdrawResponse,
 } from './types';
 
 export interface WalletMethods {
     systemStatus(): Promise<systemStatusResponse>;
+    getSymbolsDelistSchedule(options?: getSymbolsDelistScheduleOptions): Promise<getSymbolsDelistScheduleResponse[]>;
     allCoinsInformation(options?: allCoinsInformationOptions): Promise<allCoinsInformationResponse[]>;
     dailyAccountSnapshot(type: AccountSnapshotType, options?: dailyAccountSnapshotOptions): Promise<dailyAccountSnapshotResponse>;
     disableFastWithdrawSwitch(options?: disableFastWithdrawSwitchOptions): Promise<Record<string, never>>;
@@ -57,6 +68,7 @@ export interface WalletMethods {
     depositHistory(options?: depositHistoryOptions): Promise<depositHistoryResponse[]>;
     withdrawHistory(options?: withdrawHistoryOptions): Promise<withdrawHistoryResponse[]>;
     depositAddress(coin: string, options?: depositAddressOptions): Promise<depositAddressResponse>;
+    depositAddressList(coin: string, options?: depositAddressListOptions): Promise<depositAddressListResponse[]>;
     accountStatus(options?: accountStatusOptions): Promise<accountStatusResponse>;
     accountApiTradingStatus(options?: accountApiTradingStatusOptions): Promise<accountApiTradingStatusResponse>;
     dustlog(options?: dustlogOptions): Promise<dustlogResponse>;
@@ -64,12 +76,15 @@ export interface WalletMethods {
     dustTransfer(asset: string[], options?: dustTransferOptions): Promise<dustTransferResponse>;
     assetDividendRecord(options?: assetDividendRecordOptions): Promise<assetDividendRecordResponse>;
     assetDetail(options?: assetDetailOptions): Promise<assetDetailResponse>;
+    queryUserWalletBalance(options?: queryUserWalletBalanceOptions): Promise<queryUserWalletBalanceResponse[]>;
     tradeFee(options?: tradeFeeOptions): Promise<tradeFeeResponse[]>;
     userUniversalTransfer(type: UnivTransferType, asset: string, amount: number, options?: userUniversalTransferOptions): Promise<userUniversalTransferResponse>;
     getUserUniversalTransferHistory(type: UnivTransferType, options?: getUserUniversalTransferHistoryOptions): Promise<getUserUniversalTransferHistoryResponse>;
     fundingWallet(options?: fundingWalletOptions): Promise<fundingWalletResponse[]>;
     userAsset(options?: userAssetOptions): Promise<userAssetResponse[]>;
     getCloudminingPaymentAndRefundHistory(startTime: number, endTime: number, options?: getCloudminingPaymentAndRefundHistoryOptions): Promise<getCloudminingPaymentAndRefundHistoryResponse>;
+    queryUserDelegationHistory(email: string, startTime: number, endTime: number, options?: queryUserDelegationHistoryOptions): Promise<queryUserDelegationHistoryResponse>;
+    accountInfo(options?: accountInfoOptions): Promise<accountInfoResponse>;
     getApiKeyPermission(options?: getApiKeyPermissionOptions): Promise<getApiKeyPermissionResponse>;
     oneClickArrivalDepositApply(options?: oneClickArrivalDepositApplyOptions): Promise<oneClickArrivalDepositApplyResponse>;
 }

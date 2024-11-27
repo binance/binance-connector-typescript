@@ -41,11 +41,14 @@ import {
     getFlexibleSubscriptionPreviewResponse,
     getLockedSubscriptionPreviewOptions,
     getLockedSubscriptionPreviewResponse,
+    setLockedRedeemOptionOptions,
+    setLockedRedeemOptionResponse,
     getRateHistoryOptions,
     getRateHistoryResponse,
     getCollateralRecordOptions,
     getCollateralRecordResponse
 } from './types';
+import { RedeemOption } from '../../enum';
 
 export interface SimpleEarnMethods {
     getSimpleEarnFlexibleProductList(options?: getSimpleEarnFlexibleProductListOptions): Promise<getSimpleEarnFlexibleProductListResponse>;
@@ -69,6 +72,7 @@ export interface SimpleEarnMethods {
     getLockedPersonalLeftQuota(projectId: string, options?: getLockedPersonalLeftQuotaOptions): Promise<getLockedPersonalLeftQuotaResponse>;
     getFlexibleSubscriptionPreview(productId: string, amount: number, options?: getFlexibleSubscriptionPreviewOptions): Promise<getFlexibleSubscriptionPreviewResponse>;
     getLockedSubscriptionPreview(projectId: string, amount: number, options?: getLockedSubscriptionPreviewOptions): Promise<getLockedSubscriptionPreviewResponse[]>;
+    setLockedRedeemOption(positionId: string, redeemOption: RedeemOption, options?: setLockedRedeemOptionOptions): Promise<setLockedRedeemOptionResponse>;
     getRateHistory(productId: string, options?: getRateHistoryOptions): Promise<getRateHistoryResponse>;
     getCollateralRecord(options?: getCollateralRecordOptions): Promise<getCollateralRecordResponse>;
 }

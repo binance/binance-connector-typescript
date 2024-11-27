@@ -166,7 +166,8 @@ export interface getLockedProductPositionResponse {
 }
 
 export interface getLockedProductPositionRows {
-    positionId: string;
+    positionId: number;
+    parentPositionId: 123122,
     projectId: string;
     asset: string;
     amount: string;
@@ -175,9 +176,26 @@ export interface getLockedProductPositionRows {
     accrualDays: string;
     rewardAsset: string;
     APY: string;
-    isRenewable: boolean;
-    isAutoRenew: boolean;
-    redeemDate: string;
+    rewardAmt: string;
+    extraRewardAsset: string;
+    extraRewardAPR: string;
+    estExtraRewardAmt: string;
+    nextPay: string;
+    nextPayDate: string;
+    payPeriod: string;
+    redeemAmountEarly: string;
+    rewardsEndDate: string;
+    deliverDate: string;
+    redeemPeriod: string;
+    redeemingAmt: string;
+    redeemTo: string;
+    partialAmtDeliverDate: string;
+    canRedeemEarly: boolean;
+    canFastRedemption: boolean;
+    autoSubscribe: boolean;
+    type: string;
+    status: string;
+    canReStake: boolean;
 }
 
 export interface simpleAccountOptions {
@@ -214,6 +232,7 @@ export interface getFlexibleSubscriptionRecordRows {
     asset: string;
     time: number;
     purchaseId: number;
+    productId: string;
     type: SimpleEarnType;
     sourceAccount: SimpleEarnSourceAccount;
     amtFromSpot: string;
@@ -239,6 +258,7 @@ export interface getLockedSubscriptionRecordResponse {
 export interface getLockedSubscriptionRecordRows {
     positionId: string;
     purchaseId: number;
+    projectId: string;
     time: number;
     asset: string;
     amount: string;
@@ -292,14 +312,21 @@ export interface getLockedRedemptionRecordResponse {
 }
 
 export interface getLockedRedemptionRecordRows {
-    positionId: string;
+    positionId: number;
     redeemId: number;
     time: number;
     asset: string;
     lockPeriod: string;
     amount: string;
+    originalAmount: string;
     type: SimpleEarnLockedRedemption;
     deliverDate: string;
+    lossAmount: string;
+    isComplete: boolean;
+    rewardAsset: string;
+    rewardAmt: string;
+    extraRewardAsset: string;
+    estExtraRewardAmt: string;
     status: string;
 }
 
@@ -406,6 +433,14 @@ export interface getLockedSubscriptionPreviewResponse {
     rewardsEndDate: string;
     deliverDate: string;
     nextSubscriptionDate: string;
+}
+
+export interface setLockedRedeemOptionOptions {
+    recvWindow?: number;
+}
+
+export interface setLockedRedeemOptionResponse {
+    success: boolean;
 }
 
 export interface getRateHistoryOptions {

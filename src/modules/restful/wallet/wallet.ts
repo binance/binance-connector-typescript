@@ -1,51 +1,61 @@
 import { Constructor } from '../../../setters/types';
 import { validateRequiredParameters } from '../../../helpers/utils';
 import {
-    systemStatusResponse,
-    allCoinsInformationOptions,
-    allCoinsInformationResponse,
-    dailyAccountSnapshotOptions,
-    dailyAccountSnapshotResponse,
-    disableFastWithdrawSwitchOptions,
-    enableFastWithdrawSwitchOptions,
-    withdrawOptions,
-    withdrawResponse,
-    depositHistoryOptions,
-    depositHistoryResponse,
-    withdrawHistoryOptions,
-    withdrawHistoryResponse,
-    depositAddressOptions,
-    depositAddressResponse,
-    accountStatusOptions,
-    accountStatusResponse,
     accountApiTradingStatusOptions,
     accountApiTradingStatusResponse,
-    dustlogOptions,
-    dustlogResponse,
-    getAssetsThatCanBeConvertedIntoBnbOptions,
-    getAssetsThatCanBeConvertedIntoBnbResponse,
-    dustTransferOptions,
-    dustTransferResponse,
-    assetDividendRecordOptions,
-    assetDividendRecordResponse,
+    accountInfoOptions,
+    accountInfoResponse,
+    accountStatusOptions,
+    accountStatusResponse,
+    allCoinsInformationOptions,
+    allCoinsInformationResponse,
     assetDetailOptions,
     assetDetailResponse,
-    tradeFeeOptions,
-    tradeFeeResponse,
-    getUserUniversalTransferHistoryOptions,
-    getUserUniversalTransferHistoryResponse,
-    userUniversalTransferOptions,
-    userUniversalTransferResponse,
+    assetDividendRecordOptions,
+    assetDividendRecordResponse,
+    dailyAccountSnapshotOptions,
+    dailyAccountSnapshotResponse,
+    depositAddressOptions,
+    depositAddressResponse,
+    depositAddressListOptions,
+    depositAddressListResponse,
+    depositHistoryOptions,
+    depositHistoryResponse,
+    disableFastWithdrawSwitchOptions,
+    dustlogOptions,
+    dustlogResponse,
+    dustTransferOptions,
+    dustTransferResponse,
+    enableFastWithdrawSwitchOptions,
     fundingWalletOptions,
     fundingWalletResponse,
-    userAssetOptions,
-    userAssetResponse,
-    getCloudminingPaymentAndRefundHistoryOptions,
-    getCloudminingPaymentAndRefundHistoryResponse,
     getApiKeyPermissionOptions,
     getApiKeyPermissionResponse,
+    getAssetsThatCanBeConvertedIntoBnbOptions,
+    getAssetsThatCanBeConvertedIntoBnbResponse,
+    getCloudminingPaymentAndRefundHistoryOptions,
+    getCloudminingPaymentAndRefundHistoryResponse,
+    getSymbolsDelistScheduleOptions,
+    getSymbolsDelistScheduleResponse,
+    getUserUniversalTransferHistoryOptions,
+    getUserUniversalTransferHistoryResponse,
     oneClickArrivalDepositApplyOptions,
-    oneClickArrivalDepositApplyResponse
+    oneClickArrivalDepositApplyResponse,
+    queryUserWalletBalanceOptions,
+    queryUserWalletBalanceResponse,
+    queryUserDelegationHistoryOptions,
+    queryUserDelegationHistoryResponse,
+    systemStatusResponse,
+    tradeFeeOptions,
+    tradeFeeResponse,
+    userAssetOptions,
+    userAssetResponse,
+    userUniversalTransferOptions,
+    userUniversalTransferResponse,
+    withdrawHistoryOptions,
+    withdrawHistoryResponse,
+    withdrawOptions,
+    withdrawResponse,
 } from './types';
 import { WalletMethods } from './methods';
 import { AccountSnapshotType, UnivTransferType } from '../../enum';
@@ -57,6 +67,20 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
         */
         async systemStatus(): Promise<systemStatusResponse> {
             return await this.makeRequest('GET', '/sapi/v1/system/status');
+        }
+
+
+        /**
+         * Get symbols delist schedule for spot (MARKET_DATA) {@link https://developers.binance.com/docs/wallet/others/delist-schedule}
+         * 
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async getSymbolsDelistSchedule(options?: getSymbolsDelistScheduleOptions): Promise<getSymbolsDelistScheduleResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/spot/delist-schedule',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
         }
 
 
@@ -206,6 +230,22 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
 
 
         /**
+         * Fetch deposit address list with network (USER_DATA) {@link https://developers.binance.com/docs/wallet/capital/fetch-deposit-address-list-with-network}
+         * 
+         * @param {string} coin - Coin refers to the parent network address format that the address is using
+         * @param {object} [options]
+         * @param {string} [options.network] - The value cannot be greater than 60000
+         */
+        async depositAddressList(coin: string, options?: depositAddressListOptions): Promise<depositAddressListResponse[]> {
+            validateRequiredParameters({ coin });
+            const url = this.prepareSignedPath('/sapi/v1/capital/deposit/address/list',
+                Object.assign(options ? options : {}, { coin: coin })
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
         * Account Status (USER_DATA) {@link https://developers.binance.com/docs/wallet/account/account-status}
         *
         * @param {object} [options]
@@ -310,6 +350,20 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
         */
         async assetDetail(options?: assetDetailOptions): Promise<assetDetailResponse> {
             const url = this.prepareSignedPath('/sapi/v1/asset/assetDetail',
+                options ? options : {}
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Query User Wallet Balance (USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/query-user-wallet-balance}
+         * 
+         * @param {object} [options]
+         * @param {number} [options.recvWindow]
+         */
+        async queryUserWalletBalance(options?: queryUserWalletBalanceOptions): Promise<queryUserWalletBalanceResponse[]> {
+            const url = this.prepareSignedPath('/sapi/v1/asset/wallet/balance',
                 options ? options : {}
             );
             return await this.makeRequest('GET', url);
@@ -427,6 +481,49 @@ export function mixinWallet<T extends Constructor>(base: T): Constructor<WalletM
                         endTime: endTime
                     }
                 )
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Query User Delegation History(For Master Account)(USER_DATA) {@link https://developers.binance.com/docs/wallet/asset/query-user-delegation}
+         * 
+         * @param {string} email
+         * @param {number} startTime
+         * @param {number} endTime
+         * @param {object} [options]
+         * @param {string} [options.type] - Delegate/Undelegate
+         * @param {string} [options.asset]
+         * @param {number} [options.current] - default 1
+         * @param {number} [options.size] - default 10, max 100
+         * @param {number} [options.recvWindow]
+         */
+        async queryUserDelegationHistory(email: string, startTime: number, endTime: number, options?: queryUserDelegationHistoryOptions): Promise<queryUserDelegationHistoryResponse> {
+            validateRequiredParameters({ email, startTime, endTime });
+            const url = this.prepareSignedPath('/sapi/v1/asset/custody/transfer-history',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        email: email,
+                        startTime: startTime,
+                        endTime: endTime
+                    }
+                )
+            );
+            return await this.makeRequest('GET', url);
+        }
+
+
+        /**
+         * Account info (USER_DATA) {@link https://developers.binance.com/docs/wallet/account}
+         * 
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async accountInfo(options?: accountInfoOptions): Promise<accountInfoResponse> {
+            const url = this.prepareSignedPath('/sapi/v1/account/info',
+                options ? options : {}
             );
             return await this.makeRequest('GET', url);
         }

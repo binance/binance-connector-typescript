@@ -18,7 +18,8 @@ import {
     MarginInterestHistory,
     MarginLevelStatus,
     CrossMarginAccountType,
-    CrossMarginTrans
+    CrossMarginTrans,
+    OrderListAboveBelowType
 } from '../../enum';
 
 export interface getAllMarginAssetsOptions {
@@ -239,13 +240,17 @@ export interface getCrossMarginAccountDetailsOptions {
 }
 
 export interface getCrossMarginAccountDetailsResponse {
+    created: boolean;
     borrowEnabled: boolean;
     marginLevel: string;
+    collateralMarginLevel: string;
     totalAssetOfBtc: string;
     totalLiabilityOfBtc: string;
     totalNetAssetOfBtc: string;
+    TotalCollateralValueInUSDT: string;
     tradeEnabled: boolean;
-    transferEnabled: boolean;
+    transferInEnabled: boolean;
+    transferOutEnabled: boolean;
     accountType: CrossMarginAccountType;
     userAssets: getCrossMarginAccountDetailsUserassets[];
 }
@@ -861,6 +866,101 @@ export interface marginManualLiquidationResponse {
     principal: string;
     liabilityAsset: string;
     liabilityQty: number;
+}
+
+export interface marginAccountNewOtoOptions {
+    isIsolated?: string;
+    listClientOrderId?: string;
+    newOrderRespType?: NewOrderRespType;
+    sideEffectType?: SideEffectType;
+    selfTradePreventionMode?: string;
+    autoRepayAtCancel?: boolean;
+    workingClientOrderId?: string;
+    workingIcebergQty?: number;
+    workingTimeInForce?: TimeInForce;
+    pendingClientOrderId?: string;
+    pendingPrice?: number;
+    pendingStopPrice?: number;
+    pendingTrailingDelta?: number;
+    pendingIcebergQty?: number;
+    pendingTimeInForce?: TimeInForce;
+    recvWindow?: number;
+}
+
+export interface marginAccountNewOtoResponse {
+    orderListId: number;
+    contingencyType: string;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
+    listClientOrderId: string;
+    transactionTime: number;
+    symbol: string;
+    isIsolated: boolean;
+    orders: marginAccountOrders[];
+    orderReports: marginAccountOrderReports[];
+}
+
+export interface marginAccountOrders {
+    symbol: string;
+    orderId: number;
+    clientOrderId: string;
+}
+
+export interface marginAccountOrderReports {
+    symbol: string;
+    orderId: number;
+    orderListId: number;
+    clientOrderId: string;
+    transactTime: number;
+    price: string;
+    origQty: string;
+    executedQty: string;
+    cummulativeQuoteQty: string;
+    status: OrderStatus;
+    timeInForce: TimeInForce;
+    type: OrderType;
+    side: Side;
+    stopPrice?: string;
+    selfTradePreventionMode: SelfTradePreventionMode;
+}
+
+export interface marginAccountNewOtocoOptions {
+    isIsolated?: string;
+    sideEffectType?: SideEffectType;
+    autoRepayAtCancel?: boolean;
+    listClientOrderId?: string;
+    newOrderRespType?: NewOrderRespType;
+    selfTradePreventionMode?: string;
+    workingClientOrderId?: string;
+    workingIcebergQty?: number;
+    workingTimeInForce?: TimeInForce;
+    pendingAboveClientOrderId?: string;
+    pendingAbovePrice?: number;
+    pendingAboveStopPrice?: number;
+    pendingAboveTrailingDelta?: number;
+    pendingAboveIcebergQty?: number;
+    pendingAboveTimeInForce?: TimeInForce;
+    pendingBelowType?: OrderListAboveBelowType;
+    pendingBelowClientOrderId?: string;
+    pendingBelowPrice?: number;
+    pendingBelowStopPrice?: number;
+    pendingBelowTrailingDelta?: number;
+    pendingBelowIcebergQty?: number;
+    pendingBelowTimeInForce?: TimeInForce;
+    recvWindow?: number;
+}
+
+export interface marginAccountNewOtocoResponse {
+    orderListId: number;
+    contingencyType: string;
+    listStatusType: OrderListStatusType;
+    listOrderStatus: OrderListOrderStatus;
+    listClientOrderId: string;
+    transactionTime: number;
+    symbol: string;
+    isIsolated: boolean;
+    orders: marginAccountOrders[];
+    orderReports: marginAccountOrderReports[];
 }
 
 export interface getLeverageBracketResponse {
