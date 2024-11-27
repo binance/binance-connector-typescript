@@ -7,6 +7,7 @@ export const mockResponse: RestSimpleEarnTypes.getFlexibleSubscriptionRecordResp
             'asset': 'USDT',
             'time': 1575018510000,
             'purchaseId': 26055,
+            'productId': 'USDT001', 
             'type': SimpleEarnType.AUTO,
             'sourceAccount': SimpleEarnSourceAccount.SPOT,
             'amtFromSpot': '30',

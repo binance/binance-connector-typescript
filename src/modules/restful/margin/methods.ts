@@ -6,32 +6,32 @@ import {
 } from '../../enum';
 
 import {
-    getCrossMarginTransferHistoryOptions,
-    getCrossMarginTransferHistoryResponse,
-    getAllMarginAssetsOptions,
-    getAllMarginAssetsResponse,
+    adjustCrossMarginMaxLeverageResponse,
     getAllCrossMarginPairsOptions,
     getAllCrossMarginPairsResponse,
-    getMarginPriceIndexResponse,
-    adjustCrossMarginMaxLeverageResponse,
-    getMarginAccountOrderOptions,
-    getMarginAccountOrderResponse,
-    marginAccountNewOrderOptions,
-    marginAccountNewOrderResponse,
-    marginAccountCancelOrderOptions,
-    marginAccountCancelOrderResponse,
-    getInterestHistoryOptions,
-    getInterestHistoryResponse,
-    getForceLiquidationRecordOptions,
-    getForceLiquidationRecordResponse,
+    getAllMarginAssetsOptions,
+    getAllMarginAssetsResponse,
     getCrossMarginAccountDetailsOptions,
     getCrossMarginAccountDetailsResponse,
-    getMarginAccountOpenOrdersOptions,
-    getMarginAccountOpenOrdersResponse,
-    marginAccountCancelAllOpenOrdersOnASymbolOptions,
-    marginAccountCancelAllOpenOrdersOnASymbolResponse,
+    getCrossMarginTransferHistoryOptions,
+    getCrossMarginTransferHistoryResponse,
+    getForceLiquidationRecordOptions,
+    getForceLiquidationRecordResponse,
+    getInterestHistoryOptions,
+    getInterestHistoryResponse,
+    getMarginPriceIndexResponse,
     getMarginAccountAllOrdersOptions,
     getMarginAccountAllOrdersResponse,
+    getMarginAccountOpenOrdersOptions,
+    getMarginAccountOpenOrdersResponse,
+    getMarginAccountOrderOptions,
+    getMarginAccountOrderResponse,
+    marginAccountCancelAllOpenOrdersOnASymbolOptions,
+    marginAccountCancelAllOpenOrdersOnASymbolResponse,
+    marginAccountCancelOrderOptions,
+    marginAccountCancelOrderResponse,
+    marginAccountNewOrderOptions,
+    marginAccountNewOrderResponse,
     marginAccountNewOcoOptions,
     marginAccountNewOcoResponse,
     getMarginAccountOcoOptions,
@@ -88,12 +88,17 @@ import {
     getMarginAvailableInventoryResponse,
     marginManualLiquidationOptions,
     marginManualLiquidationResponse,
+    marginAccountNewOtoOptions,
+    marginAccountNewOtoResponse,
+    marginAccountNewOtocoOptions,
+    marginAccountNewOtocoResponse,
     getLeverageBracketResponse,
     marginAccountBorrowRepayOptions,
     marginAccountBorrowRepayResponse,
     getBorrowRepayRecordsOptions,
     getBorrowRepayRecordsResponse
 } from './types';
+import { OrderListAboveBelowType, OtoPendingType, OrderListWorkingType } from '../../enum';
 
 export interface MarginMethods {
     getAllMarginAssets(options?: getAllMarginAssetsOptions): Promise<getAllMarginAssetsResponse[]>
@@ -131,7 +136,7 @@ export interface MarginMethods {
     getIsolatedMarginFeeData(options?: getIsolatedMarginFeeDataOptions): Promise<getIsolatedMarginFeeDataResponse[]>;
     getIsolatedMarginTierData(symbol: string, options?: getIsolatedMarginTierDataOptions): Promise<getIsolatedMarginTierDataResponse[]>;
     getCurrentMarginOrderCountUsage(options?: getCurrentMarginOrderCountUsageOptions): Promise<getCurrentMarginOrderCountUsageResponse[]>;
-    crossMarginCollateralRatio(): Promise<crossMarginCollateralRatioResponse>;
+    crossMarginCollateralRatio(): Promise<crossMarginCollateralRatioResponse[]>;
     getSmallLiabilityExchangeCoinList(options?: getSmallLiabilityExchangeCoinListOptions): Promise<getSmallLiabilityExchangeCoinListResponse[]>;
     smallLiabilityExchange(assetNames: string[], options?: smallLiabilityExchangeOptions): Promise<smallLiabilityExchangeResponse>;
     getSmallLiabilityExchangeHistory(current: number, size: number, options?: getSmallLiabilityExchangeHistoryOptions): Promise<getSmallLiabilityExchangeHistoryResponse>;
@@ -139,6 +144,8 @@ export interface MarginMethods {
     getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMargin(options?: getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginOptions): Promise<getTokensOrSymbolsDelistScheduleForCrossMarginAndIsolatedMarginResponse[]>;
     getMarginAvailableInventory(type: string, options?: getMarginAvailableInventoryOptions): Promise<getMarginAvailableInventoryResponse>;
     marginManualLiquidation(type: string, options?: marginManualLiquidationOptions): Promise<marginManualLiquidationResponse[]>;
+    marginAccountNewOto(symbol: string, workingType: OrderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingType: OtoPendingType, pendingSide: Side, pendingQuantity: number, options?: marginAccountNewOtoOptions): Promise<marginAccountNewOtoResponse>;
+    marginAccountNewOtoco(symbol: string, workingType: OrderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingSide: Side, pendingQuantity: number, pendingAboveType: OrderListAboveBelowType, options?: marginAccountNewOtocoOptions): Promise<marginAccountNewOtocoResponse>;
     getLeverageBracket(): Promise<getLeverageBracketResponse[]>;
     marginAccountBorrowRepay(asset: string, isIsolated: string, symbol: string, amount: string, type: MarginBorrowRepayType, options?: marginAccountBorrowRepayOptions): Promise<marginAccountBorrowRepayResponse>;
     getBorrowRepayRecords(type: MarginBorrowRepayType, options?: getBorrowRepayRecordsOptions): Promise<getBorrowRepayRecordsResponse>;

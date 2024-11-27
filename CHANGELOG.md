@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.3.14 - 2024-11-27
+### Added
+- `Margin`:
+  - `POST /sapi/v1/margin/order/oto`
+  - `POST /sapi/v1/margin/order/otoco`
+- `Portfolio`:
+  - `GET /sapi/v1/portfolio/balance`
+  - `GET /sapi/v2/portfolio/account`
+  - `GET /sapi/v2/portfolio/collateralRate`
+- `Simple Earn`:
+  - `POST /sapi/v1/simple-earn/locked/setRedeemOption`
+- `Wallet`:
+  - `GET /sapi/v1/account/info`
+  - `GET /sapi/v1/asset/custody/transfer-history`
+  - `GET /sapi/v1/asset/wallet/balance`
+  - `GET /sapi/v1/capital/deposit/address/list`
+  - `GET /sapi/v1/spot/delist-schedule`
+
+### Changed
+- Updated dependencies
+- Added optional parameters `showPermissionSets` and `symbolStatus` to endpoint `GET /api/v3/exchangeInfo`
+- Fixed response type issue in `GET /sapi/v1/margin/crossMarginCollateralRatio`
+- `POST /sapi/v1/simple-earn/locked/subscribe` new parameter: `redeemTo`
+- Updated fields in response for the following endpoints:
+  - `GET /sapi/v1/margin/account`
+  - `GET /sapi/v1/simple-earn/locked/position`
+  - `GET /sapi/v1/simple-earn/flexible/history/subscriptionRecord`
+  - `GET /sapi/v1/simple-earn/locked/history/subscriptionRecord`
+  - `GET /sapi/v1/simple-earn/locked/history/redemptionRecord`
+  - `GET /sapi/v4/sub-account/assets`
+  - `GET /sapi/v3/sub-account/assets`
+
 ## 0.3.13 - 2024-10-11
 ### Added
 - `Dual Investment`:

@@ -43,11 +43,14 @@ import {
     getFlexibleSubscriptionPreviewResponse,
     getLockedSubscriptionPreviewOptions,
     getLockedSubscriptionPreviewResponse,
+    setLockedRedeemOptionOptions,
+    setLockedRedeemOptionResponse,
     getRateHistoryOptions,
     getRateHistoryResponse,
     getCollateralRecordOptions,
     getCollateralRecordResponse
 } from './types';
+import { RedeemOption } from '../../enum';
 import { SimpleEarnMethods } from './methods';
 
 export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<SimpleEarnMethods> & T {
@@ -119,6 +122,7 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
         * @param {object} [options]
         * @param {boolean} [options.autoSubscribe] - true or false, default true.
         * @param {string} [options.sourceAccount] - SPOT,FUND,ALL, default SPOT
+        * @param {RedeemOption} [options.redeemTo] - "SPOT", "FLEXIBLE", default SPOT
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
         */
         async subscribeLockedProduct(projectId: string, amount: number, options?: subscribeLockedProductOptions): Promise<subscribeLockedProductResponse> {
@@ -491,6 +495,28 @@ export function mixinSimpleEarn<T extends Constructor>(base: T): Constructor<Sim
             return await this.makeRequest('GET', url);
         }
 
+
+        /**
+         * Set Locked Product Redeem Option (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/earn/Set-Locked-Redeem-Option}
+         * 
+         * @param {string} positionId
+         * @param {RedeemOption} redeemOption - "SPOT", "FLEXIBLE"
+         * @param {object} [options]
+         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
+         */
+        async setLockedRedeemOption(positionId: string, redeemOption: RedeemOption, options?: setLockedRedeemOptionOptions): Promise<setLockedRedeemOptionResponse> {
+            validateRequiredParameters({ positionId, redeemOption });
+            const url = this.prepareSignedPath('/sapi/v1/simple-earn/locked/setRedeemOption',
+                Object.assign(
+                    options ? options : {},
+                    {
+                        positionId: positionId,
+                        redeemOption: redeemOption
+                    }
+                )
+            );
+            return await this.makeRequest('POST', url);
+        }
 
         /**
         * Get Rate History (USER_DATA) {@link https://developers.binance.com/docs/simple_earn/history/Get-Rate-History}

@@ -1,4 +1,4 @@
-import { OrderListAboveBelowType, OrderType, OtoPendingType, orderListWorkingType, Side, CancelReplaceMode } from '../../enum';
+import { OrderListAboveBelowType, OrderType, OtoPendingType, OrderListWorkingType, Side, CancelReplaceMode } from '../../enum';
 
 import {
     accountInformationOptions,
@@ -57,8 +57,8 @@ export interface TradeMethods {
     cancelAllOpenOrdersOnASymbol(symbol: string, options?: cancelAllOpenOrdersOnASymbolOptions): Promise<cancelAllOpenOrdersOnASymbolResponse[]>;
     allOrders(symbol: string, options?: allOrdersOptions): Promise<allOrdersResponse[]>;
     newOco(symbol: string, side: Side, quantity: number, aboveType: OrderListAboveBelowType, belowType: OrderListAboveBelowType, options?: newOcoOptions): Promise<newOcoResponse>;
-    newOto(symbol: string, workingType: orderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingType: OtoPendingType, pendingSide: Side, pendingQuantity: number, options?: newOtoOptions): Promise<newOtoResponse>;
-    newOtoco(symbol: string, workingType: orderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingSide: Side, pendingQuantity: number, pendingAboveType: OrderListAboveBelowType, options?: newOtocoOptions): Promise<newOtocoResponse>
+    newOto(symbol: string, workingType: OrderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingType: OtoPendingType, pendingSide: Side, pendingQuantity: number, options?: newOtoOptions): Promise<newOtoResponse>;
+    newOtoco(symbol: string, workingType: OrderListWorkingType, workingSide: Side, workingPrice: number, workingQuantity: number, pendingSide: Side, pendingQuantity: number, pendingAboveType: OrderListAboveBelowType, options?: newOtocoOptions): Promise<newOtocoResponse>
     getOco(options?: getOcoOptions): Promise<getOcoResponse>;
     cancelOco(symbol: string, options?: cancelOcoOptions): Promise<cancelOcoResponse>;
     getAllOco(options?: getAllOcoOptions): Promise<getAllOcoResponse[]>;

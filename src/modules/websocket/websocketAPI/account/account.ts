@@ -20,7 +20,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Account information
          * Query information about your account.
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-information-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-information-user_data}
          *
          * @param {object} [options]
          * @param {number} [options.recvWindow]
@@ -34,7 +34,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Query your current order rate limit.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-order-rate-limits-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#unfilled-order-count-user_data}
          *
          * @param {object} [options]
          * @param {number} [options.recvWindow]
@@ -49,7 +49,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Query information about all your orders – active, canceled, filled – filtered by time range.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-order-history-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-order-history-user_data}
          *
          * @param {string} symbol
          * @param {object} [options]
@@ -74,7 +74,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Query information about all your OCOs, filtered by time range.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-order-list-history-user_data}
          *
          * @param {object} [options]
          * @param {number} [options.fromId]
@@ -97,7 +97,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Query information about all your trades, filtered by time range.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-trade-history-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-trade-history-user_data}
          *
          * @param {string} [symbol]
          * @param {object} [options]
@@ -123,7 +123,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
          * Displays the list of orders that were expired because of STP trigger.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-prevented-matches-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-prevented-matches-user_data}
          *
          * @param {string} [symbol]
          * @param {object} [options]
@@ -145,7 +145,7 @@ export function mixinWsAccount<T extends Constructor>(base: T): Constructor<Acco
         /**
          * Retrieves allocations resulting from SOR order placement.
          * 
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api#account-allocations-user_data}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#account-allocations-user_data}
          * 
          * @param {string} [symbol]
          * @param {object} [options]

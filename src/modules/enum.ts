@@ -61,8 +61,8 @@ export enum CrossMarginAccountTransferType {
 }
 
 export enum CrossMarginAccountType {
-    Margin_1 = 'Margin_1',
-    Margin_2 = 'Margin_2',
+    MARGIN_1 = 'MARGIN_1',
+    MARGIN_2 = 'MARGIN_2',
 }
 
 export enum CrossMarginTrans {
@@ -391,7 +391,7 @@ export enum OtoPendingType {
     TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT',
 }
 
-export enum orderListWorkingType {
+export enum OrderListWorkingType {
     LIMIT = 'LIMIT',
     LIMIT_MAKER = 'LIMIT_MAKER',
 }
@@ -460,6 +460,11 @@ export enum RedeemDestAccount {
     SPOT = 'SPOT',
     FUND = 'FUND',
     ALL = 'ALL'
+}
+
+export enum RedeemOption {
+    SPOT = 'SPOT',
+    FLEXIBLE = 'FLEXIBLE',
 }
 
 export enum SelfTradePreventionMode {
@@ -566,6 +571,12 @@ export enum SwapStatus {
     PendingForSwap = 0,
     Success = 1,
     Failed = 2,
+}
+
+export enum SymbolStatus {
+    TRADING = 'TRADING',
+    HALT = 'HALT',
+    BREAK = 'BREAK ',
 }
 
 export enum TimeInForce {
