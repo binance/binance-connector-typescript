@@ -52,7 +52,7 @@ import { OrderListAboveBelowType, OrderType, OtoPendingType, OrderListWorkingTyp
 export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMethods> & T {
     return class extends base {
         /**
-        * Test New Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#test-new-order-trade}
+        * Test New Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side
@@ -90,7 +90,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query Order (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-order-user_data}
+        * Query Order (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-order-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -113,7 +113,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * New Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-trade}
+        * New Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side
@@ -150,7 +150,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Cancel Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-order-trade}
+        * Cancel Order (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-order-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -174,7 +174,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Cancel an Existing Order and Send a New Order (Trade) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-an-existing-order-and-send-a-new-order-trade}
+        * Cancel an Existing Order and Send a New Order (Trade) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-an-existing-order-and-send-a-new-order-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side
@@ -215,7 +215,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Current Open Orders (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#current-open-orders-user_data}
+        * Current Open Orders (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#current-open-orders-user_data}
         *
         * @param {object} [options]
         * @param {string} [options.symbol] - Trading symbol, e.g. BNBUSDT
@@ -231,7 +231,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Cancel all Open Orders on a Symbol (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-all-open-orders-on-a-symbol-trade}
+        * Cancel all Open Orders on a Symbol (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-all-open-orders-on-a-symbol-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -252,7 +252,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * All Orders (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#all-orders-user_data}
+        * All Orders (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#all-orders-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -277,7 +277,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * New Order List - OCO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-list---oco-trade}
+        * New Order List - OCO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---oco-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {Side} side - BUY or SELL
@@ -325,7 +325,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-         * New Order List - OTO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-list---oto-trade}
+         * New Order List - OTO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---oto-trade}
          * 
          * @param {string} symbol
          * @param {OrderListWorkingType} workingType - Supported values: `LIMIT`, `LIMIT_MAKER`
@@ -376,7 +376,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-         * New Order List - OTOCO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-list---otoco-trade}
+         * New Order List - OTOCO (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---otoco-trade}
          * 
          * @param {string} symbol
          * @param {OrderListWorkingType} workingType - Supported values: `LIMIT`, `LIMIT_MAKER`
@@ -436,7 +436,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query Order list (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-order-list-user_data}
+        * Query Order list (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-order-list-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.orderListId] - Order list id
@@ -452,7 +452,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Cancel Order lists (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-order-list-trade}
+        * Cancel Order lists (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-order-list-trade}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -476,7 +476,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query all Order lists (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-all-order-lists-user_data}
+        * Query all Order lists (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-all-order-lists-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.fromId] - Trade id to fetch from. Default gets most recent trades.
@@ -495,7 +495,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query Open Order lists (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-open-order-lists-user_data}
+        * Query Open Order lists (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-open-order-lists-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -509,7 +509,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Account Information (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#account-information-user_data}
+        * Account Information (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#account-information-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.omitZeroBalances] - When set to true, emits only the non-zero balances of an account. Default value: false
@@ -524,7 +524,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Account Trade List (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#account-trade-list-user_data}
+        * Account Trade List (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#account-trade-list-user_data}
         *
         * @param {string} symbol - Trading symbol, e.g. BNBUSDT
         * @param {object} [options]
@@ -550,7 +550,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-        * Query Unfilled Order Count (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-unfilled-order-count-user_data}
+        * Query Unfilled Order Count (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-unfilled-order-count-user_data}
         *
         * @param {object} [options]
         * @param {number} [options.recvWindow] - The value cannot be greater than 60000
@@ -564,7 +564,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         }
 
         /**
-         * Test New Order Using SOR (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#test-new-order-using-sor-trade}
+         * Test New Order Using SOR (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-using-sor-trade}
          * 
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {Side} side
@@ -600,7 +600,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
 
 
         /**
-         * New Order Using SOR (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-using-sor-trade}
+         * New Order Using SOR (TRADE) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-using-sor-trade}
          * 
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {Side} side
@@ -634,7 +634,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         }
 
         /**
-         * Query Prevented Matches (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-prevented-matches-user_data}
+         * Query Prevented Matches (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-prevented-matches-user_data}
          * 
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {object} [options]
@@ -658,7 +658,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         }
 
         /**
-         * Query Allocations (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-allocations-user_data}
+         * Query Allocations (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-allocations-user_data}
          * 
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          * @param {object} [options]
@@ -683,7 +683,7 @@ export function mixinTrade<T extends Constructor>(base: T): Constructor<TradeMet
         }
 
         /**
-         * Query Commission Rates (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-commission-rates-user_data}
+         * Query Commission Rates (USER_DATA) {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-commission-rates-user_data}
          * 
          * @param {string} symbol - Trading symbol, e.g. BNBUSDT
          */

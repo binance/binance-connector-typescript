@@ -28,7 +28,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Test connectivity to the WebSocket API.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#test-connectivity}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/general-requests#test-connectivity}
          */
         ping(options?: pingOptions) {
             this.sendMessage('ping', options);
@@ -40,7 +40,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Test connectivity to the WebSocket API and get the current server time.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#check-server-time}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/general-requests#check-server-time}
          */
         time() {
             this.sendMessage('time', {});
@@ -56,7 +56,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * @param {string[]} [options.symbols]
          * @param {string[]} [options.permissions]
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#exchange-information}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/general-requests#exchange-information}
          */
         exchangeInfo(options?: exchangeInfoOptions) {
             if (options && options.symbol && Object.prototype.hasOwnProperty.call(options, 'symbol')) {
@@ -74,7 +74,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get current order book.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#order-book}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#order-book}
          * @param {string} symbol
          * @param {object} [options]
          * @param {number} [options.limit]
@@ -95,7 +95,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get recent trades.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#recent-trades}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#recent-trades}
          * @param {string} symbol
          * @param {object} [options]
          * @param {number} [options.limit]
@@ -116,7 +116,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get historical trades.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#historical-trades}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#historical-trades}
          * @param {string} symbol
          * @param {object} [options]
          * @param {number} [options.limit]
@@ -138,7 +138,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get aggregate trades.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#aggregate-trades}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#aggregate-trades}
          * @param {string} symbol
          * @param {object} [options]
          * @param {number} [options.limit]
@@ -162,7 +162,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get klines (candlestick bars).
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#klines}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#klines}
          * @param {string} symbol
          * @param {Interval} interval
          * @param {object} [options]
@@ -187,7 +187,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get klines (candlestick bars) optimized for presentation.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#ui-klines}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#ui-klines}
          * @param {string} symbol
          * @param {Interval} interval
          * @param {object} [options]
@@ -212,7 +212,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get current average price for a symbol.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#current-average-price}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#current-average-price}
          * @param {string} symbol
          *
          */
@@ -226,7 +226,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get 24-hour rolling window price change statistics.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#24hr-ticker-price-change-statistics}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#24hr-ticker-price-change-statistics}
          * @param {object} [options]
          * @param {string} [options.symbol]
          * @param {string[]} [options.symbols]
@@ -243,7 +243,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get rolling window price change statistics with a custom window.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#rolling-window-price-change-statistics}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#rolling-window-price-change-statistics}
          * @param {object} [options]
          * @param {string} [options.symbol]
          * @param {string[]} [options.symbols]
@@ -260,7 +260,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get the latest market price for a symbol.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#symbol-price-ticker}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#symbol-price-ticker}
          * @param {object} [options]
          * @param {string} [options.symbol]
          * @param {string[]} [options.symbols]
@@ -276,7 +276,7 @@ export function mixinWsMarket<T extends Constructor>(base: T): Constructor<Marke
          * Get the current best price and quantity on the order book.
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#symbol-order-book-ticker}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/market-data-requests#symbol-order-book-ticker}
          * @param {object} [options]
          * @param {string} [options.symbol]
          * @param {string[]} [options.symbols]
