@@ -12,7 +12,7 @@ export function mixinWsUserData<T extends Constructor>(base: T): Constructor<Tra
          * Start a new user data stream.<br>
          *
          *
-         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#start-user-data-stream-user_stream}
+         * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/user-data-stream-requests#start-user-data-stream-user_stream}
          */
         startUserDataStream() {
             this.sendMessageWithAPIKey('userDataStream.start');
@@ -24,7 +24,7 @@ export function mixinWsUserData<T extends Constructor>(base: T): Constructor<Tra
         * Ping a user data stream to keep it alive.<br>
         *
         *
-        * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#ping-user-data-stream-user_stream}
+        * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/user-data-stream-requests#ping-user-data-stream-user_stream}
         *
         * @param {string} listenKey
         */
@@ -38,7 +38,7 @@ export function mixinWsUserData<T extends Constructor>(base: T): Constructor<Tra
         * Explicitly stop and close the user data stream.<br>
         *
         *
-        * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/public-api-requests#stop-user-data-stream-user_stream}
+        * {@link https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api/user-data-stream-requests#stop-user-data-stream-user_stream}
         */
         stopUserDataStream(listenKey: string) {
             this.sendMessageWithAPIKey('userDataStream.stop', { listenKey });

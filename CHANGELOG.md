@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.15 - 2025-01-08
+### Changed
+- Updated documentation links
+
 ## 0.3.14 - 2024-11-27
 ### Added
 - `Margin`:
