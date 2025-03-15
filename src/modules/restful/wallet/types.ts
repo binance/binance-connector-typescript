@@ -332,6 +332,7 @@ export interface assetDetailResponse {
 
 export interface queryUserWalletBalanceOptions {
     recvWindow?: number;
+    quoteAsset?: string;
 }
 
 export interface queryUserWalletBalanceResponse {
