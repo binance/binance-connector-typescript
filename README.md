@@ -1,7 +1,9 @@
-# Binance connector in Typescript
+# Binance connector in Typescript - DEPRECATED
 
 [![npm version](https://badge.fury.io/js/@binance%2Fconnector-typescript.svg)](https://badge.fury.io/js/@binance%2Fconnector-typescript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**This repository is deprecated. Please use the new repository: [binance-connector-js](https://github.com/binance/binance-connector-js)**
 
 This library is an easy, simple and clean connector to the [Binance public API](https://github.com/binance/binance-spot-api-docs). It is divided into three distinct endpoints:
 - [RESTful API](./src/spot.ts)

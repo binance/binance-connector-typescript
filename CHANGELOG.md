@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.16 - 2025-03-24
+- This repository is deprecated and will no longer be maintained. Please use the new repository: [binance-connector-js](https://github.com/binance/binance-connector-js)
+
 ## 0.3.15 - 2025-01-08
 ### Changed
 - Updated documentation links
